@@ -28,14 +28,14 @@ export const translations = {
       vector: {
         tagline: "Платформа для проведення академічних турнірів",
         description:
-          "Повноцінна система для організації змагань: реєстрація команд, турнірна сітка в реальному часі, WebSocket-сповіщення та автоматична генерація PDF-сертифікатів. Я був тім-лідом команди з трьох розробників — з Vector ми пройшли у фінал Всеукраїнського турніру з програмування.",
-        badge: "Фіналіст Всеукраїнського турніру з програмування 2026",
+          "Повноцінна система для організації академічних змагань: реєстрація команд, турнірна сітка в реальному часі, WebSocket-сповіщення та автоматична генерація PDF-сертифікатів. Проєкт розроблявся командою з трьох розробників, яку я очолював. З Vector ми дійшли до фіналу Всеукраїнського турніру з програмування.",
+        badge: "Фіналіст Всеукраїнського турніру з програмування — 2026",
       },
       scalaris: {
         tagline: "Соціальний застосунок для вуличної активності",
         description:
-          "Mobile-first платформа, яка показує на карті людей поруч, готових приєднатися до спонтанної активності. Власна кластеризація аватарів на Leaflet-карті та обмін даними в реальному часі. Зі Scalaris ми посіли 3 місце у фіналі Всеукраїнського турніру з програмування.",
-        badge: "3 місце у фіналі Всеукраїнського турніру з програмування 2026",
+          "Mobile-first платформа, що показує на карті людей поруч, готових долучитися до спонтанної активності. Реалізовано власну кластеризацію аватарів на Leaflet-карті та обмін даними в реальному часі. Проєкт посів 3 місце у фіналі Всеукраїнського турніру з програмування.",
+        badge: "3 місце у фіналі Всеукраїнського турніру з програмування — 2026",
       },
     },
     about: {
@@ -43,7 +43,7 @@ export const translations = {
       title2: "будує продукти",
       aria: "Учень 11 класу, який будує продукти",
       p1: "Я вивчаю розробку самостійно — від структур даних у JavaScript до WebSocket-інфраструктури на Django Channels. Люблю розбиратись у тому, як влаштовані системи всередині, і не боюсь читати чужий код, щоб зрозуміти патерн, а не скопіювати рішення.",
-      p2: "Я був тім-лідом команди з трьох розробників над Vector — з ним ми пройшли у фінал Всеукраїнського турніру з програмування. Зі Scalaris посіли 3 місце у фіналі. Зараз працюю над крутими новими проєктами!",
+      p2: "Я очолював команду з трьох розробників проєкту Vector, з яким ми дійшли до фіналу Всеукраїнського турніру з програмування. Проєкт Scalaris приніс команді 3 місце у фіналі турніру. Наразі працюю над новими амбітними продуктами.",
       facts: [
         {
           num: "01",
@@ -53,12 +53,12 @@ export const translations = {
         {
           num: "02",
           label: "Команда",
-          text: "Тім-лід команди з трьох розробників над Vector — фіналісти Всеукраїнського турніру з програмування.",
+          text: "Тім-лід команди з трьох розробників проєкту Vector — фіналіст Всеукраїнського турніру з програмування.",
         },
         {
           num: "03",
           label: "Далі",
-          text: "Працюю над крутими новими проєктами!",
+          text: "Працюю над новими амбітними продуктами.",
         },
       ],
     },
@@ -100,14 +100,14 @@ export const translations = {
       vector: {
         tagline: "Platform for academic tournaments",
         description:
-          "A complete system for organizing competitions: team registration, real-time tournament brackets, WebSocket notifications, and automatic PDF certificate generation. I led a team of three developers, and Vector took us to the final of the All-Ukrainian Programming Tournament.",
-        badge: "Finalist of the All-Ukrainian Programming Tournament 2026",
+          "A complete system for organizing academic competitions: team registration, real-time tournament brackets, WebSocket notifications, and automated PDF certificate generation. I led the three-developer team; Vector took us to the final of the All-Ukrainian Programming Tournament.",
+        badge: "Finalist — All-Ukrainian Programming Tournament 2026",
       },
       scalaris: {
         tagline: "Social app for street activity",
         description:
-          "A mobile-first platform showing people nearby on a map who are ready to join a spontaneous activity. Custom avatar clustering on a Leaflet map with real-time data exchange. With Scalaris we took 3rd place at the tournament final.",
-        badge: "3rd place at the All-Ukrainian Programming Tournament final 2026",
+          "A mobile-first platform that shows nearby people on a map who are ready to join spontaneous activity. Features custom avatar clustering on a Leaflet map and real-time data exchange. Scalaris earned the team 3rd place in the tournament final.",
+        badge: "3rd place — All-Ukrainian Programming Tournament final 2026",
       },
     },
     about: {
@@ -115,7 +115,7 @@ export const translations = {
       title2: "builds products",
       aria: "An 11th-grader who builds products",
       p1: "I teach myself development — from data structures in JavaScript to WebSocket infrastructure on Django Channels. I love understanding how systems work inside and I'm not afraid of reading foreign code to grasp a pattern rather than copy a solution.",
-      p2: "I led a team of three developers on Vector — it took us to the final of the All-Ukrainian Programming Tournament. With Scalaris we took 3rd place in the final. Right now I'm working on cool new projects!",
+      p2: "I led a three-developer team building Vector, which reached the final of the All-Ukrainian Programming Tournament, and Scalaris, which earned the team 3rd place in the final. I'm currently working on new ambitious products.",
       facts: [
         {
           num: "01",
@@ -125,12 +125,12 @@ export const translations = {
         {
           num: "02",
           label: "Team",
-          text: "Team lead of three developers on Vector — finalists of the All-Ukrainian Programming Tournament.",
+          text: "Team lead of a three-developer team on Vector — finalist of the All-Ukrainian Programming Tournament.",
         },
         {
           num: "03",
           label: "Next",
-          text: "Working on cool new projects!",
+          text: "Currently working on new ambitious products.",
         },
       ],
     },
