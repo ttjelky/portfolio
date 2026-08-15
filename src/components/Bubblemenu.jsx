@@ -54,6 +54,7 @@ export default function BubbleMenu({
   animationEase = "back.out(1.5)",
   animationDuration = 0.5,
   staggerDelay = 0.12,
+  rightSlot,
 }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showOverlay, setShowOverlay] = useState(false);
@@ -188,17 +189,20 @@ export default function BubbleMenu({
           </span>
         </div>
 
-        <button
-          type="button"
-          className={`bubble toggle-bubble menu-btn ${isMenuOpen ? "open" : ""}`}
-          onClick={handleToggle}
-          aria-label={menuAriaLabel}
-          aria-pressed={isMenuOpen}
-          style={{ background: menuBg }}
-        >
-          <span className="menu-line" style={{ background: menuContentColor }} />
-          <span className="menu-line short" style={{ background: menuContentColor }} />
-        </button>
+        <div className="bubble-menu__actions">
+          {rightSlot}
+          <button
+            type="button"
+            className={`bubble toggle-bubble menu-btn ${isMenuOpen ? "open" : ""}`}
+            onClick={handleToggle}
+            aria-label={menuAriaLabel}
+            aria-pressed={isMenuOpen}
+            style={{ background: menuBg }}
+          >
+            <span className="menu-line" style={{ background: menuContentColor }} />
+            <span className="menu-line short" style={{ background: menuContentColor }} />
+          </button>
+        </div>
       </nav>
       {showOverlay && (
         <div

@@ -1,3 +1,4 @@
+import { useEffect, useMemo, useState } from "react";
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import TextLoop from "./components/TextLoop";
@@ -5,38 +6,49 @@ import AccordionGallery from "./components/AccordionGallery";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
+import { LangContext, translations } from "./i18n";
 
-const GALLERY_ITEMS = [
-  {
-    image: "projects/vector.png",
-    label: "Vector",
-    link: "https://github.com/ttjelky/vector",
-    tagline: "Платформа для проведення академічних турнірів",
-    description:
-      "Повноцінна система для організації змагань: реєстрація команд, турнірна сітка в реальному часі, WebSocket-сповіщення та автоматична генерація PDF-сертифікатів. Розробляється командою з трьох людей.",
-    badge: "Призер Всеукраїнського турніру з програмування 2026",
-    stack: ["Django", "DRF", "Channels", "Celery", "Redis", "React", "SimpleJWT"],
-  },
-  {
-    image: "projects/scalaris.png",
-    label: "Scalaris",
-    link: "https://github.com/ttjelky/Scalaris",
-    tagline: "Соціальний застосунок для вуличної активності",
-    description:
-      "Mobile-first платформа, яка показує на карті людей поруч, готових приєднатися до спонтанної активності. Власна кластеризація аватарів на Leaflet-карті та обмін даними в реальному часі.",
-    badge: "У розробці",
-    stack: ["Django", "GeoDjango", "Leaflet", "WebSockets", "React", "Docker"],
-  },
-];
+function buildGalleryItems(t) {
+  return [
+    {
+      image: "projects/vector.png",
+      label: "Vector",
+      link: "https://github.com/ttjelky/vector",
+      tagline: t.projects.vector.tagline,
+      description: t.projects.vector.description,
+      badge: t.projects.vector.badge,
+      stack: ["Django", "DRF", "Channels", "Celery", "Redis", "React", "SimpleJWT"],
+    },
+    {
+      image: "projects/scalaris.png",
+      label: "Scalaris",
+      link: "https://github.com/ttjelky/Scalaris",
+      tagline: t.projects.scalaris.tagline,
+      description: t.projects.scalaris.description,
+      badge: t.projects.scalaris.badge,
+      stack: ["Django", "GeoDjango", "Leaflet", "WebSockets", "React", "Docker"],
+    },
+  ];
+}
 
 export default function App() {
+  const [lang, setLang] = useState("uk");
+  const t = translations[lang];
+
+  useEffect(() => {
+    document.documentElement.lang = lang === "uk" ? "uk" : "en";
+  }, [lang]);
+
+  const items = useMemo(() => buildGalleryItems(t), [lang, t]);
+
   return (
-    <>
+    <LangContext.Provider value={{ lang, t, setLang }}>
       <Nav />
       <main>
         <Hero />
         <TextLoop
-          text="Будую продукти"
+          key={lang}
+          text={t.marquee}
           shape="wave"
           speed={80}
           direction="forward"
@@ -56,7 +68,7 @@ export default function App() {
         <section className="section" id="projects">
           <div style={{ padding: "0 clamp(12px, 1.5vw, 20px)" }}>
             <AccordionGallery
-              items={GALLERY_ITEMS}
+              items={items}
               defaultIndex={0}
               accentColor="#2f4cf2"
               trigger="hover"
@@ -72,6 +84,6 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
-    </>
+    </LangContext.Provider>
   );
 }

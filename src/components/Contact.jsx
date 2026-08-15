@@ -1,11 +1,13 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import ShinyText from "./ShinyText";
+import { useLang } from "../i18n";
 import "./Contact.css";
 
 const EMAIL = "bezklinskiyalexey@gmail.com";
 
 export default function Contact() {
+  const { t } = useLang();
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -29,7 +31,7 @@ export default function Contact() {
           transition={{ duration: 0.7, delay: 0.1 }}
         >
           <ShinyText
-            text="Є проєкт?"
+            text={t.contact.title}
             color="#14140f"
             shineColor="#ffffff"
             speed={3}
@@ -37,7 +39,7 @@ export default function Contact() {
             direction="left"
           />
           <br />
-          <span className="italic">Поговорімо.</span>
+          <span className="italic">{t.contact.talk}</span>
         </motion.h2>
 
         <motion.div
@@ -51,7 +53,7 @@ export default function Contact() {
             {EMAIL}
           </a>
           <button className="contact__copy" onClick={handleCopy} type="button">
-            {copied ? "Скопійовано ✓" : "Копіювати"}
+            {copied ? t.contact.copied : t.contact.copy}
           </button>
         </motion.div>
 

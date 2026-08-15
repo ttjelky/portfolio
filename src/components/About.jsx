@@ -1,30 +1,13 @@
 import { motion } from "framer-motion";
 import SplitText from "./SplitText";
 import CurvedLoop from "./CurvedLoop";
+import { useLang } from "../i18n";
 import "./About.css";
 
 const STACK = [
   "Python", "Django", "DRF", "GeoDjango",
   "React", "Vite", "JavaScript", "TypeScript",
   "PostgreSQL", "Redis", "WebSockets", "Docker",
-];
-
-const FACTS = [
-  {
-    num: "01",
-    label: "Освіта",
-    text: "Самостійно — від структур даних у JavaScript до WebSocket-інфраструктури на Django Channels.",
-  },
-  {
-    num: "02",
-    label: "Команда",
-    text: "Три розробники працюють над Vector — платформою академічних турнірів.",
-  },
-  {
-    num: "03",
-    label: "Далі",
-    text: "TypeScript і перші фриланс-проєкти для реальних клієнтів.",
-  },
 ];
 
 const fade = (delay = 0) => ({
@@ -35,17 +18,21 @@ const fade = (delay = 0) => ({
 });
 
 export default function About() {
+  const { lang, t } = useLang();
+  const about = t.about;
+
   return (
     <section className="section about" id="about">
       <div className="about__bleed">
         <div className="about__grid">
         <h2
+          key={lang}
           className="about__title"
-          aria-label="Учень 11 класу, який будує продукти"
+          aria-label={about.aria}
         >
           <SplitText
             tag="div"
-            text="Учень 11 класу, який"
+            text={about.title1}
             className="about__title-line"
             splitType="chars"
             delay={35}
@@ -60,7 +47,7 @@ export default function About() {
           <div className="about__title-line">
             <SplitText
               tag="div"
-              text="будує продукти"
+              text={about.title2}
               className="italic"
               splitType="chars"
               delay={40}
@@ -76,22 +63,13 @@ export default function About() {
         </h2>
 
           <motion.div className="about__text" {...fade(0.15)}>
-            <p>
-              Я вивчаю розробку самостійно — від структур даних у JavaScript до
-              WebSocket-інфраструктури на Django Channels. Люблю розбиратись у
-              тому, як влаштовані системи всередині, і не боюсь читати чужий код,
-              щоб зрозуміти патерн, а не скопіювати рішення.
-            </p>
-            <p>
-              Зараз працюю в команді з трьох розробників над Vector —
-              платформою для академічних турнірів, і паралельно веду власний
-              проєкт Scalaris.
-            </p>
+            <p>{about.p1}</p>
+            <p>{about.p2}</p>
           </motion.div>
         </div>
 
         <motion.ul className="about__facts" {...fade(0.2)}>
-          {FACTS.map((f) => (
+          {about.facts.map((f) => (
             <li key={f.num} className="about__fact">
               <span className="about__fact-num">{f.num}</span>
               <span className="about__fact-label">{f.label}</span>

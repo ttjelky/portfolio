@@ -1,16 +1,19 @@
 import BubbleMenu from "./Bubblemenu";
+import { useLang } from "../i18n";
 
 const ACCENT_HOVER = { bgColor: "var(--accent)", textColor: "var(--paper)" };
 const INK_HOVER = { bgColor: "var(--ink)", textColor: "var(--paper)" };
 
-const LINKS = [
-  { label: "проєкти", href: "#projects", ariaLabel: "Проєкти", rotation: -8, hoverStyles: ACCENT_HOVER },
-  { label: "про мене", href: "#about", ariaLabel: "Про мене", rotation: 8, hoverStyles: ACCENT_HOVER },
-  { label: "контакт", href: "#contact", ariaLabel: "Контакт", rotation: 8, hoverStyles: ACCENT_HOVER },
-  { label: "написати →", href: "#contact", ariaLabel: "Написати", rotation: -8, hoverStyles: INK_HOVER },
-];
-
 export default function Nav() {
+  const { lang, setLang, t } = useLang();
+
+  const LINKS = [
+    { label: t.nav.projects, href: "#projects", ariaLabel: t.nav.projectsAria, rotation: -8, hoverStyles: ACCENT_HOVER },
+    { label: t.nav.about, href: "#about", ariaLabel: t.nav.aboutAria, rotation: 8, hoverStyles: ACCENT_HOVER },
+    { label: t.nav.contact, href: "#contact", ariaLabel: t.nav.contactAria, rotation: 8, hoverStyles: ACCENT_HOVER },
+    { label: t.nav.write, href: "#contact", ariaLabel: t.nav.writeAria, rotation: -8, hoverStyles: INK_HOVER },
+  ];
+
   return (
     <BubbleMenu
       logo={
@@ -28,13 +31,23 @@ export default function Nav() {
         </span>
       }
       items={LINKS}
-      menuAriaLabel="Відкрити меню"
+      menuAriaLabel={t.nav.menuAria}
       menuBg="var(--paper)"
       menuContentColor="var(--ink)"
       useFixedPosition
       animationEase="back.out(1.5)"
       animationDuration={0.5}
       staggerDelay={0.12}
+      rightSlot={
+        <button
+          type="button"
+          className="lang-btn"
+          onClick={() => setLang(lang === "uk" ? "en" : "uk")}
+          aria-label={t.nav.langAria}
+        >
+          {lang === "uk" ? "en" : "ua"}
+        </button>
+      }
     />
   );
 }
