@@ -16,14 +16,15 @@ export default function Nav() {
       logo={
         <span
           style={{
-            fontFamily: "var(--font-mono)",
-            fontSize: 18,
-            fontWeight: 500,
+            fontFamily: "var(--font-display)",
+            fontSize: 19,
+            fontWeight: 600,
             letterSpacing: "-0.02em",
             color: "var(--ink)",
+            whiteSpace: "nowrap",
           }}
         >
-          OL<span style={{ color: "var(--accent)" }}>.</span>
+          Olexiy Bezklynskiy
         </span>
       }
       items={LINKS}

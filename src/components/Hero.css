@@ -11,16 +11,25 @@
   font-family: var(--font-hero);
   font-weight: 600;
   letter-spacing: -0.1em;
-  line-height: 0.84;
+  line-height: 0.92;
   font-size: clamp(38px, 10.2vw, 148px);
   margin: 0;
 }
 
 .hero__title-line {
-  display: block;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.hero__title-accent {
+.hero__title-line--split {
+  gap: 0.35em;
+}
+
+.hero__title-word {
+  display: flex;
+}
+
+.hero__title-word--accent {
   color: var(--accent);
 }
 

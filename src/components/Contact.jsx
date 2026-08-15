@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import ShinyText from "./ShinyText";
 import "./Contact.css";
 
-const EMAIL = "your-email@example.com"; // заміни на свою пошту
+const EMAIL = "bezklinskiyalexey@gmail.com";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -20,16 +21,6 @@ export default function Contact() {
   return (
     <section className="section contact" id="contact">
       <div className="wrap">
-        <motion.p
-          className="kicker"
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          Раунд 03 — контакт
-        </motion.p>
-
         <motion.h2
           className="contact__title"
           initial={{ opacity: 0, y: 20 }}
@@ -37,7 +28,14 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
         >
-          Є проєкт?
+          <ShinyText
+            text="Є проєкт?"
+            color="#14140f"
+            shineColor="#ffffff"
+            speed={3}
+            spread={140}
+            direction="left"
+          />
           <br />
           <span className="italic">Поговорімо.</span>
         </motion.h2>
@@ -64,14 +62,11 @@ export default function Contact() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
         >
-          <a href="https://github.com/" target="_blank" rel="noreferrer">
+          <a href="https://github.com/ttjelky" target="_blank" rel="noreferrer">
             GitHub ↗
           </a>
-          <a href="https://t.me/" target="_blank" rel="noreferrer">
-            Telegram ↗
-          </a>
-          <a href="https://linkedin.com/" target="_blank" rel="noreferrer">
-            LinkedIn ↗
+          <a href="https://t.me/ttjelky" target="_blank" rel="noreferrer">
+            Telegram @ttjelky ↗
           </a>
         </motion.div>
       </div>

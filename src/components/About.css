@@ -1,55 +1,112 @@
-.about {
-  border-top: 1px solid var(--line);
+.about__bleed {
+  width: 100%;
+  padding: 0 clamp(12px, 1.5vw, 20px);
 }
 
 .about__grid {
   display: grid;
-  grid-template-columns: 0.9fr 1.1fr;
-  gap: 60px;
-}
-
-.about__col .kicker {
-  margin-bottom: 24px;
+  grid-template-columns: 1.35fr 0.65fr;
+  gap: 64px;
+  align-items: start;
 }
 
 .about__title {
   font-family: var(--font-display);
   font-weight: 700;
-  letter-spacing: -0.025em;
-  line-height: 1.1;
-  font-size: clamp(28px, 3.6vw, 40px);
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  font-size: clamp(38px, 5.5vw, 88px);
+}
+
+.about__title-line {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 0.35em;
 }
 
 .about__text p {
   font-size: 16px;
-  line-height: 1.65;
+  line-height: 1.7;
   color: var(--ink-soft);
   max-width: 56ch;
   margin-bottom: 20px;
 }
 
-.about__stack {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-  padding: 0;
-  margin: 28px 0 0;
-  font-family: var(--font-mono);
-  font-size: 12px;
+.about__text p:last-child {
+  margin-bottom: 0;
 }
 
-.about__stack li {
-  border: 1px solid var(--line);
-  background: var(--card);
-  padding: 6px 12px;
-  border-radius: 100px;
-  color: var(--ink);
+.about__facts {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  margin: 80px 0 0;
+  padding: 0;
+}
+
+.about__fact {
+  padding: 28px 28px 0 0;
+}
+
+.about__fact + .about__fact {
+  border-left: 1px solid var(--line);
+  padding-left: 28px;
+}
+
+.about__fact-num {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.about__fact-label {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 18px;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.about__fact-text {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 34ch;
 }
 
 @media (max-width: 800px) {
+  .about__head {
+    margin-bottom: 40px;
+  }
+
   .about__grid {
     grid-template-columns: 1fr;
-    gap: 28px;
+    gap: 32px;
+  }
+
+  .about__facts {
+    grid-template-columns: 1fr;
+    margin-top: 48px;
+  }
+
+  .about__fact {
+    padding: 24px 0;
+  }
+
+  .about__fact + .about__fact {
+    border-left: none;
+    border-top: 1px solid var(--line);
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 560px) {
+  .about__index {
+    display: none;
   }
 }

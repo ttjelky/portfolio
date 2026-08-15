@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import BlurText from "./BlurText";
 import "./Hero.css";
 
 const fade = {
@@ -6,15 +7,40 @@ const fade = {
   visible: { opacity: 1, y: 0 },
 };
 
+const BLUR_COMMON = {
+  animateBy: "words",
+  direction: "top",
+  delay: 110,
+  stepDuration: 0.25,
+};
+
 export default function Hero() {
   return (
     <section className="hero" id="top">
       <div className="hero__bleed">
-        <h1 className="hero__title">
-          <span className="hero__title-line">КОД, ЯКИЙ</span>
-          <span className="hero__title-line">
-            <span className="hero__title-accent">ВИРІШУЄ</span> ЗАДАЧІ.
-          </span>
+        <h1 className="hero__title" aria-label="КОД, ЯКИЙ ВИРІШУЄ ЗАДАЧІ.">
+          <BlurText
+            {...BLUR_COMMON}
+            as="div"
+            text="КОД, ЯКИЙ"
+            className="hero__title-line"
+          />
+          <div className="hero__title-line hero__title-line--split">
+            <BlurText
+              {...BLUR_COMMON}
+              as="div"
+              text="ВИРІШУЄ"
+              startDelay={300}
+              className="hero__title-word hero__title-word--accent"
+            />
+            <BlurText
+              {...BLUR_COMMON}
+              as="div"
+              text="ЗАДАЧІ."
+              startDelay={450}
+              className="hero__title-word"
+            />
+          </div>
         </h1>
 
         <motion.div
