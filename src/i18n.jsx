@@ -28,14 +28,14 @@ export const translations = {
       vector: {
         tagline: "Платформа для проведення академічних турнірів",
         description:
-          "Повноцінна система для організації змагань: реєстрація команд, турнірна сітка в реальному часі, WebSocket-сповіщення та автоматична генерація PDF-сертифікатів. Розробляється командою з трьох людей.",
-        badge: "Призер Всеукраїнського турніру з програмування 2026",
+          "Повноцінна система для організації змагань: реєстрація команд, турнірна сітка в реальному часі, WebSocket-сповіщення та автоматична генерація PDF-сертифікатів. Я був тім-лідом команди з трьох розробників — з Vector ми пройшли у фінал Всеукраїнського турніру з програмування.",
+        badge: "Фіналіст Всеукраїнського турніру з програмування 2026",
       },
       scalaris: {
         tagline: "Соціальний застосунок для вуличної активності",
         description:
-          "Mobile-first платформа, яка показує на карті людей поруч, готових приєднатися до спонтанної активності. Власна кластеризація аватарів на Leaflet-карті та обмін даними в реальному часі.",
-        badge: "У розробці",
+          "Mobile-first платформа, яка показує на карті людей поруч, готових приєднатися до спонтанної активності. Власна кластеризація аватарів на Leaflet-карті та обмін даними в реальному часі. Зі Scalaris ми посіли 3 місце у фіналі Всеукраїнського турніру з програмування.",
+        badge: "3 місце у фіналі Всеукраїнського турніру з програмування 2026",
       },
     },
     about: {
@@ -43,7 +43,7 @@ export const translations = {
       title2: "будує продукти",
       aria: "Учень 11 класу, який будує продукти",
       p1: "Я вивчаю розробку самостійно — від структур даних у JavaScript до WebSocket-інфраструктури на Django Channels. Люблю розбиратись у тому, як влаштовані системи всередині, і не боюсь читати чужий код, щоб зрозуміти патерн, а не скопіювати рішення.",
-      p2: "Зараз працюю в команді з трьох розробників над Vector — платформою для академічних турнірів, і паралельно веду власний проєкт Scalaris.",
+      p2: "Я був тім-лідом команди з трьох розробників над Vector — з ним ми пройшли у фінал Всеукраїнського турніру з програмування. Зі Scalaris посіли 3 місце у фіналі. Зараз працюю над крутими новими проєктами!",
       facts: [
         {
           num: "01",
@@ -53,12 +53,12 @@ export const translations = {
         {
           num: "02",
           label: "Команда",
-          text: "Три розробники працюють над Vector — платформою академічних турнірів.",
+          text: "Тім-лід команди з трьох розробників над Vector — фіналісти Всеукраїнського турніру з програмування.",
         },
         {
           num: "03",
           label: "Далі",
-          text: "TypeScript і перші фриланс-проєкти для реальних клієнтів.",
+          text: "Працюю над крутими новими проєктами!",
         },
       ],
     },
@@ -100,14 +100,14 @@ export const translations = {
       vector: {
         tagline: "Platform for academic tournaments",
         description:
-          "A complete system for organizing competitions: team registration, real-time tournament brackets, WebSocket notifications, and automatic PDF certificate generation. Built by a team of three people.",
-        badge: "Prize-winner of the All-Ukrainian Programming Tournament 2026",
+          "A complete system for organizing competitions: team registration, real-time tournament brackets, WebSocket notifications, and automatic PDF certificate generation. I led a team of three developers, and Vector took us to the final of the All-Ukrainian Programming Tournament.",
+        badge: "Finalist of the All-Ukrainian Programming Tournament 2026",
       },
       scalaris: {
         tagline: "Social app for street activity",
         description:
-          "A mobile-first platform showing people nearby on a map who are ready to join a spontaneous activity. Custom avatar clustering on a Leaflet map with real-time data exchange.",
-        badge: "In development",
+          "A mobile-first platform showing people nearby on a map who are ready to join a spontaneous activity. Custom avatar clustering on a Leaflet map with real-time data exchange. With Scalaris we took 3rd place at the tournament final.",
+        badge: "3rd place at the All-Ukrainian Programming Tournament final 2026",
       },
     },
     about: {
@@ -115,7 +115,7 @@ export const translations = {
       title2: "builds products",
       aria: "An 11th-grader who builds products",
       p1: "I teach myself development — from data structures in JavaScript to WebSocket infrastructure on Django Channels. I love understanding how systems work inside and I'm not afraid of reading foreign code to grasp a pattern rather than copy a solution.",
-      p2: "Right now I'm working with a team of three developers on Vector — a platform for academic tournaments — while also building my own project, Scalaris.",
+      p2: "I led a team of three developers on Vector — it took us to the final of the All-Ukrainian Programming Tournament. With Scalaris we took 3rd place in the final. Right now I'm working on cool new projects!",
       facts: [
         {
           num: "01",
@@ -125,12 +125,12 @@ export const translations = {
         {
           num: "02",
           label: "Team",
-          text: "Three developers working on Vector — a platform for academic tournaments.",
+          text: "Team lead of three developers on Vector — finalists of the All-Ukrainian Programming Tournament.",
         },
         {
           num: "03",
           label: "Next",
-          text: "TypeScript and the first freelance projects for real clients.",
+          text: "Working on cool new projects!",
         },
       ],
     },
