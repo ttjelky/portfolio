@@ -123,4 +123,12 @@
     text-align: left;
     max-width: none;
   }
+
+  .hero__email {
+    font-size: 20px;
+  }
+
+  .hero__sub {
+    font-size: 17px;
+  }
 }

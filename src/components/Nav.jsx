@@ -18,16 +18,7 @@ export default function Nav() {
   return (
     <BubbleMenu
       logo={
-        <span
-          style={{
-            fontFamily: "var(--font-display)",
-            fontSize: 19,
-            fontWeight: 600,
-            letterSpacing: "-0.02em",
-            color: "var(--ink)",
-            whiteSpace: "nowrap",
-          }}
-        >
+        <span className="nav-logo">
           {lang === "uk" ? "Олексій Безклинський" : "Olexiy Bezklynskiy"}
         </span>
       }

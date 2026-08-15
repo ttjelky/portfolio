@@ -15,7 +15,7 @@
   font-weight: 700;
   letter-spacing: -0.03em;
   line-height: 1.02;
-  font-size: clamp(38px, 5.5vw, 88px);
+  font-size: clamp(32px, 5.5vw, 88px);
 }
 
 .about__title-line {

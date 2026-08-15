@@ -276,7 +276,40 @@
 }
 
 @media (max-width: 899px) {
-  .bubble-menu-items {
+.nav-logo {
+  font-family: var(--font-display, inherit);
+  font-size: 19px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: var(--ink, #111);
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .bubble-menu {
+    padding: 0 1em;
+  }
+
+  .nav-logo {
+    font-size: 17px;
+  }
+}
+
+@media (max-width: 560px) {
+  .bubble-menu {
+    padding: 0 12px;
+  }
+
+  .nav-logo {
+    font-size: 15px;
+  }
+
+  .bubble-menu .logo-bubble {
+    padding: 0 12px;
+  }
+}
+
+.bubble-menu-items {
     padding-top: 0px;
     align-items: flex-start;
     padding-top: 120px;

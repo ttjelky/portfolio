@@ -33,6 +33,9 @@ function buildGalleryItems(t) {
 
 export default function App() {
   const [lang, setLang] = useState("uk");
+  const [supportsHover] = useState(
+    () => typeof window !== "undefined" && window.matchMedia("(hover: hover)").matches
+  );
   const t = translations[lang];
 
   useEffect(() => {
@@ -71,7 +74,7 @@ export default function App() {
               items={items}
               defaultIndex={0}
               accentColor="#2f4cf2"
-              trigger="hover"
+              trigger={supportsHover ? "hover" : "click"}
               height={560}
               radius={20}
               gap={14}
