@@ -93,8 +93,18 @@
   text-transform: none;
   color: var(--ink-soft, #555);
   padding: 0;
+  border: none;
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
   outline: none;
   transition: color 0.2s ease;
+}
+
+.lang-btn:focus,
+.lang-btn:focus-visible {
+  outline: none;
 }
 
 .lang-btn:hover {
