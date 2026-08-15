@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import Nav from "./components/Nav";
 import Hero from "./components/Hero";
 import TextLoop from "./components/TextLoop";
@@ -39,7 +39,7 @@ export default function App() {
     document.documentElement.lang = lang === "uk" ? "uk" : "en";
   }, [lang]);
 
-  const items = useMemo(() => buildGalleryItems(t), [lang, t]);
+  const items = buildGalleryItems(t);
 
   return (
     <LangContext.Provider value={{ lang, t, setLang }}>
