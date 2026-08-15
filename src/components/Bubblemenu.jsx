@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { gsap } from "gsap";
+import { motion } from "framer-motion";
 
 import "./Bubblemenu.css";
 
@@ -191,17 +192,19 @@ export default function BubbleMenu({
 
         <div className="bubble-menu__actions">
           {rightSlot}
-          <button
+          <motion.button
             type="button"
             className={`bubble toggle-bubble menu-btn ${isMenuOpen ? "open" : ""}`}
             onClick={handleToggle}
             aria-label={menuAriaLabel}
             aria-pressed={isMenuOpen}
             style={{ background: menuBg }}
+            whileTap={{ scale: 0.85 }}
+            transition={{ type: "spring", stiffness: 500, damping: 25 }}
           >
             <span className="menu-line" style={{ background: menuContentColor }} />
             <span className="menu-line short" style={{ background: menuContentColor }} />
-          </button>
+          </motion.button>
         </div>
       </nav>
       {showOverlay && (
