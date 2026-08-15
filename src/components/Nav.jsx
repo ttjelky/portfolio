@@ -1,4 +1,5 @@
 import BubbleMenu from "./Bubblemenu";
+import { motion } from "framer-motion";
 import { useLang } from "../i18n";
 
 const ACCENT_HOVER = { bgColor: "var(--accent)", textColor: "var(--paper)" };
@@ -39,14 +40,16 @@ export default function Nav() {
       animationDuration={0.5}
       staggerDelay={0.12}
       rightSlot={
-        <button
+        <motion.button
           type="button"
           className="bubble lang-btn"
           onClick={() => setLang(lang === "uk" ? "en" : "uk")}
           aria-label={t.nav.langAria}
+          whileTap={{ scale: 0.85 }}
+          transition={{ type: "spring", stiffness: 500, damping: 25 }}
         >
           {lang === "uk" ? "en" : "ua"}
-        </button>
+        </motion.button>
       }
     />
   );
