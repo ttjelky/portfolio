@@ -1,0 +1,63 @@
+.contact {
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+.contact .kicker {
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.contact__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  font-size: clamp(48px, 9vw, 96px);
+  margin-bottom: 48px;
+}
+
+.contact__row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.contact__email {
+  font-family: var(--font-mono);
+  font-size: clamp(16px, 2.4vw, 22px);
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 4px;
+}
+
+.contact__copy {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  padding: 8px 16px;
+  color: var(--ink-soft);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.contact__copy:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.contact__links {
+  display: flex;
+  justify-content: center;
+  gap: 28px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.contact__links a:hover {
+  color: var(--ink);
+}
