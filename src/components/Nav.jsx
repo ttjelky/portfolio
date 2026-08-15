@@ -28,7 +28,7 @@ export default function Nav() {
             whiteSpace: "nowrap",
           }}
         >
-          Olexiy Bezklynskiy
+          {lang === "uk" ? "Олексій Безклинський" : "Olexiy Bezklynskiy"}
         </span>
       }
       items={LINKS}
