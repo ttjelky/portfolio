@@ -88,13 +88,12 @@
   align-items: center;
   justify-content: center;
   font-family: var(--font-display, inherit);
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 500;
   text-transform: none;
   color: var(--ink-soft, #555);
   padding: 0;
-  border: 1px solid var(--line, rgba(0, 0, 0, 0.12));
-  transition: color 0.2s ease, background 0.2s ease;
+  transition: color 0.2s ease;
 }
 
 .lang-btn:hover {
