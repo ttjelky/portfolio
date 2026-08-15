@@ -84,35 +84,21 @@
 }
 
 .lang-btn {
-  --bubble-size: 44px;
-  width: var(--bubble-size);
-  height: var(--bubble-size);
-  border-radius: 50%;
-  border: 1px solid var(--line, rgba(0, 0, 0, 0.12));
-  background: var(--paper, #fff);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-family: var(--font-mono, ui-monospace, monospace);
-  font-size: 13px;
-  font-weight: 600;
-  text-transform: uppercase;
+  font-family: var(--font-display, inherit);
+  font-size: 15px;
+  font-weight: 500;
+  text-transform: none;
   color: var(--ink-soft, #555);
   padding: 0;
-  transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
+  border: 1px solid var(--line, rgba(0, 0, 0, 0.12));
+  transition: color 0.2s ease, background 0.2s ease;
 }
 
 .lang-btn:hover {
-  border-color: var(--accent, #2f4cf2);
-  color: var(--accent, #2f4cf2);
-}
-
-@media (min-width: 768px) {
-  .lang-btn {
-    --bubble-size: 52px;
-    font-size: 14px;
-  }
+  color: var(--ink, #111);
 }
 
 .bubble-menu .menu-btn {

@@ -41,7 +41,7 @@ export default function Nav() {
       rightSlot={
         <button
           type="button"
-          className="lang-btn"
+          className="bubble lang-btn"
           onClick={() => setLang(lang === "uk" ? "en" : "uk")}
           aria-label={t.nav.langAria}
         >
