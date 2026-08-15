@@ -8,7 +8,7 @@ import Footer from "./components/Footer";
 
 const GALLERY_ITEMS = [
   {
-    image: "/projects/vector.png",
+    image: "projects/vector.png",
     label: "Vector",
     link: "https://github.com/ttjelky/vector",
     tagline: "Платформа для проведення академічних турнірів",
@@ -18,7 +18,7 @@ const GALLERY_ITEMS = [
     stack: ["Django", "DRF", "Channels", "Celery", "Redis", "React", "SimpleJWT"],
   },
   {
-    image: "/projects/scalaris.png",
+    image: "projects/scalaris.png",
     label: "Scalaris",
     link: "https://github.com/ttjelky/Scalaris",
     tagline: "Соціальний застосунок для вуличної активності",
