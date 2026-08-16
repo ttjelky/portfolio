@@ -41,6 +41,7 @@ const AccordionGallery = ({
   const tlRef = useRef(null);
   const firstRunRef = useRef(true);
   const mediaSizeRef = useRef(320);
+  const focusActivatedRef = useRef(null);
 
   const vertical = orientation === 'vertical';
   const count = items.length;
@@ -163,6 +164,10 @@ const AccordionGallery = ({
     if (i !== active) {
       e.preventDefault();
       setActive(i);
+      focusActivatedRef.current = null;
+    } else if (focusActivatedRef.current === i) {
+      focusActivatedRef.current = null;
+      e.preventDefault();
     } else if (!items[i].link) {
       e.preventDefault();
     }
@@ -208,7 +213,10 @@ const AccordionGallery = ({
             rel={item.link ? "noreferrer" : undefined}
             onClick={e => handleClick(i, e)}
             onMouseEnter={() => handleEnter(i)}
-            onFocus={() => setActive(i)}
+            onFocus={() => {
+              if (i !== active) focusActivatedRef.current = i;
+              setActive(i);
+            }}
             onKeyDown={e => handleKeyDown(i, e)}
             role="listitem"
             tabIndex={0}
