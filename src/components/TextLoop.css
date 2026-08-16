@@ -18,3 +18,10 @@
   visibility: hidden;
   pointer-events: none;
 }
+
+@media (max-width: 640px) {
+  .text-loop-text,
+  .text-loop-measure {
+    font-size: 84px !important;
+  }
+}
