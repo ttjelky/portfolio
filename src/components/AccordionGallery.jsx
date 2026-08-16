@@ -160,8 +160,12 @@ const AccordionGallery = ({
   };
 
   const handleClick = (i, e) => {
-    if (!items[i].link) e.preventDefault();
-    if (i !== active) setActive(i);
+    if (i !== active) {
+      e.preventDefault();
+      setActive(i);
+    } else if (!items[i].link) {
+      e.preventDefault();
+    }
     onSelect?.(i);
   };
 

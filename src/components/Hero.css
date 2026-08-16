@@ -132,3 +132,17 @@
     font-size: 17px;
   }
 }
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 88px 0 56px;
+  }
+
+  .hero__title {
+    font-size: clamp(56px, 20vw, 132px);
+  }
+
+  .hero__title-line--split {
+    gap: 0 0.35em;
+  }
+}

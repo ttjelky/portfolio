@@ -19,3 +19,9 @@
   line-height: 1;
   letter-spacing: 0.02em;
 }
+
+@media (max-width: 640px) {
+  .curved-loop-svg {
+    font-size: clamp(40px, 11vw, 60px);
+  }
+}

@@ -288,6 +288,7 @@
 @media (max-width: 768px) {
   .bubble-menu {
     padding: 0 1em;
+    top: 1.25em;
   }
 
   .nav-logo {
@@ -298,6 +299,7 @@
 @media (max-width: 560px) {
   .bubble-menu {
     padding: 0 12px;
+    top: 0.75em;
   }
 
   .nav-logo {
