@@ -7,6 +7,18 @@ import "./Certificates.css";
 
 const titleSpring = { type: "spring", damping: 30, stiffness: 320 };
 const currentYear = new Date().getFullYear();
+const cardTransition = { duration: 0.32, ease: "easeOut" };
+
+function useMediaQuery(query) {
+  const [matches, setMatches] = useState(() => window.matchMedia(query).matches);
+  useEffect(() => {
+    const mql = window.matchMedia(query);
+    const onChange = () => setMatches(mql.matches);
+    mql.addEventListener("change", onChange);
+    return () => mql.removeEventListener("change", onChange);
+  }, [query]);
+  return matches;
+}
 
 function TitleGroup({ fixed, words }) {
   const elRef = useRef(null);
@@ -71,6 +83,23 @@ export default function Certificates() {
   const [viewerOpen, setViewerOpen] = useState(false);
   const current = items[selectedIndex];
   const wheelItems = [...items.map((c) => c.title), ...items.map((c) => c.title)];
+  const isMobile = useMediaQuery("(max-width: 768px)");
+  const direction = useRef(1);
+  const cardAnim = isMobile
+    ? {
+        initial: { opacity: 0, x: direction.current * 44 },
+        animate: { opacity: 1, x: 0 },
+        exit: { opacity: 0, x: -direction.current * 44 },
+      }
+    : {
+        initial: { opacity: 0, y: 28 },
+        animate: { opacity: 1, y: 0 },
+        exit: { opacity: 0, y: -18 },
+      };
+  const goTo = (dir) => {
+    direction.current = dir;
+    setSelectedIndex((i) => (i + dir + items.length) % items.length);
+  };
 
   useEffect(() => {
     if (!viewerOpen) return;
@@ -124,10 +153,10 @@ export default function Certificates() {
               <motion.article
                 key={selectedIndex}
                 className="certificates__card"
-                initial={{ opacity: 0, y: 28 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -18 }}
-                transition={{ duration: 0.32, ease: "easeOut" }}
+                initial={cardAnim.initial}
+                animate={cardAnim.animate}
+                exit={cardAnim.exit}
+                transition={cardTransition}
               >
                 <header className="certificates__card-head">
                   <span className="certificates__card-logo">
@@ -165,6 +194,32 @@ export default function Certificates() {
                 </button>
               </motion.article>
             </AnimatePresence>
+
+            <nav
+              className="certificates__card-nav"
+              aria-label={t.certificates.navAria}
+            >
+              <button
+                type="button"
+                className="certificates__card-nav-btn"
+                onClick={() => goTo(-1)}
+                aria-label={t.certificates.prevAria}
+              >
+                <span aria-hidden="true">←</span>
+              </button>
+              <span className="certificates__card-nav-count" aria-hidden="true">
+                {String(selectedIndex + 1).padStart(2, "0")} /{" "}
+                {String(items.length).padStart(2, "0")}
+              </span>
+              <button
+                type="button"
+                className="certificates__card-nav-btn"
+                onClick={() => goTo(1)}
+                aria-label={t.certificates.nextAria}
+              >
+                <span aria-hidden="true">→</span>
+              </button>
+            </nav>
 
             <AnimatePresence>
               {viewerOpen && (

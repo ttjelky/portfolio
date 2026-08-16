@@ -39,8 +39,12 @@
 /* Fixed word + rotating word form one group that re-centers as a unit. */
 .certificates__group {
   display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: baseline;
   column-gap: 0.26em;
+  row-gap: 0.06em;
+  max-width: 100%;
   will-change: transform;
 }
 
@@ -212,6 +216,12 @@
   transform: translateX(3px);
 }
 
+/* Arrow navigation appears only on mobile, where the wheel is hidden;
+   on desktop the wheel itself handles switching. */
+.certificates__card-nav {
+  display: none;
+}
+
 /* Lightbox: dimmed backdrop, centered certificate image. */
 .certificates__viewer {
   position: fixed;
@@ -263,6 +273,12 @@
 }
 
 @media (max-width: 1280px) {
+  /* Keep the card height stable across switches on tablet/mobile too,
+     so the arrow navigation below the card never moves. */
+  .certificates__card {
+    min-height: 440px;
+  }
+
   .certificates__grid {
     grid-template-columns: 1fr;
     gap: 40px;
@@ -286,6 +302,80 @@
   .certificates__head {
     margin-bottom: 56px;
     height: clamp(96px, 20vw, 180px);
+  }
+}
+
+@media (max-width: 768px) {
+  /* Reserve a two-line box: the rotating word changes width every
+     rotation, and on narrow screens it can wrap or unwrap — a fixed
+     height keeps the card and arrows below it from shifting. */
+  .certificates__title {
+    min-height: 2.1em;
+    margin-bottom: 72px;
+  }
+
+  .certificates__grid {
+    gap: 24px;
+  }
+
+  .certificates__details {
+    flex-direction: column;
+  }
+
+  .certificates__wheel {
+    display: none;
+  }
+
+  .certificates__card-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 36px;
+  }
+
+  .certificates__card-nav-btn {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: #ffffff;
+    color: var(--ink);
+    font-size: 17px;
+    line-height: 1;
+    cursor: pointer;
+    transition:
+      border-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .certificates__card-nav-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    transform: scale(1.05);
+  }
+
+  .certificates__card-nav-btn:active {
+    transform: scale(0.95);
+  }
+
+  .certificates__card-nav-count {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: var(--ink-soft);
+  }
+}
+
+@media (max-width: 360px) {
+  /* Very narrow screens wrap the title and description onto more lines;
+     reserve enough height so switching never moves the arrows. */
+  .certificates__card {
+    min-height: 520px;
   }
 }
 

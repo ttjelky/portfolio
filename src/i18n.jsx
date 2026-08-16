@@ -71,6 +71,9 @@ export const translations = {
       viewCta: "Переглянути сертифікат",
       close: "Закрити",
       viewerAria: "Зображення сертифіката",
+      navAria: "Перемикання сертифікатів",
+      prevAria: "Попередній сертифікат",
+      nextAria: "Наступний сертифікат",
       items: [
         {
           title: "AI Foundations",
@@ -188,6 +191,9 @@ export const translations = {
       viewCta: "View certificate",
       close: "Close",
       viewerAria: "Certificate image",
+      navAria: "Certificate navigation",
+      prevAria: "Previous certificate",
+      nextAria: "Next certificate",
       items: [
         {
           title: "AI Foundations",
