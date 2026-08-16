@@ -22,6 +22,6 @@
 
 @media (max-width: 640px) {
   .curved-loop-svg {
-    font-size: clamp(40px, 11vw, 60px);
+    font-size: clamp(64px, 23vw, 104px);
   }
 }
