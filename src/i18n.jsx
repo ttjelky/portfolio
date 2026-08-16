@@ -5,6 +5,8 @@ export const translations = {
     nav: {
       projects: "проєкти",
       projectsAria: "Проєкти",
+      certificates: "сертифікати",
+      certificatesAria: "Сертифікати",
       about: "про мене",
       aboutAria: "Про мене",
       contact: "контакт",
@@ -62,6 +64,43 @@ export const translations = {
         },
       ],
     },
+    certificates: {
+      title: "Мої сертифікати",
+      fixed: "Мої",
+      words: ["сертифікати", "досягнення", "дипломи", "грамоти", "знання", "навички"],
+      viewCta: "Переглянути сертифікат",
+      close: "Закрити",
+      viewerAria: "Зображення сертифіката",
+      items: [
+        {
+          title: "AI Foundations",
+          company: "OpenAI",
+          companyLogo: "logos/openai.webp",
+          link: "https://openai.com",
+          image: "certificates/ai-foundations.png",
+          description:
+            "Проходження курсу AI Foundations від OpenAI: основи штучного інтелекту, машинного навчання та практична робота з сучасними AI-інструментами.",
+        },
+        {
+          title: "Tech Camp · ІІІ місце",
+          company: "Star for Life Ukraine",
+          companyLogo: "logos/starforlife.png",
+          link: "https://www.sflua.org",
+          image: "certificates/tech-camp-3rd.png",
+          description:
+            "ІІІ місце у Всеукраїнському командному турнірі з програмування 2026 від БФ «Star for Life Ukraine»: командна робота, розробка програмного продукту та виконання турнірного завдання. 3 лютого — 22 липня 2026.",
+        },
+        {
+          title: "Tech Camp · МАН",
+          company: "МАН України",
+          companyLogo: "logos/MAN.png",
+          link: "https://man.gov.ua",
+          image: "certificates/tech-camp-man.png",
+          description:
+            "Капітан команди «Vector»: ІІІ місце в Tech Camp від Малої академії наук України — командна робота, розробка програмного продукту та виконання турнірного завдання.",
+        },
+      ],
+    },
     contact: {
       title: "Є проєкт?",
       talk: "Поговорімо.",
@@ -77,6 +116,8 @@ export const translations = {
     nav: {
       projects: "projects",
       projectsAria: "Projects",
+      certificates: "certificates",
+      certificatesAria: "Certificates",
       about: "about",
       aboutAria: "About",
       contact: "contact",
@@ -139,6 +180,43 @@ export const translations = {
       talk: "Let's talk.",
       copy: "Copy",
       copied: "Copied ✓",
+    },
+    certificates: {
+      title: "My certificates",
+      fixed: "My",
+      words: ["certificates", "achievements", "diplomas", "awards", "knowledge", "skills"],
+      viewCta: "View certificate",
+      close: "Close",
+      viewerAria: "Certificate image",
+      items: [
+        {
+          title: "AI Foundations",
+          company: "OpenAI",
+          companyLogo: "logos/openai.webp",
+          link: "https://openai.com",
+          image: "certificates/ai-foundations.png",
+          description:
+            "Completed OpenAI's AI Foundations course: core concepts of artificial intelligence and machine learning, with hands-on practice using modern AI tools.",
+        },
+        {
+          title: "Tech Camp · 3rd place",
+          company: "Star for Life Ukraine",
+          companyLogo: "logos/starforlife.png",
+          link: "https://www.sflua.org",
+          image: "certificates/tech-camp-3rd.png",
+          description:
+            "3rd place in the All-Ukrainian team programming tournament 2026 by the Star for Life Ukraine Charity Foundation: teamwork, building a software product, and completing the tournament task. Feb 3 — Jul 22, 2026.",
+        },
+        {
+          title: "Tech Camp · МАН",
+          company: "Junior Academy of Sciences",
+          companyLogo: "logos/MAN.png",
+          link: "https://man.gov.ua",
+          image: "certificates/tech-camp-man.png",
+          description:
+            "Captain of team Vector: 3rd place at the Tech Camp of the Junior Academy of Sciences of Ukraine — teamwork, building a software product, and completing the tournament task.",
+        },
+      ],
     },
     footer: {
       name: "Olexiy Bezklynskiy, 2026.",

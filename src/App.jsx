@@ -4,6 +4,7 @@ import Hero from "./components/Hero";
 import TextLoop from "./components/TextLoop";
 import AccordionGallery from "./components/AccordionGallery";
 import About from "./components/About";
+import Certificates from "./components/Certificates";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import { LangContext, translations } from "./i18n";
@@ -84,6 +85,7 @@ export default function App() {
           </div>
         </section>
         <About />
+        <Certificates />
         <Contact />
       </main>
       <Footer />

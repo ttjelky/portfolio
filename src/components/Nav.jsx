@@ -13,6 +13,7 @@ export default function Nav() {
   const LINKS = [
     { label: t.nav.projects, href: "#projects", ariaLabel: t.nav.projectsAria, rotation: -8, hoverStyles: ACCENT_HOVER },
     { label: t.nav.about, href: "#about", ariaLabel: t.nav.aboutAria, rotation: 8, hoverStyles: ACCENT_HOVER },
+    { label: t.nav.certificates, href: "#certificates", ariaLabel: t.nav.certificatesAria, rotation: 8, hoverStyles: ACCENT_HOVER },
     { label: t.nav.contact, href: "#contact", ariaLabel: t.nav.contactAria, rotation: 8, hoverStyles: ACCENT_HOVER },
     { label: t.nav.write, href: "#contact", ariaLabel: t.nav.writeAria, rotation: -8, hoverStyles: INK_HOVER },
   ];
