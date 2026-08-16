@@ -111,6 +111,19 @@
   color: var(--ink, #111);
 }
 
+.lang-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.lang-label__text {
+  display: block;
+  line-height: 1;
+  will-change: opacity, filter;
+}
+
 .bubble-menu .menu-btn {
   border: none;
   background: var(--paper, #fff);

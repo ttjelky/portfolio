@@ -1,5 +1,5 @@
 import BubbleMenu from "./Bubblemenu";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import { useLang } from "../i18n";
 
 const ACCENT_HOVER = { bgColor: "var(--accent)", textColor: "var(--paper)" };
@@ -7,6 +7,8 @@ const INK_HOVER = { bgColor: "var(--ink)", textColor: "var(--paper)" };
 
 export default function Nav() {
   const { lang, setLang, t } = useLang();
+  const reducedMotion = useReducedMotion();
+  const langLabel = lang === "uk" ? "en" : "ua";
 
   const LINKS = [
     { label: t.nav.projects, href: "#projects", ariaLabel: t.nav.projectsAria, rotation: -8, hoverStyles: ACCENT_HOVER },
@@ -39,7 +41,26 @@ export default function Nav() {
           whileTap={{ scale: 0.85 }}
           transition={{ type: "spring", stiffness: 500, damping: 25 }}
         >
-          {lang === "uk" ? "en" : "ua"}
+          <span className="lang-label">
+            <AnimatePresence mode="wait" initial={false}>
+              <motion.span
+                key={lang}
+                className="lang-label__text"
+                initial={reducedMotion ? false : { filter: "blur(4px)" }}
+                animate={{
+                  filter: "blur(0px)",
+                  transition: { duration: reducedMotion ? 0 : 0.22, ease: "easeOut" },
+                }}
+                exit={
+                  reducedMotion
+                    ? undefined
+                    : { filter: "blur(4px)", transition: { duration: 0.12, ease: "easeOut" } }
+                }
+              >
+                {langLabel}
+              </motion.span>
+            </AnimatePresence>
+          </span>
         </motion.button>
       }
     />
