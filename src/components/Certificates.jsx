@@ -83,7 +83,7 @@ export default function Certificates() {
   const [viewerOpen, setViewerOpen] = useState(false);
   const current = items[selectedIndex];
   const wheelItems = [...items.map((c) => c.title), ...items.map((c) => c.title)];
-  const isMobile = useMediaQuery("(max-width: 768px)");
+  const isMobile = useMediaQuery("(max-width: 1290px)");
   const direction = useRef(1);
   const cardAnim = isMobile
     ? {

@@ -272,7 +272,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 1280px) {
+@media (max-width: 1290px) {
   /* Keep the card height stable across switches on tablet/mobile too,
      so the arrow navigation below the card never moves. */
   .certificates__card {
@@ -305,7 +305,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1290px) {
   /* Reserve a two-line box: the rotating word changes width every
      rotation, and on narrow screens it can wrap or unwrap — a fixed
      height keeps the card and arrows below it from shifting. */
