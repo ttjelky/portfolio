@@ -85,6 +85,15 @@ export const translations = {
             "Проходження курсу AI Foundations від OpenAI: основи штучного інтелекту, машинного навчання та практична робота з сучасними AI-інструментами.",
         },
         {
+          title: "Applied AI Foundations",
+          company: "OpenAI",
+          companyLogo: "logos/openai.webp",
+          link: "https://openai.com",
+          image: "certificates/applied-ai-foundations.png",
+          description:
+            "Проходження курсу Applied AI Foundations від OpenAI Academy: практичне застосування штучного інтелекту та машинного навчання, розробка додатків на основі AI і робота з сучасними інструментами.",
+        },
+        {
           title: "Tech Camp · ІІІ місце",
           company: "Star for Life Ukraine",
           companyLogo: "logos/starforlife.png",
@@ -203,6 +212,15 @@ export const translations = {
           image: "certificates/ai-foundations.png",
           description:
             "Completed OpenAI's AI Foundations course: core concepts of artificial intelligence and machine learning, with hands-on practice using modern AI tools.",
+        },
+        {
+          title: "Applied AI Foundations",
+          company: "OpenAI",
+          companyLogo: "logos/openai.webp",
+          link: "https://openai.com",
+          image: "certificates/applied-ai-foundations.png",
+          description:
+            "Completed OpenAI Academy's Applied AI Foundations course: putting artificial intelligence and machine learning into practice — building AI-powered applications with modern tools.",
         },
         {
           title: "Tech Camp · 3rd place",
