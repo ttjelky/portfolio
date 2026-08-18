@@ -53,6 +53,20 @@
   color: var(--ink-soft);
 }
 
+.contact__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.contact__links a img {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
 .contact__links a:hover {
   color: var(--ink);
+  transform: translateY(-1px);
 }

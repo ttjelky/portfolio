@@ -65,10 +65,16 @@ export default function Contact() {
           transition={{ duration: 0.6, delay: 0.3 }}
         >
           <a href="https://github.com/ttjelky" target="_blank" rel="noreferrer">
-            GitHub ↗
+            <img src="logos/github.svg" alt="" />
+            GitHub
           </a>
           <a href="https://t.me/ttjelky" target="_blank" rel="noreferrer">
-            Telegram @ttjelky ↗
+            <img src="logos/telegram.svg.png" alt="" />
+            Telegram
+          </a>
+          <a href="https://x.com/CuteJelky" target="_blank" rel="noreferrer">
+            <img src="logos/x.webp" alt="" />
+            X
           </a>
         </motion.div>
       </div>
