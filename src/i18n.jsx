@@ -94,6 +94,15 @@ export const translations = {
             "Проходження курсу Applied AI Foundations від OpenAI Academy: практичне застосування штучного інтелекту та машинного навчання, розробка додатків на основі AI і робота з сучасними інструментами.",
         },
         {
+          title: "Agents and Workflow",
+          company: "OpenAI",
+          companyLogo: "logos/openai.webp",
+          link: "https://openai.com",
+          image: "certificates/agents-workflow.png",
+          description:
+            "Проходження курсу OpenAI Agents and Workflow: проєктування агентів і робочих процесів на основі ШІ, оркестрація інструментів та побудова автоматизованих рішень.",
+        },
+        {
           title: "Tech Camp · ІІІ місце",
           company: "Star for Life Ukraine",
           companyLogo: "logos/starforlife.png",
@@ -221,6 +230,15 @@ export const translations = {
           image: "certificates/applied-ai-foundations.png",
           description:
             "Completed OpenAI Academy's Applied AI Foundations course: putting artificial intelligence and machine learning into practice — building AI-powered applications with modern tools.",
+        },
+        {
+          title: "Agents and Workflow",
+          company: "OpenAI",
+          companyLogo: "logos/openai.webp",
+          link: "https://openai.com",
+          image: "certificates/agents-workflow.png",
+          description:
+            "Completed OpenAI's Agents and Workflow course: designing AI agents and workflows, orchestrating tools, and building automated solutions.",
         },
         {
           title: "Tech Camp · 3rd place",
