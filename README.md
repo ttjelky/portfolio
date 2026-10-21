@@ -1,16 +1,21 @@
-# React + Vite
+# Portfolio — Oleksii Bezklynskyi
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Personal portfolio site: projects, certificates and contacts. Bilingual (Ukrainian / English).
 
-Currently, two official plugins are available:
+**Live:** https://ttjelky.github.io/portfolio/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Stack
 
-## React Compiler
+React 19 · Vite 8 · GSAP · Framer Motion · Oxlint
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Run locally
 
-## Expanding the Oxlint configuration
+```bash
+npm install
+npm run dev
+```
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+## Deploy
+
+Every push to `main` builds the site and publishes it to GitHub Pages via
+[GitHub Actions](.github/workflows/).
