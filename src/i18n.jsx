@@ -99,6 +99,19 @@ export const translations = {
           { title: "Нічого зайвого", text: "HTML, CSS і трохи JavaScript без фреймворків і збирання. Деплой — GitHub Pages." },
         ],
       },
+      glaze: {
+        tagline: "Концепт сайту студії манікюру",
+        description:
+          "Світлий односторінковий сайт для студії манікюру — навмисно протилежний темній Britva. Фото в арках, що повторюють форму нігтя, палітра «кольорів сезону», прайс як у меню, блок про стерильність і онлайн-запис. Дизайн і верстка з нуля, без фреймворків.",
+        badge: "Концепт: дизайн і розробка — 2026",
+        role: "Дизайн і верстка",
+        highlights: [
+          { title: "Палітра, що записує", text: "Кольори сезону намальовані як нігтики з відблиском лаку. Натискаєш на відтінок — і він одразу з’являється в полі «Колір» форми запису." },
+          { title: "Довіра через стерильність", text: "Окремий блок із чотирма етапами обробки інструментів: для клієнток манікюру це головне питання перед першим візитом." },
+          { title: "Ціни без сюрпризів", text: "Прайс у три колонки з крапковими лідерами, як у меню ресторану: манікюр, педикюр, дизайн." },
+          { title: "Телефон — головний екран", text: "На мобільному фото йде першим, галерея гортається вбік, меню повноекранне, кнопка запису з’являється після першого екрана." },
+        ],
+      },
     },
     about: {
       title1: "Учень 11 класу, який",
@@ -289,6 +302,19 @@ export const translations = {
           { title: "A mobile layout of its own", text: "On phones the first screen is recomposed, the menu goes full-screen, and the booking button appears after the first screen and hides near the form." },
           { title: "Booking without calls", text: "A form with phone and date validation, ready to be wired to a Telegram bot so requests go straight to the owner." },
           { title: "Nothing extra", text: "HTML, CSS and a little JavaScript, no frameworks or build step. Deployed on GitHub Pages." },
+        ],
+      },
+      glaze: {
+        tagline: "Nail studio website concept",
+        description:
+          "A light one-page site for a nail studio — the deliberate opposite of the dark Britva. Arch-shaped photos echoing the shape of a nail, a palette of seasonal colours, a menu-style price list, a sterility section and online booking. Designed and built from scratch, no frameworks.",
+        badge: "Concept: design & development — 2026",
+        role: "Design and front-end",
+        highlights: [
+          { title: "A palette that books", text: "Seasonal colours are drawn as glossy little nails. Tap a shade and it lands straight in the booking form’s colour field." },
+          { title: "Trust through sterility", text: "A dedicated section with the four steps of tool sterilisation — the main question clients have before a first visit." },
+          { title: "Prices with no surprises", text: "A three-column price list with dotted leaders, like a restaurant menu: manicure, pedicure, nail art." },
+          { title: "Phone first", text: "On mobile the photo comes first, the gallery scrolls sideways, the menu is full-screen and the booking button appears after the first screen." },
         ],
       },
     },
