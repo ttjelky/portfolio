@@ -1,0 +1,413 @@
+/* Сторінка проєкту. Та сама мова, що й на головній:
+   Golos-заголовок як у hero, курсив Instrument Serif для акценту,
+   mono-підписи, тонкі лінії --line. */
+
+.pp {
+  padding-top: 132px;
+}
+
+.pp__bleed {
+  width: 100%;
+  padding: 0 clamp(12px, 1.5vw, 20px);
+}
+
+/* ---- Верхній рядок ---- */
+.pp__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  margin-bottom: clamp(28px, 4vw, 48px);
+}
+
+.pp__back {
+  color: var(--ink-soft);
+  transition: color 0.2s ease;
+}
+
+.pp__back:hover {
+  color: var(--accent);
+}
+
+.pp__counter {
+  color: var(--ink-soft);
+}
+
+/* ---- Заголовок ---- */
+.pp__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 40px;
+  flex-wrap: wrap;
+}
+
+.pp__title {
+  font-family: var(--font-hero);
+  font-weight: 600;
+  letter-spacing: -0.07em;
+  line-height: 0.86;
+  font-size: clamp(72px, 17vw, 260px);
+  margin-left: -0.04em;
+}
+
+.pp__tagline {
+  font-size: clamp(24px, 3.2vw, 46px);
+  line-height: 1.1;
+  max-width: 18ch;
+  text-align: right;
+  padding-bottom: 0.4em;
+}
+
+/* ---- Обкладинка ---- */
+.pp__cover {
+  margin: clamp(28px, 4vw, 52px) 0 0;
+  border-radius: 20px;
+  overflow: hidden;
+  background: #dcdcdc;
+  aspect-ratio: 4068 / 2265;
+}
+
+.pp__cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ---- Огляд: мета + опис ---- */
+.pp__overview {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 64px;
+  padding-top: 96px;
+  align-items: start;
+}
+
+.pp__meta {
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+
+.pp__meta > div {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.pp__meta dt {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  padding-top: 3px;
+}
+
+.pp__meta dd {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.pp__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.pp__chip {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.pp__meta > .pp__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  border-bottom: 0;
+  padding-top: 24px;
+}
+
+.pp__btn {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  padding: 11px 20px;
+  border: 1px solid var(--ink);
+  border-radius: 100px;
+  transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.pp__btn:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.pp__btn--solid {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.pp__btn--solid:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.pp__about .kicker {
+  margin-bottom: 20px;
+}
+
+.pp__lead {
+  font-size: clamp(19px, 1.8vw, 24px);
+  line-height: 1.55;
+  letter-spacing: -0.01em;
+  max-width: 40ch;
+}
+
+.pp__badge {
+  margin-top: 28px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-soft);
+  padding-left: 14px;
+  border-left: 2px solid var(--accent);
+}
+
+/* ---- Що всередині ---- */
+.pp__inside {
+  padding-top: 120px;
+}
+
+.pp__h2 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  font-size: clamp(32px, 4.6vw, 68px);
+  margin-bottom: 48px;
+}
+
+.pp__points {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid var(--line);
+}
+
+.pp__point {
+  padding: 28px 32px 32px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.pp__point:nth-child(2n) {
+  padding: 28px 0 32px 32px;
+  border-left: 1px solid var(--line);
+}
+
+.pp__point-num {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+
+.pp__point-title {
+  font-weight: 700;
+  font-size: 20px;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.pp__point-text {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  max-width: 48ch;
+}
+
+/* ---- Скріншоти: у ряду однакова висота ---- */
+.pp__gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 120px clamp(12px, 1.5vw, 20px) 0;
+}
+
+.pp__row {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.pp__shot {
+  flex-basis: 0;
+  min-width: 0;
+  margin: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #ecebe4;
+  box-shadow: 0 0 0 1px var(--line);
+}
+
+.pp__shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pp__shot--phone {
+  border-radius: 22px;
+}
+
+/* Телефонні скріншоти — на світлій підкладці, щоб не розтягувались на всю ширину */
+.pp__row--phones {
+  justify-content: center;
+  gap: clamp(12px, 2.4vw, 36px);
+  padding: clamp(28px, 5vw, 72px) clamp(16px, 4vw, 64px);
+  border-radius: 16px;
+  background: #ecebe4;
+}
+
+.pp__row--phones .pp__shot {
+  max-width: 300px;
+  box-shadow: 0 24px 48px -28px rgba(20, 20, 15, 0.45);
+}
+
+/* ---- Наступний проєкт ---- */
+.pp__next {
+  display: block;
+  margin-top: 140px;
+  padding: 44px clamp(12px, 1.5vw, 20px) 80px;
+  border-top: 1px solid var(--line);
+}
+
+.pp__next-label {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+.pp__next-row {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25em;
+  font-family: var(--font-hero);
+  font-weight: 600;
+  letter-spacing: -0.07em;
+  line-height: 1;
+  font-size: clamp(56px, 12vw, 180px);
+  margin-top: 12px;
+  transition: color 0.3s ease;
+}
+
+.pp__next-arrow {
+  display: inline-block;
+  font-size: 0.6em;
+  transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.pp__next:hover .pp__next-row {
+  color: var(--accent);
+}
+
+.pp__next:hover .pp__next-arrow {
+  transform: translateX(0.25em);
+}
+
+.pp__next-tagline {
+  display: block;
+  margin-top: 10px;
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: clamp(20px, 2vw, 28px);
+  color: var(--ink-soft);
+}
+
+.pp--missing {
+  min-height: 70vh;
+}
+
+/* ---- Адаптив ---- */
+@media (max-width: 860px) {
+  .pp__overview {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding-top: 64px;
+  }
+  .pp__about {
+    order: -1;
+  }
+  .pp__inside,
+  .pp__gallery {
+    padding-top: 88px;
+  }
+  .pp__points {
+    grid-template-columns: 1fr;
+  }
+  .pp__point,
+  .pp__point:nth-child(2n) {
+    padding: 24px 0;
+    border-left: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .pp {
+    padding-top: 104px;
+  }
+  .pp__head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .pp__tagline {
+    text-align: left;
+    max-width: none;
+    padding-bottom: 0;
+  }
+  .pp__cover {
+    border-radius: 14px;
+  }
+  .pp__row:not(.pp__row--phones) {
+    flex-direction: column;
+  }
+  .pp__row--phones {
+    padding: 20px 12px;
+    gap: 8px;
+  }
+  .pp__row:not(.pp__row--phones) .pp__shot {
+    flex: none !important;
+    width: 100%;
+  }
+  .pp__row {
+    gap: 8px;
+  }
+  .pp__gallery {
+    gap: 8px;
+  }
+  .pp__shot {
+    border-radius: 10px;
+  }
+  .pp__shot--phone {
+    border-radius: 14px;
+  }
+  .pp__meta > div {
+    grid-template-columns: 80px 1fr;
+  }
+  .pp__next {
+    margin-top: 96px;
+    padding-bottom: 56px;
+  }
+}

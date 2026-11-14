@@ -1,0 +1,64 @@
+// Дані проєктів, які не залежать від мови. Тексти — у i18n.jsx → projects.<slug>.
+// gallery: масив рядів; у ряду кадри мають однакову висоту (ширина — за пропорцією w/h).
+export const PROJECTS = [
+  {
+    slug: "vector",
+    label: "Vector",
+    year: "2026",
+    cover: "projects/vector.png",
+    stack: ["Django", "DRF", "Channels", "Celery", "Redis", "React", "SimpleJWT"],
+    links: { github: "https://github.com/ttjelky/vector" },
+    gallery: [
+      [{ src: "projects/vector/dashboard.jpg", w: 2000, h: 973 }],
+      [
+        { src: "projects/vector/tournament.jpg", w: 2000, h: 977 },
+        { src: "projects/vector/mobile.jpg", w: 988, h: 1200 },
+      ],
+    ],
+  },
+  {
+    slug: "scalaris",
+    label: "Scalaris",
+    year: "2026",
+    cover: "projects/scalaris.png",
+    stack: ["Django", "GeoDjango", "Leaflet", "WebSockets", "React", "Docker"],
+    links: { github: "https://github.com/ttjelky/Scalaris" },
+    gallery: [],
+  },
+  {
+    slug: "clarity",
+    label: "Clarity",
+    year: "2026",
+    cover: "projects/clarity.jpg",
+    stack: ["Django", "DRF", "React", "Vite", "LLM APIs", "Vercel", "Render"],
+    links: { live: "https://clarity-three-xi.vercel.app/" },
+    gallery: [
+      [{ src: "projects/clarity/debate.webp", w: 2880, h: 1800 }],
+      [
+        { src: "projects/clarity/verdict.webp", w: 2880, h: 1800 },
+        { src: "projects/clarity/devil.webp", w: 2880, h: 1800 },
+      ],
+    ],
+  },
+  {
+    slug: "britva",
+    label: "Britva",
+    year: "2026",
+    cover: "projects/britva.jpg",
+    stack: ["HTML", "CSS", "JavaScript", "UI/UX", "GitHub Pages"],
+    links: {
+      live: "https://ttjelky.github.io/barbershop-landing/",
+      github: "https://github.com/ttjelky/barbershop-landing",
+    },
+    gallery: [
+      [{ src: "projects/britva/gallery.jpg", w: 2000, h: 1250 }],
+      [
+        { src: "projects/britva/hero.jpg", w: 647, h: 1400, phone: true },
+        { src: "projects/britva/services.jpg", w: 647, h: 1400, phone: true },
+        { src: "projects/britva/booking.jpg", w: 647, h: 1400, phone: true },
+      ],
+    ],
+  },
+];
+
+export const projectHref = (slug) => `#/project/${slug}`;

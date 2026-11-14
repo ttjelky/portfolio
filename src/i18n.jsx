@@ -26,30 +26,78 @@ export const translations = {
       stack: "Django · React · WebSockets · PostgreSQL · Docker.",
     },
     marquee: "Будую продукти",
+    projectsSection: {
+      title1: "Вибрані",
+      title2: "проєкти",
+      hintHover: "Наведіть, щоб розгорнути. Клік — огляд проєкту.",
+      hintTap: "Торкніться картки, щоб відкрити огляд проєкту.",
+      open: "Огляд",
+    },
+    projectPage: {
+      back: "Усі проєкти",
+      role: "Роль",
+      year: "Рік",
+      stack: "Стек",
+      live: "Відкрити сайт",
+      about: "Про проєкт",
+      inside1: "Що",
+      inside2: "всередині",
+      screens: "Скріншоти",
+      next: "Наступний проєкт",
+      missing: "Такого проєкту немає.",
+    },
     projects: {
       vector: {
         tagline: "Платформа для проведення академічних турнірів",
         description:
           "Повноцінна система для організації академічних змагань: реєстрація команд, турнірна сітка в реальному часі, WebSocket-сповіщення та автоматична генерація PDF-сертифікатів. Проєкт розроблявся командою з трьох розробників, яку я очолював. З Vector ми дійшли до фіналу Всеукраїнського турніру з програмування.",
         badge: "Фіналіст Всеукраїнського турніру з програмування — 2026",
+        role: "Тімлід команди з трьох розробників, fullstack",
+        highlights: [
+          { title: "Конструктор турнірів", text: "Організатор збирає турнір з будь-якого предмета: раунди, задачі, журі, сертифікати. Індивідуальний або командний формат." },
+          { title: "Три ролі — три інтерфейси", text: "Організатор, учасник і журі бачать різне. Доступ розмежовано на рівні API, авторизація — JWT." },
+          { title: "Живий турнір", text: "Таблиця лідерів і сповіщення про нові задачі, результати й запрошення приходять у реальному часі через Django Channels." },
+          { title: "Сертифікати без ручної роботи", text: "Після завершення турніру PDF-сертифікати генеруються у фоні через Celery і Redis." },
+        ],
       },
       scalaris: {
         tagline: "Соціальний застосунок для вуличної активності",
         description:
           "Mobile-first платформа, що показує на карті людей поруч, готових долучитися до спонтанної активності. Реалізовано власну кластеризацію аватарів на Leaflet-карті та обмін даними в реальному часі. Проєкт посів 3 місце у фіналі Всеукраїнського турніру з програмування.",
         badge: "3 місце у фіналі Всеукраїнського турніру з програмування — 2026",
+        role: "Fullstack-розробник у команді з трьох",
+        highlights: [
+          { title: "Люди поруч на карті", text: "GeoDjango шукає користувачів у радіусі, Leaflet показує їх на карті міста." },
+          { title: "Власна кластеризація", text: "Коли аватарів багато, вони збираються в кластери, а не накладаються один на одного." },
+          { title: "Реальний час", text: "Позиції й запрошення до активності оновлюються через WebSockets без перезавантаження." },
+          { title: "Mobile-first", text: "Інтерфейс проєктувався під телефон: застосунком користуються на вулиці, а не за столом." },
+        ],
       },
       clarity: {
         tagline: "AI-команда для важких рішень",
         description:
           "Кілька AI-учасників із різними характерами обговорюють ваше питання, модератор зводить аргументи в рішення, AI Devil шукає в ньому слабкі місця — і ви отримуєте висновок із плюсами, ризиками та наступним кроком. Командний проєкт, у якому я написав більшу частину бекенду (рушій дебатів на Django) та інтерфейсу на React.",
         badge: "Основний розробник у команді — 2026",
+        role: "Основний розробник у команді: бекенд і інтерфейс",
+        highlights: [
+          { title: "Рушій дебатів", text: "Стан-машина на Django проводить дискусію крок за кроком: уточнення, вступ, раунди дебатів, рішення модератора, перевірка AI Devil, висновок." },
+          { title: "Будь-яка модель", text: "OpenAI, Anthropic, Gemini, Groq, DeepSeek, Mistral, OpenRouter, Ollama або власний endpoint — кожен учасник може працювати на своїй." },
+          { title: "Контекст із реального світу", text: "Пошук у вебі (Tavily, Brave, SearXNG, Wikipedia) і вкладення: PDF, Word, текст, фото." },
+          { title: "Після рішення", text: "Журнал рішень із нагадуванням «Як воно?» поштою, публічні посилання на дискусію, інтерфейс українською та англійською." },
+        ],
       },
       britva: {
-        tagline: "Лендинг для барбершопу",
+        tagline: "Концепт лендингу для барбершопу",
         description:
           "Односторінковий сайт для барбершопу в темному editorial-стилі: великий серифний заголовок, колаж робіт, прайс-меню, майстри, онлайн-запис і карта. Дизайн і адаптивна верстка — від ідеї до деплою, без фреймворків.",
-        badge: "Дизайн і розробка — 2026",
+        badge: "Концепт: дизайн і розробка — 2026",
+        role: "Дизайн і верстка",
+        highlights: [
+          { title: "Editorial-дизайн", text: "Темна палітра, великий серифний заголовок поверх фото, колаж робіт із накладаннями — сайт виглядає як журнал, а не як шаблон." },
+          { title: "Окремо зібраний мобільний", text: "На телефоні перший екран перекомпоновано, меню повноекранне, а кнопка запису з’являється після першого екрана й ховається біля форми." },
+          { title: "Запис без дзвінків", text: "Форма з валідацією телефону й дати, готова до підключення Telegram-бота, щоб заявки одразу йшли власнику." },
+          { title: "Нічого зайвого", text: "HTML, CSS і трохи JavaScript без фреймворків і збирання. Деплой — GitHub Pages." },
+        ],
       },
     },
     about: {
@@ -57,7 +105,7 @@ export const translations = {
       title2: "будує продукти",
       aria: "Учень 11 класу, який будує продукти",
       p1: "Я вивчаю розробку самостійно — від структур даних у JavaScript до WebSocket-інфраструктури на Django Channels. Люблю розбиратись у тому, як влаштовані системи всередині, і не боюсь читати чужий код, щоб зрозуміти патерн, а не скопіювати рішення.",
-      p2: "Я очолював команду з трьох розробників проєкту Vector, з яким ми дійшли до фіналу Всеукраїнського турніру з програмування. Проєкт Scalaris приніс команді 3 місце у фіналі турніру. Наразі працюю над новими амбітними продуктами.",
+      p2: "Я очолював команду з трьох розробників проєкту Vector, з яким ми дійшли до фіналу Всеукраїнського турніру з програмування. Проєкт Scalaris приніс команді 3 місце у фіналі турніру. Зараз розробляю Clarity — сервіс, де команда AI-учасників допомагає ухвалювати важкі рішення, — і роблю сайти для малого бізнесу.",
       facts: [
         {
           num: "01",
@@ -72,7 +120,7 @@ export const translations = {
         {
           num: "03",
           label: "Далі",
-          text: "Працюю над новими амбітними продуктами.",
+          text: "Clarity — AI-сервіс для важких рішень, і сайти для малого бізнесу.",
         },
       ],
     },
@@ -170,30 +218,78 @@ export const translations = {
       stack: "Django · React · WebSockets · PostgreSQL · Docker.",
     },
     marquee: "Building products",
+    projectsSection: {
+      title1: "Selected",
+      title2: "projects",
+      hintHover: "Hover to expand. Click to open the case study.",
+      hintTap: "Tap a card to open the case study.",
+      open: "Case study",
+    },
+    projectPage: {
+      back: "All projects",
+      role: "Role",
+      year: "Year",
+      stack: "Stack",
+      live: "Open site",
+      about: "About",
+      inside1: "What’s",
+      inside2: "inside",
+      screens: "Screenshots",
+      next: "Next project",
+      missing: "There is no such project.",
+    },
     projects: {
       vector: {
         tagline: "Platform for academic tournaments",
         description:
           "A complete system for organizing academic competitions: team registration, real-time tournament brackets, WebSocket notifications, and automated PDF certificate generation. I led the three-developer team; Vector took us to the final of the All-Ukrainian Programming Tournament.",
         badge: "Finalist — All-Ukrainian Programming Tournament 2026",
+        role: "Team lead of three developers, full-stack",
+        highlights: [
+          { title: "Tournament builder", text: "Organizers set up a tournament in any subject: rounds, tasks, jury, certificates. Individual or team format." },
+          { title: "Three roles, three interfaces", text: "Organizers, participants and jury see different things. Access is enforced in the API, auth is JWT." },
+          { title: "A live tournament", text: "The leaderboard and notifications about new tasks, results and invites arrive in real time via Django Channels." },
+          { title: "Certificates on autopilot", text: "When a tournament ends, PDF certificates are generated in the background with Celery and Redis." },
+        ],
       },
       scalaris: {
         tagline: "Social app for street activity",
         description:
           "A mobile-first platform that shows nearby people on a map who are ready to join spontaneous activity. Features custom avatar clustering on a Leaflet map and real-time data exchange. Scalaris earned the team 3rd place in the tournament final.",
         badge: "3rd place — All-Ukrainian Programming Tournament final 2026",
+        role: "Full-stack developer in a team of three",
+        highlights: [
+          { title: "People nearby on a map", text: "GeoDjango finds users within a radius, Leaflet shows them on the city map." },
+          { title: "Custom clustering", text: "When there are many avatars, they group into clusters instead of piling up on each other." },
+          { title: "Real time", text: "Positions and activity invites update over WebSockets without reloading." },
+          { title: "Mobile-first", text: "Designed for the phone: people use it outside, not at a desk." },
+        ],
       },
       clarity: {
         tagline: "An AI team for hard decisions",
         description:
           "Several AI participants with different personalities debate your question, a moderator turns the arguments into a decision, and an AI Devil looks for its weak spots — you get a conclusion with pros, risks and a next step. A team project where I wrote most of the backend (the Django debate engine) and the React interface.",
         badge: "Lead developer in a team — 2026",
+        role: "Lead developer in a team: backend and interface",
+        highlights: [
+          { title: "Debate engine", text: "A Django state machine runs the discussion step by step: clarification, openings, debate rounds, the moderator’s decision, the AI Devil check, the conclusion." },
+          { title: "Any model", text: "OpenAI, Anthropic, Gemini, Groq, DeepSeek, Mistral, OpenRouter, Ollama or a custom endpoint — each participant can run on its own." },
+          { title: "Real-world context", text: "Web search (Tavily, Brave, SearXNG, Wikipedia) and attachments: PDF, Word, text, photos." },
+          { title: "After the decision", text: "A decision journal that emails a “How did it go?” follow-up, public links to discussions, Ukrainian and English UI." },
+        ],
       },
       britva: {
-        tagline: "Barbershop landing page",
+        tagline: "Barbershop landing page concept",
         description:
           "A one-page site for a barbershop in a dark editorial style: oversized serif headline, work collage, price menu, barbers, online booking and a map. Design and responsive build from concept to deploy, no frameworks.",
-        badge: "Design & development — 2026",
+        badge: "Concept: design & development — 2026",
+        role: "Design and front-end",
+        highlights: [
+          { title: "Editorial design", text: "A dark palette, an oversized serif headline over photography, an overlapping work collage — it reads like a magazine, not a template." },
+          { title: "A mobile layout of its own", text: "On phones the first screen is recomposed, the menu goes full-screen, and the booking button appears after the first screen and hides near the form." },
+          { title: "Booking without calls", text: "A form with phone and date validation, ready to be wired to a Telegram bot so requests go straight to the owner." },
+          { title: "Nothing extra", text: "HTML, CSS and a little JavaScript, no frameworks or build step. Deployed on GitHub Pages." },
+        ],
       },
     },
     about: {
@@ -201,7 +297,7 @@ export const translations = {
       title2: "builds products",
       aria: "An 11th-grader who builds products",
       p1: "I teach myself development — from data structures in JavaScript to WebSocket infrastructure on Django Channels. I love understanding how systems work inside and I'm not afraid of reading foreign code to grasp a pattern rather than copy a solution.",
-      p2: "I led a three-developer team building Vector, which reached the final of the All-Ukrainian Programming Tournament, and Scalaris, which earned the team 3rd place in the final. I'm currently working on new ambitious products.",
+      p2: "I led a three-developer team building Vector, which reached the final of the All-Ukrainian Programming Tournament, and Scalaris, which earned the team 3rd place in the final. Right now I'm building Clarity — a service where a team of AI participants helps you make hard decisions — and making websites for small businesses.",
       facts: [
         {
           num: "01",
@@ -216,7 +312,7 @@ export const translations = {
         {
           num: "03",
           label: "Next",
-          text: "Currently working on new ambitious products.",
+          text: "Clarity — an AI service for hard decisions, plus websites for small businesses.",
         },
       ],
     },

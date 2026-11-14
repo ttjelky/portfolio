@@ -31,6 +31,7 @@ const AccordionGallery = ({
   showLabels = true,
   grayscale = true,
   onSelect,
+  openLabel,
   className = ''
 }) => {
   const rootRef = useRef(null);
@@ -160,7 +161,16 @@ const AccordionGallery = ({
     if (trigger === 'hover') setActive(i);
   };
 
+  const isExternal = link => /^https?:/.test(link || '');
+  // У вузькій (вертикальній) розкладці всі картки вже видно повністю — тап одразу відкриває.
+  const isStacked = () =>
+    typeof window !== 'undefined' && window.matchMedia('(max-width: 640px)').matches;
+
   const handleClick = (i, e) => {
+    if (isStacked() && items[i].link) {
+      onSelect?.(i);
+      return;
+    }
     if (i !== active) {
       e.preventDefault();
       setActive(i);
@@ -197,7 +207,7 @@ const AccordionGallery = ({
         height: vertical ? `${Math.round(height * 1.6)}px` : `${height}px`
       }}
       role="list"
-      aria-label="Image accordion gallery"
+      aria-label="Projects"
     >
       {items.map((item, i) => {
         const isActive = i === active;
@@ -209,8 +219,8 @@ const AccordionGallery = ({
             className={`ag-panel${isActive ? ' ag-panel--active' : ''}`}
             style={{ borderRadius: `${radius}px` }}
             href={item.link || undefined}
-            target={item.link ? "_blank" : undefined}
-            rel={item.link ? "noreferrer" : undefined}
+            target={isExternal(item.link) ? "_blank" : undefined}
+            rel={isExternal(item.link) ? "noreferrer" : undefined}
             onClick={e => handleClick(i, e)}
             onMouseEnter={() => handleEnter(i)}
             onFocus={() => {
@@ -221,19 +231,28 @@ const AccordionGallery = ({
             role="listitem"
             tabIndex={0}
             aria-current={isActive ? 'true' : undefined}
-            aria-label={item.label}
+            aria-label={item.sub ? `${item.label} — ${item.sub}` : item.label}
           >
             <span className="ag-panel__frame">
               <span className="ag-panel__media" ref={el => (mediaRefs.current[i] = el)}>
                 <img src={item.image} alt={item.alt || item.label || ''} draggable="false" />
+                {/* Оверлей усередині media, щоб успадковувати --ag-dim, який анімує GSAP */}
+                <span className="ag-panel__overlay" aria-hidden="true" />
               </span>
-              <span className="ag-panel__overlay" aria-hidden="true" />
             </span>
             {showLabels && (
               <span className="ag-panel__label" aria-hidden="true">
                 <span className="ag-panel__bar" ref={el => (barRefs.current[i] = el)} />
                 <span className="ag-panel__text" ref={el => (textRefs.current[i] = el)}>
-                  {item.label}
+                  <span className="ag-panel__titles">
+                    <span className="ag-panel__name">{item.label}</span>
+                    {item.sub && <span className="ag-panel__sub">{item.sub}</span>}
+                  </span>
+                  {openLabel && item.link && (
+                    <span className="ag-panel__open">
+                      {openLabel} <span aria-hidden="true">→</span>
+                    </span>
+                  )}
                 </span>
               </span>
             )}

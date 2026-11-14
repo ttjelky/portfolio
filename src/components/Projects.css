@@ -1,0 +1,41 @@
+.projects__bleed {
+  width: 100%;
+  padding: 0 clamp(12px, 1.5vw, 20px);
+}
+
+.projects__head {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 40px;
+  flex-wrap: wrap;
+  margin-bottom: 36px;
+}
+
+.projects__title {
+  font-family: var(--font-display);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1.02;
+  font-size: clamp(32px, 5.5vw, 88px);
+}
+
+.projects__hint {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  color: var(--ink-soft);
+  max-width: 32ch;
+  text-align: right;
+  padding-bottom: 0.6em;
+}
+
+@media (max-width: 640px) {
+  .projects__head {
+    margin-bottom: 24px;
+  }
+  .projects__hint {
+    text-align: left;
+    padding-bottom: 0;
+  }
+}
