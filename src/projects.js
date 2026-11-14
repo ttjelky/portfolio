@@ -78,13 +78,14 @@ export const PROJECTS = [
       github: "https://github.com/ttjelky/nail-studio-landing",
     },
     gallery: [
+      [{ src: "projects/glaze/palette.jpg", w: 2000, h: 1250 }],
       [
-        { src: "projects/glaze/palette.jpg", w: 2000, h: 1250 },
-        { src: "projects/glaze/care.jpg", w: 2000, h: 1250 },
+        { src: "projects/glaze/prices.jpg", w: 2000, h: 1250 },
+        { src: "projects/glaze/booking.jpg", w: 2000, h: 1250 },
       ],
       [
         { src: "projects/glaze/m-hero.jpg", w: 647, h: 1400, phone: true },
-        { src: "projects/glaze/m-prices.jpg", w: 647, h: 1400, phone: true },
+        { src: "projects/glaze/m-colors.jpg", w: 647, h: 1400, phone: true },
         { src: "projects/glaze/m-booking.jpg", w: 647, h: 1400, phone: true },
       ],
     ],

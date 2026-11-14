@@ -102,14 +102,14 @@ export const translations = {
       glaze: {
         tagline: "Концепт сайту студії манікюру",
         description:
-          "Світлий односторінковий сайт для студії манікюру — навмисно протилежний темній Britva. Фото в арках, що повторюють форму нігтя, палітра «кольорів сезону», прайс як у меню, блок про стерильність і онлайн-запис. Дизайн і верстка з нуля, без фреймворків.",
+          "Сайт студії манікюру, зібраний як каталог кольорів: строга сітка на 12 колонок, тонкі лінії, гротеск і моно для кодів. Головний експонат — зразки лаку GLZ-01…08, прайс — справжня таблиця з часом і ціною, запис — вибір дня й часу кнопками. Дизайн і верстка з нуля, без фреймворків.",
         badge: "Концепт: дизайн і розробка — 2026",
         role: "Дизайн і верстка",
         highlights: [
-          { title: "Палітра, що записує", text: "Кольори сезону намальовані як нігтики з відблиском лаку. Натискаєш на відтінок — і він одразу з’являється в полі «Колір» форми запису." },
+          { title: "Колір як головний експонат", text: "Вісім зразків лаку з кодами й фінішем, як у фірмовій книжці кольорів. Натискаєш на зразок — і він одразу з’являється в заявці." },
           { title: "Довіра через стерильність", text: "Окремий блок із чотирма етапами обробки інструментів: для клієнток манікюру це головне питання перед першим візитом." },
-          { title: "Ціни без сюрпризів", text: "Прайс у три колонки з крапковими лідерами, як у меню ресторану: манікюр, педикюр, дизайн." },
-          { title: "Телефон — головний екран", text: "На мобільному фото йде першим, галерея гортається вбік, меню повноекранне, кнопка запису з’являється після першого екрана." },
+          { title: "Прайс як таблиця", text: "Послуга, час і ціна в одному рядку, табличні цифри, групи манікюр / педикюр / дизайн. Клієнтка бачить, скільки часу закласти на візит." },
+          { title: "Запис без випадних списків", text: "Послуга, день і час обираються кнопками, зайняті слоти перекреслені. На телефоні — та сама логіка, зразки гортаються вбік." },
         ],
       },
     },
@@ -307,14 +307,14 @@ export const translations = {
       glaze: {
         tagline: "Nail studio website concept",
         description:
-          "A light one-page site for a nail studio — the deliberate opposite of the dark Britva. Arch-shaped photos echoing the shape of a nail, a palette of seasonal colours, a menu-style price list, a sterility section and online booking. Designed and built from scratch, no frameworks.",
+          "A nail studio site built like a colour catalogue: a strict 12-column grid, hairline rules, a grotesk paired with a mono for codes. Lacquer swatches GLZ-01…08 are the hero, the price list is a real table with time and price, and booking uses day and time buttons. Designed and built from scratch, no frameworks.",
         badge: "Concept: design & development — 2026",
         role: "Design and front-end",
         highlights: [
-          { title: "A palette that books", text: "Seasonal colours are drawn as glossy little nails. Tap a shade and it lands straight in the booking form’s colour field." },
+          { title: "Colour as the hero", text: "Eight lacquer swatches with codes and finish, like a brand colour book. Tap a swatch and it lands straight in the booking request." },
           { title: "Trust through sterility", text: "A dedicated section with the four steps of tool sterilisation — the main question clients have before a first visit." },
-          { title: "Prices with no surprises", text: "A three-column price list with dotted leaders, like a restaurant menu: manicure, pedicure, nail art." },
-          { title: "Phone first", text: "On mobile the photo comes first, the gallery scrolls sideways, the menu is full-screen and the booking button appears after the first screen." },
+          { title: "Prices as a table", text: "Service, time and price on one line with tabular figures, grouped into manicure, pedicure and nail art — clients see how long to plan for." },
+          { title: "Booking without dropdowns", text: "Service, day and time are picked with buttons, taken slots are struck through. The same logic on phones, with swatches scrolling sideways." },
         ],
       },
     },
