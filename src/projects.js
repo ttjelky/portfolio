@@ -5,14 +5,18 @@ export const PROJECTS = [
     slug: "vector",
     label: "Vector",
     year: "2026",
-    cover: "projects/vector.png",
+    cover: "projects/vector.jpg",
     stack: ["Django", "DRF", "Channels", "Celery", "Redis", "React", "SimpleJWT"],
     links: { github: "https://github.com/ttjelky/vector" },
     gallery: [
-      [{ src: "projects/vector/dashboard.jpg", w: 2000, h: 973 }],
+      [{ src: "projects/vector/landing.jpg", w: 2000, h: 1250 }],
       [
-        { src: "projects/vector/tournament.jpg", w: 2000, h: 977 },
-        { src: "projects/vector/mobile.jpg", w: 988, h: 1200 },
+        { src: "projects/vector/tournament.jpg", w: 2000, h: 1250 },
+        { src: "projects/vector/rounds.jpg", w: 2000, h: 1250 },
+      ],
+      [
+        { src: "projects/vector/m-dashboard.jpg", w: 647, h: 1400, phone: true },
+        { src: "projects/vector/m-tournament.jpg", w: 647, h: 1400, phone: true },
       ],
     ],
   },
@@ -33,10 +37,14 @@ export const PROJECTS = [
     stack: ["Django", "DRF", "React", "Vite", "LLM APIs", "Vercel", "Render"],
     links: { live: "https://clarity-three-xi.vercel.app/" },
     gallery: [
-      [{ src: "projects/clarity/debate.webp", w: 2880, h: 1800 }],
+      [{ src: "projects/clarity/verdict.jpg", w: 2000, h: 1250 }],
       [
-        { src: "projects/clarity/verdict.webp", w: 2880, h: 1800 },
-        { src: "projects/clarity/devil.webp", w: 2880, h: 1800 },
+        { src: "projects/clarity/home.jpg", w: 2000, h: 1250 },
+        { src: "projects/clarity/journal.jpg", w: 2000, h: 1250 },
+      ],
+      [
+        { src: "projects/clarity/m-home.jpg", w: 647, h: 1400, phone: true },
+        { src: "projects/clarity/m-chat.jpg", w: 647, h: 1400, phone: true },
       ],
     ],
   },
