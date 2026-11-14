@@ -29,6 +29,24 @@ function buildGalleryItems(t) {
       badge: t.projects.scalaris.badge,
       stack: ["Django", "GeoDjango", "Leaflet", "WebSockets", "React", "Docker"],
     },
+    {
+      image: "projects/clarity.jpg",
+      label: "Clarity",
+      link: "https://clarity-three-xi.vercel.app/",
+      tagline: t.projects.clarity.tagline,
+      description: t.projects.clarity.description,
+      badge: t.projects.clarity.badge,
+      stack: ["Django", "DRF", "React", "Vite", "LLM APIs", "Vercel", "Render"],
+    },
+    {
+      image: "projects/britva.jpg",
+      label: "Britva",
+      link: "https://ttjelky.github.io/barbershop-landing/",
+      tagline: t.projects.britva.tagline,
+      description: t.projects.britva.description,
+      badge: t.projects.britva.badge,
+      stack: ["HTML", "CSS", "JavaScript", "UI/UX", "GitHub Pages"],
+    },
   ];
 }
 

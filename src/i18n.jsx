@@ -39,6 +39,18 @@ export const translations = {
           "Mobile-first платформа, що показує на карті людей поруч, готових долучитися до спонтанної активності. Реалізовано власну кластеризацію аватарів на Leaflet-карті та обмін даними в реальному часі. Проєкт посів 3 місце у фіналі Всеукраїнського турніру з програмування.",
         badge: "3 місце у фіналі Всеукраїнського турніру з програмування — 2026",
       },
+      clarity: {
+        tagline: "AI-команда для важких рішень",
+        description:
+          "Кілька AI-учасників із різними характерами обговорюють ваше питання, модератор зводить аргументи в рішення, AI Devil шукає в ньому слабкі місця — і ви отримуєте висновок із плюсами, ризиками та наступним кроком. Командний проєкт, у якому я написав більшу частину бекенду (рушій дебатів на Django) та інтерфейсу на React.",
+        badge: "Основний розробник у команді — 2026",
+      },
+      britva: {
+        tagline: "Лендинг для барбершопу",
+        description:
+          "Односторінковий сайт для барбершопу в темному editorial-стилі: великий серифний заголовок, колаж робіт, прайс-меню, майстри, онлайн-запис і карта. Дизайн і адаптивна верстка — від ідеї до деплою, без фреймворків.",
+        badge: "Дизайн і розробка — 2026",
+      },
     },
     about: {
       title1: "Учень 11 класу, який",
@@ -170,6 +182,18 @@ export const translations = {
         description:
           "A mobile-first platform that shows nearby people on a map who are ready to join spontaneous activity. Features custom avatar clustering on a Leaflet map and real-time data exchange. Scalaris earned the team 3rd place in the tournament final.",
         badge: "3rd place — All-Ukrainian Programming Tournament final 2026",
+      },
+      clarity: {
+        tagline: "An AI team for hard decisions",
+        description:
+          "Several AI participants with different personalities debate your question, a moderator turns the arguments into a decision, and an AI Devil looks for its weak spots — you get a conclusion with pros, risks and a next step. A team project where I wrote most of the backend (the Django debate engine) and the React interface.",
+        badge: "Lead developer in a team — 2026",
+      },
+      britva: {
+        tagline: "Barbershop landing page",
+        description:
+          "A one-page site for a barbershop in a dark editorial style: oversized serif headline, work collage, price menu, barbers, online booking and a map. Design and responsive build from concept to deploy, no frameworks.",
+        badge: "Design & development — 2026",
       },
     },
     about: {
