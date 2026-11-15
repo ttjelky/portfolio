@@ -39,6 +39,15 @@ import britvaHero from '../assets/projects/britva/hero.jpg';
 import britvaServices from '../assets/projects/britva/services.jpg';
 import britvaBooking from '../assets/projects/britva/booking.jpg';
 
+import usuchaHero from '../assets/projects/usucha/hero.jpg';
+import usuchaAnatomy from '../assets/projects/usucha/anatomy.jpg';
+import usuchaSignature from '../assets/projects/usucha/signature.jpg';
+import usuchaMenu from '../assets/projects/usucha/menu.jpg';
+import usuchaVisit from '../assets/projects/usucha/visit.jpg';
+import usuchaMHero from '../assets/projects/usucha/m-hero.jpg';
+import usuchaMAnatomy from '../assets/projects/usucha/m-anatomy.jpg';
+import usuchaMSignature from '../assets/projects/usucha/m-signature.jpg';
+
 import grafitHero from '../assets/projects/grafit/hero.jpg';
 import grafitServices from '../assets/projects/grafit/services.jpg';
 import grafitWorks from '../assets/projects/grafit/works.jpg';
@@ -433,6 +442,75 @@ export const PROJECTS: Project[] = [
         { src: worldlogWiki, alt: { uk: 'Вікі, прогрес і граф зв’язків', en: 'Wiki, progress and relationship graph' } },
       ],
       [{ src: worldlogWorlds, alt: { uk: 'Список світів', en: 'List of worlds' } }],
+    ],
+  },
+  {
+    slug: 'usucha',
+    name: 'USUCHA',
+    kind: 'site',
+    accent: '#9cc25a',
+    onAccent: '#15291a',
+    panel: '#1d3a22',
+    dark: true,
+    tagline: { uk: 'Сайт матча-бару', en: 'A website for a matcha bar' },
+    summary: {
+      uk: 'Світлий редакційний сайт для матча-бару: гігантська типографіка з курсивними акцентами, «розібраний» напій із шести шарів, каталог із фільтрами, меню, замовлення наперед, бронь столика. Англійська та українська.',
+      en: 'A light editorial site for a matcha bar: oversized type with italic accents, a drink taken apart into six layers, a filterable catalogue, a full menu, order-ahead and table booking. In English and Ukrainian.',
+    },
+    context: {
+      uk: 'Концепт для кафе, де продається ритуал, а не просто напій. Сайт має бути таким самим неспішним і свіжим, як чашка матчі, — і водночас давати замовити її за два кліки.',
+      en: 'A concept for a café that sells a ritual rather than just a drink. The site had to feel as calm and fresh as a cup of matcha — and still let you order one in two clicks.',
+    },
+    role: { uk: 'Дизайн і розробка', en: 'Design and development' },
+    period: { uk: 'Листопад 2026', en: 'November 2026' },
+    status: { uk: 'Концепт', en: 'Concept' },
+    stack: ['HTML', 'CSS', 'JavaScript'],
+    links: { live: 'https://ttjelky.github.io/usucha/', github: 'https://github.com/ttjelky/usucha' },
+    highlights: [
+      {
+        title: { uk: 'Напій у розрізі', en: 'A drink, taken apart' },
+        text: {
+          uk: 'Шість шарів — матча, пінка, молоко, лід, сироп — намальовані лише на CSS. Під час прокрутки вони розходяться, а біля кожного з’являється підпис.',
+          en: 'Six layers — matcha, foam, milk, ice, syrup — drawn in CSS alone. As you scroll they drift apart and each one gets its label.',
+        },
+      },
+      {
+        title: { uk: 'Від чипса до замовлення', en: 'From a chip to an order' },
+        text: {
+          uk: 'Чипси на фото першого екрана фільтрують каталог, «+» додає напій у кошик збоку, а вміст кошика переживає перезавантаження сторінки.',
+          en: 'The chips on the hero photo filter the catalogue, “+” drops a drink into a side cart, and the cart survives a page reload.',
+        },
+      },
+      {
+        title: { uk: 'Дві мови без компромісів', en: 'Two languages, no compromises' },
+        text: {
+          uk: 'Мова визначається за пристроєм, перемикач — у футері. Шрифти оригіналу не мають кирилиці, тож для української вони замінюються на близькі за характером.',
+          en: 'The language follows the device, with a switch in the footer. The original fonts have no Cyrillic, so the Ukrainian version swaps in faces with the same character.',
+        },
+      },
+      {
+        title: { uk: 'Ритуал крок за кроком', en: 'The ritual, step by step' },
+        text: {
+          uk: 'Чотири кроки приготування з прогрес-баром: заголовок стоїть на місці, а поточний крок підсвічується. Уся анімація вимикається системним налаштуванням.',
+          en: 'Four preparation steps with a progress bar: the heading stays put while the current step lights up. All motion switches off with the system setting.',
+        },
+      },
+    ],
+    stats: [],
+    cover: { desktop: usuchaHero, phone: usuchaMHero },
+    gallery: [
+      [{ src: usuchaHero, alt: { uk: 'Перший екран із великою типографікою', en: 'First screen with oversized type' } }],
+      [{ src: usuchaAnatomy, alt: { uk: 'Напій, розібраний на шість шарів', en: 'A drink taken apart into six layers' } }],
+      [
+        { src: usuchaMHero, alt: { uk: 'Перший екран на телефоні', en: 'First screen on a phone' }, phone: true },
+        { src: usuchaMAnatomy, alt: { uk: 'Шари напою на телефоні', en: 'Drink layers on a phone' }, phone: true },
+        { src: usuchaMSignature, alt: { uk: 'Каталог на телефоні', en: 'Catalogue on a phone' }, phone: true },
+      ],
+      [
+        { src: usuchaSignature, alt: { uk: 'Каталог напоїв із фільтрами', en: 'Drinks catalogue with filters' } },
+        { src: usuchaMenu, alt: { uk: 'Повне меню з вкладками', en: 'Full menu with tabs' } },
+      ],
+      [{ src: usuchaVisit, alt: { uk: 'Інтер’єр, години роботи та бронь столика', en: 'Interior, opening hours and table booking' } }],
     ],
   },
   {

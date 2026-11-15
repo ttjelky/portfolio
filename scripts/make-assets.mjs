@@ -19,6 +19,7 @@ const projects = {
   vector: { uk: 'Платформа для турнірів з будь-якого предмета', en: 'A platform for tournaments in any subject' },
   scalaris: { uk: 'Соціальна карта для активностей поруч · 3-тє місце у фіналі турніру', en: 'A social map for activities nearby · 3rd place at the tournament final' },
   worldlog: { uk: 'Паспорт Minecraft-світу', en: 'A passport for a Minecraft world' },
+  usucha: { uk: 'Сайт матча-бару', en: 'A website for a matcha bar' },
   grafit: { uk: 'Сайт студії автодетейлінгу', en: 'A website for a car detailing studio' },
   britva: { uk: 'Сайт барбершопу', en: 'A website for a barbershop' },
   glaze: { uk: 'Сайт студії манікюру', en: 'A website for a nail studio' },
@@ -29,11 +30,12 @@ const glow = {
   vector: ['#2f6bff', '#c04848'],
   scalaris: ['#c6f135', '#607818'],
   worldlog: ['#f0a830', '#c06078'],
+  usucha: ['#9cc25a', '#1d3a22'],
   grafit: ['#ff3b1f', '#3a3a3a'],
   britva: ['#c9a27a', '#603018'],
   glaze: ['#7a1a2c', '#e9e3d8'],
 };
-const names = { clarity: 'Clarity', vector: 'Vector', scalaris: 'Scalaris', worldlog: 'WorldLog', grafit: 'Grafit', britva: 'Britva', glaze: 'Glaze' };
+const names = { clarity: 'Clarity', vector: 'Vector', scalaris: 'Scalaris', worldlog: 'WorldLog', usucha: 'USUCHA', grafit: 'Grafit', britva: 'Britva', glaze: 'Glaze' };
 
 await mkdir(`${root}public/og`, { recursive: true });
 await mkdir(`${root}public/cv`, { recursive: true });
