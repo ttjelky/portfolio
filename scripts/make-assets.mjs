@@ -62,4 +62,21 @@ for (const lang of ['uk', 'en']) {
   console.log('cv', lang);
 }
 
+// Іконки для закріплення сайту (iOS/macOS «На початковий екран», Chrome/Android PWA).
+// Квадрат на весь розмір: заокруглення додає сама система.
+// У maskable-версії знак менший, щоб влізти в безпечну зону (коло 80% від розміру).
+await mkdir(`${root}public/icons`, { recursive: true });
+for (const [out, size, scale] of [
+  ['apple-touch-icon', 180, 1],
+  ['icon-192', 192, 1],
+  ['icon-512', 512, 1],
+  ['icon-maskable-512', 512, 0.86],
+]) {
+  await page.setViewport({ width: size, height: size, deviceScaleFactor: 1 });
+  await page.goto(`${tpl('icon.html')}?size=${size}&scale=${scale}`, { waitUntil: 'load' });
+  await page.waitForSelector('body[data-ready]');
+  await page.screenshot({ path: `${root}public/icons/${out}.png` });
+  console.log('icon', out);
+}
+
 await browser.close();
