@@ -4,7 +4,7 @@ import Base from '../../../layouts/Base.astro';
 import ProjectVisual from '../../../components/ProjectVisual.astro';
 import Contact from '../../../components/Contact.astro';
 import { PROJECTS, type Project } from '../../../data/projects';
-import { LANGS, langPath, ui, type Lang } from '../../../i18n';
+import { LANGS, langPath, tv, ui, type Lang } from '../../../i18n';
 
 export function getStaticPaths() {
   return LANGS.flatMap((lang) => PROJECTS.map((project) => ({ params: { lang, slug: project.slug }, props: { project } })));
@@ -100,7 +100,7 @@ const accent = `--accent: ${p.accent}; --on-accent: ${p.onAccent}`;
               <ul class="case-body__stats">
                 {p.stats.map((s, i) => (
                   <li data-reveal style={`--delay: ${i * 0.08}s`}>
-                    <span class="case-body__stat display">{s.value}</span>
+                    <span class="case-body__stat display">{tv(s.value, lang)}</span>
                     <span class="case-body__stat-label">{s.label[lang]}</span>
                   </li>
                 ))}
@@ -297,7 +297,10 @@ const accent = `--accent: ${p.accent}; --on-accent: ${p.onAccent}`;
   .case-hero__line {
     display: block;
     overflow: hidden;
+    /* запас під виносні елементи (y, g, р, у), щоб їх не зрізало; від’ємний відступ зберігає щільність рядків */
     padding-top: 0.04em;
+    padding-bottom: 0.2em;
+    margin-bottom: -0.2em;
   }
 
   .case-hero__line span {
@@ -313,7 +316,7 @@ const accent = `--accent: ${p.accent}; --on-accent: ${p.onAccent}`;
 
   @keyframes rise {
     from {
-      transform: translateY(100%);
+      transform: translateY(130%);
     }
   }
 

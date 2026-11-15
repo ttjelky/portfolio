@@ -1,7 +1,7 @@
 ---
 import { getImage } from 'astro:assets';
 import { PROJECTS } from '../data/projects';
-import { ui, type Lang } from '../i18n';
+import { tv, ui, type Lang } from '../i18n';
 import sflCert from '../assets/certificates/tech-camp-3rd.png';
 import manCert from '../assets/certificates/tech-camp-man.png';
 import aiFoundations from '../assets/certificates/ai-foundations.png';
@@ -14,7 +14,7 @@ interface Props {
 
 const { lang } = Astro.props;
 const a = ui.awards;
-// акцент секції — лайм Scalaris: саме з цим проєктом команда взяла 3 місце
+// акцент секції — лайм Scalaris: саме з цим проєктом команда взяла 3-тє місце
 const scalaris = PROJECTS.find((p) => p.slug === 'scalaris')!;
 
 const big = (src: ImageMetadata) => getImage({ src, width: 1400, format: 'webp', quality: 82 });
@@ -46,13 +46,13 @@ const widths = ['100%', '64%', '42%', '30%'];
 
     <div class="awards__main">
       <p class="awards__place" data-reveal aria-hidden="true">
-        <span class="awards__num display">3</span>
+        <span class="awards__num display">3<span class="awards__ord">{a.ordinal[lang]}</span></span>
         <span class="awards__badge">{a.place[lang]}</span>
       </p>
 
       <div class="awards__info" data-reveal style="--delay: 0.1s">
         <h2 class="awards__title display" id="awards-title">
-          <span class="visually-hidden">3 {a.place[lang]} — </span>{a.title[lang]}
+          <span class="visually-hidden">3{a.ordinal[lang]} {a.place[lang]} — </span>{a.title[lang]}
         </h2>
         <p class="awards__org">{a.org[lang]}</p>
 
@@ -61,7 +61,7 @@ const widths = ['100%', '64%', '42%', '30%'];
             a.path.map((step, i) => (
               <li class="funnel__step" style={`--w: ${widths[i]}; --delay: ${0.15 + i * 0.12}s`} data-reveal>
                 <span class="funnel__bar">
-                  <span class="funnel__value">{step.value}</span>
+                  <span class="funnel__value">{tv(step.value, lang)}</span>
                 </span>
                 <span class="funnel__label">{step.label[lang]}</span>
               </li>
@@ -131,6 +131,13 @@ const widths = ['100%', '64%', '42%', '30%'];
     letter-spacing: -0.09em;
     line-height: 0.74;
     margin-left: -0.04em;
+  }
+
+  /* закінчення порядкового числівника: 3rd / 3-тє */
+  .awards__ord {
+    font-size: 0.26em;
+    letter-spacing: -0.04em;
+    margin-left: 0.04em;
   }
 
   /* «стікер» у кольорі Scalaris */
@@ -297,8 +304,18 @@ const widths = ['100%', '64%', '42%', '30%'];
       grid-template-columns: 1fr;
     }
 
+    /* на вузьких екранах стікер стоїть поруч із цифрою, а не поверх неї */
     .awards__place {
       justify-self: start;
+      display: flex;
+      align-items: flex-start;
+      gap: clamp(8px, 3vw, 20px);
+    }
+
+    .awards__badge {
+      position: static;
+      flex: none;
+      margin-top: 0.4em;
     }
 
     .awards__more {

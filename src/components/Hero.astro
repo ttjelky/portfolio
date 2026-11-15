@@ -197,7 +197,10 @@ const h = ui.hero;
   .hero__line {
     display: block;
     overflow: hidden;
+    /* запас під виносні елементи (y, g, р, у), щоб їх не зрізало; від’ємний відступ зберігає щільність рядків */
     padding-top: 0.04em;
+    padding-bottom: 0.2em;
+    margin-bottom: -0.2em;
   }
 
   .hero__word {
@@ -219,7 +222,7 @@ const h = ui.hero;
 
   @keyframes rise {
     from {
-      transform: translateY(100%);
+      transform: translateY(130%);
     }
   }
 

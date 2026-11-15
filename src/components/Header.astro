@@ -123,6 +123,8 @@ const other = lang === 'uk' ? 'en' : 'uk';
       top: auto;
       bottom: max(14px, env(safe-area-inset-bottom));
       font-size: 13px;
+      /* тінь угору: внизу вона виходила за край в’юпорта й обрізалася рівною лінією */
+      box-shadow: 0 -4px 24px -12px rgba(0, 0, 0, 0.45);
     }
 
     .nav a {

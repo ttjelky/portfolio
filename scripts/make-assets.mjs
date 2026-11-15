@@ -9,17 +9,17 @@ const chrome = process.env.CHROME_PATH ?? '/Applications/Google Chrome.app/Conte
 const tpl = (file) => pathToFileURL(`${root}scripts/${file}`).href;
 
 const site = {
-  uk: { title: 'Безклинський', sub: 'Олексій — дизайн і розробка сайтів та вебзастосунків', tag: 'Кременчук, Україна' },
-  en: { title: 'Bezklynskyi', sub: 'Oleksii — design & development of websites and web apps', tag: 'Kremenchuk, Ukraine' },
+  uk: { title: 'Безклинський', sub: 'Олексій — дизайн і розробка сайтів та вебзастосунків', tag: 'Україна' },
+  en: { title: 'Bezklynskyi', sub: 'Oleksii — design & development of websites and web apps', tag: 'Ukraine' },
 };
 
 // Назви й підзаголовки мають збігатися з src/data/projects.ts
 const projects = {
   clarity: { uk: 'AI-рада для складних рішень', en: 'An AI council for hard decisions' },
   vector: { uk: 'Платформа для турнірів з будь-якого предмета', en: 'A platform for tournaments in any subject' },
-  scalaris: { uk: 'Соціальна карта для активностей поруч · 3 місце у фіналі турніру', en: 'A social map for activities nearby · 3rd place at the tournament final' },
+  scalaris: { uk: 'Соціальна карта для активностей поруч · 3-тє місце у фіналі турніру', en: 'A social map for activities nearby · 3rd place at the tournament final' },
   worldlog: { uk: 'Паспорт Minecraft-світу', en: 'A passport for a Minecraft world' },
-  britva: { uk: 'Сайт барбершопу в центрі Кременчука', en: 'A website for a barbershop in Kremenchuk' },
+  britva: { uk: 'Сайт барбершопу', en: 'A website for a barbershop' },
   glaze: { uk: 'Сайт студії манікюру', en: 'A website for a nail studio' },
 };
 // кольори світіння — з самих проєктів

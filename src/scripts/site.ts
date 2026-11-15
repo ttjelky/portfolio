@@ -108,7 +108,7 @@ function initCopy() {
   });
 }
 
-/* ---------- Час у Кременчуці ---------- */
+/* ---------- Час в Україні ---------- */
 function initClock() {
   const el = document.querySelector<HTMLTimeElement>('[data-local-time]');
   if (!el) return;

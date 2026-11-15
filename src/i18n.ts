@@ -6,6 +6,9 @@ export type L = Record<Lang, string>;
 
 export const t = (text: L, lang: Lang) => text[lang];
 
+/** Значення, яке або однакове для обох мов, або залежить від мови. */
+export const tv = (value: string | L, lang: Lang) => (typeof value === 'string' ? value : value[lang]);
+
 const BASE = import.meta.env.BASE_URL.replace(/\/$/, '');
 
 /** Шлях до файлу чи сторінки з урахуванням base (`/portfolio`). */
@@ -30,7 +33,7 @@ export const ui = {
   name: { uk: 'Олексій Безклинський', en: 'Oleksii Bezklynskyi' },
   nameLines: { uk: ['Олексій', 'Безклинський'], en: ['Oleksii', 'Bezklynskyi'] },
   role: { uk: 'Дизайн і розробка сайтів та вебзастосунків', en: 'Design & development of websites and web apps' },
-  location: { uk: 'Кременчук, Україна', en: 'Kremenchuk, Ukraine' },
+  location: { uk: 'Україна', en: 'Ukraine' },
   available: { uk: 'Приймаю замовлення', en: 'Available for projects' },
   skip: { uk: 'Перейти до змісту', en: 'Skip to content' },
 
@@ -55,7 +58,7 @@ export const ui = {
       en: 'I build websites for local businesses and my own products: an AI service, a social map, a tournament platform.',
     },
     col2: {
-      uk: '3 місце у фіналі Всеукраїнського командного турніру з програмування 2026 — зі 121 команди.',
+      uk: '3-тє місце у фіналі Всеукраїнського командного турніру з програмування 2026 — зі 121 команди.',
       en: '3rd place at the All-Ukrainian Team Programming Tournament 2026 final — out of 121 teams.',
     },
     cta: { uk: 'Обговорити проєкт', en: 'Start a project' },
@@ -119,6 +122,8 @@ export const ui = {
   awards: {
     kicker: { uk: 'Визнання', en: 'Recognition' },
     place: { uk: 'місце', en: 'place' },
+    /** Закінчення порядкового числівника біля великої «3». */
+    ordinal: { uk: '-тє', en: 'rd' },
     title: {
       uk: 'Всеукраїнський командний турнір з програмування 2026',
       en: 'All-Ukrainian Team Programming Tournament 2026',
@@ -131,7 +136,7 @@ export const ui = {
       { value: '121', label: { uk: 'команда на старті', en: 'teams at the start' } },
       { value: '9', label: { uk: 'на онлайн-захисті з Vector', en: 'at the online defence with Vector' } },
       { value: '4', label: { uk: 'у фіналі в Карпатах', en: 'in the final in the Carpathians' } },
-      { value: '3', label: { uk: 'місце зі Scalaris, зробленим за 5 днів', en: 'place with Scalaris, built in 5 days' } },
+      { value: { uk: '3-тє', en: '3rd' }, label: { uk: 'місце зі Scalaris, зробленим за 5 днів', en: 'place with Scalaris, built in 5 days' } },
     ],
     docs: { uk: 'Документи', en: 'Documents' },
     certSfl: { uk: 'Сертифікат Star for Life', en: 'Star for Life certificate' },
@@ -150,11 +155,11 @@ export const ui = {
     title: { uk: 'Роблю продукт цілком — від ідеї до деплою', en: 'I build the whole product, from idea to deploy' },
     p: {
       uk: [
-        'Мене звати Олексій, я з Кременчука і зараз навчаюся в 11 класі. Розробку вивчаю самостійно, а найбільше кайфую від моменту, коли людина відкриває сайт і каже «вау».',
+        'Мене звати Олексій, я з України і зараз навчаюся в 11-му класі. Розробку вивчаю самостійно, а найбільше кайфую від моменту, коли людина відкриває сайт і каже «вау».',
         'У командах я майже завжди тімлід: придумую ідею, малюю логотип та інтерфейс, проєктую архітектуру, пишу більшу частину коду й тримаю команду в темпі. Проєкт для мене готовий тоді, коли я сам ним пишаюся.',
       ],
       en: [
-        'I’m Oleksii, I live in Kremenchuk, Ukraine, and I’m in my final year of school. I’m self-taught, and my favourite moment is when someone opens a site and says “wow”.',
+        'I’m Oleksii. I live in Ukraine, and I’m in my final year of school. I’m self-taught, and my favourite moment is when someone opens a site and says “wow”.',
         'In teams I’m almost always the lead: I come up with the idea, design the logo and the interface, plan the architecture, write most of the code and keep the team moving. A project is done when I’m proud of it myself.',
       ],
     },
@@ -172,8 +177,8 @@ export const ui = {
     kicker: { uk: 'Контакт', en: 'Contact' },
     title: { uk: 'Є ідея для сайту?', en: 'Have an idea for a website?' },
     lead: {
-      uk: 'Напишіть кілька слів про ваш бізнес і що потрібно — я відповім і запропоную, як це зробити.',
-      en: 'Tell me a few words about your business and what you need — I’ll reply with how we can do it.',
+      uk: 'Напишіть кілька слів про ваш бізнес і про те, що потрібно, — я відповім і запропоную, як це зробити.',
+      en: 'Tell me a little about your business and what you need — I’ll reply with how we can do it.',
     },
     copy: { uk: 'Скопіювати', en: 'Copy' },
     copied: { uk: 'Скопійовано', en: 'Copied' },
@@ -184,7 +189,7 @@ export const ui = {
     rights: { uk: 'Дизайн і код — мої.', en: 'Designed and built by me.' },
     source: { uk: 'Код сайту', en: 'Site source' },
     top: { uk: 'Нагору', en: 'Back to top' },
-    time: { uk: 'Зараз у Кременчуці', en: 'Local time' },
+    time: { uk: 'Зараз в Україні', en: 'Local time' },
   },
 
   project: {

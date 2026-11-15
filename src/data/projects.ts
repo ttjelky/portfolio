@@ -79,7 +79,8 @@ export interface Project {
   team?: { name: string; url: string }[];
   links: { live?: string; github?: string };
   highlights: { title: L; text: L }[];
-  stats: { value: string; label: L }[];
+  /** Значення може залежати від мови (порядкові числівники: 3-тє / 3rd). */
+  stats: { value: string | L; label: L }[];
   cover: { desktop: ImageMetadata; phone?: ImageMetadata };
   /** Ряди скріншотів; у ряду кадри однакової висоти. */
   gallery: Shot[][];
@@ -91,7 +92,7 @@ const TEAM = {
 };
 
 const TOURNAMENT_FINAL: L = {
-  uk: '3 місце у фіналі Всеукраїнського командного турніру з програмування 2026',
+  uk: '3-тє місце у фіналі Всеукраїнського командного турніру з програмування 2026',
   en: '3rd place at the All-Ukrainian Team Programming Tournament 2026 final',
 };
 
@@ -108,7 +109,7 @@ export const PROJECTS: Project[] = [
     tagline: { uk: 'AI-рада для складних рішень', en: 'An AI council for hard decisions' },
     summary: {
       uk: 'Ви ставите питання, а кілька AI-учасників із різними характерами його обговорюють. Модератор зводить аргументи в рішення, AI Devil шукає в ньому слабкі місця. На виході — висновок із плюсами, ризиками, думкою меншості й наступним кроком.',
-      en: 'You ask a question and several AI participants with different personalities debate it. A moderator turns the arguments into a decision, and an AI Devil hunts for its weak spots. You get a conclusion with pros, risks, the minority view and a next step.',
+      en: 'You ask a question, and several AI participants with different personalities debate it. A moderator turns the arguments into a decision, and an AI Devil hunts for its weak spots. You get a conclusion with pros, risks, the minority view and a next step.',
     },
     context: {
       uk: 'Коли рішення справді важке, одна відповідь чат-бота лише підтверджує те, що ви хотіли почути. Clarity влаштовує справжню дискусію: різні погляди, суперечка, перевірка — і лише потім висновок. Це мій найновіший і технічно найскладніший проєкт.',
@@ -148,7 +149,7 @@ export const PROJECTS: Project[] = [
         title: { uk: 'Після рішення', en: 'After the decision' },
         text: {
           uk: 'Журнал рішень згодом питає листом «Як воно?», дискусією можна поділитися посиланням, а інтерфейс і відповіді AI — українською чи англійською.',
-          en: 'A decision journal later emails a “How did it go?”, discussions can be shared by link, and both the UI and the AI answers are in Ukrainian or English.',
+          en: 'A decision journal later sends a “How did it go?” email, discussions can be shared by link, and both the UI and the AI answers are in Ukrainian or English.',
         },
       },
     ],
@@ -187,11 +188,11 @@ export const PROJECTS: Project[] = [
     tagline: { uk: 'Платформа для турнірів з будь-якого предмета', en: 'A platform for tournaments in any subject' },
     summary: {
       uk: 'Організатор збирає турнір під себе: раунди, задачі, журі, сертифікати, індивідуальний чи командний формат. Учасники бачать задачі й таблицю лідерів у реальному часі, журі — свою панель оцінювання.',
-      en: 'An organizer sets up a tournament their way: rounds, tasks, jury, certificates, individual or team format. Participants see tasks and a live leaderboard; the jury gets its own grading panel.',
+      en: 'An organiser sets up a tournament their way: rounds, tasks, jury, certificates, individual or team format. Participants see tasks and a live leaderboard; the jury gets its own grading panel.',
     },
     context: {
-      uk: 'Проєкт для онлайн-етапу Всеукраїнського командного турніру з програмування. Технічне завдання описувало платформу для турнірів, а ми розширили ідею й дали організатору свободу: Vector підходить для турніру з будь-якого предмета й у будь-якому форматі. З ним наша команда пройшла в топ-9 зі 121 команди, а після онлайн-захисту — у топ-4 і у фінал.',
-      en: 'Built for the online stage of the All-Ukrainian Team Programming Tournament. The brief described a tournament platform; we pushed the idea further and gave organizers freedom: Vector works for a tournament in any subject and any format. It took our team into the top 9 of 121 teams, and after the online defence into the top 4 and the final.',
+      uk: 'Проєкт для онлайн-етапу Всеукраїнського командного турніру з програмування. Технічне завдання описувало платформу для турнірів, а ми розширили ідею й дали організатору свободу: Vector підходить для турніру з будь-якого предмета й у будь-якому форматі. З ним наша команда пройшла в топ-9 зі 121 команди, а після онлайн-захисту — у топ-4 та фінал.',
+      en: 'Built for the online stage of the All-Ukrainian Team Programming Tournament. The brief described a tournament platform; we pushed the idea further and gave organisers freedom: Vector works for a tournament in any subject and any format. It took our team into the top 9 of 121 teams, and after the online defence into the top 4 and the final.',
     },
     role: {
       uk: 'Тімлід команди з трьох · 70% коду · весь дизайн і логотип',
@@ -218,7 +219,7 @@ export const PROJECTS: Project[] = [
         title: { uk: 'Три ролі — три інтерфейси', en: 'Three roles, three interfaces' },
         text: {
           uk: 'Організатор, учасник і журі бачать різне. Доступ розмежовано на рівні API, вхід — через JWT з автоматичним оновленням токена.',
-          en: 'Organizers, participants and jury see different things. Access is enforced in the API; sign-in uses JWT with automatic token refresh.',
+          en: 'Organisers, participants and the jury see different things. Access is enforced in the API; sign-in uses JWT with automatic token refresh.',
         },
       },
       {
@@ -269,8 +270,8 @@ export const PROJECTS: Project[] = [
       en: 'Open the map and see people nearby who are up for something right now. A meetup, a cross-country run with checkpoints, a game zone or a quest: create one in a minute and people join in real time.',
     },
     context: {
-      uk: 'Фінальне завдання турніру ми отримали в Карпатах, і на весь продукт було 5 днів. Спали по 4–5 годин і писали ночами. На захисті Scalaris приніс команді 3 місце.',
-      en: 'We got the final tournament brief in the Carpathian mountains and had 5 days for the whole product. We slept 4–5 hours a night and coded through the nights. At the defence Scalaris won our team 3rd place.',
+      uk: 'Фінальне завдання турніру ми отримали в Карпатах, і на весь продукт було 5 днів. Спали по 4–5 годин і писали ночами. На захисті Scalaris приніс команді 3-тє місце.',
+      en: 'We got the final tournament brief in the Carpathian Mountains and had 5 days for the whole product. We slept 4–5 hours a night and coded through the nights. At the defence, Scalaris won our team 3rd place.',
     },
     role: {
       uk: 'Тімлід · 50% коду · дизайн, логотип і всі технічні рішення',
@@ -293,15 +294,15 @@ export const PROJECTS: Project[] = [
       {
         title: { uk: 'Чотири види активностей', en: 'Four kinds of activity' },
         text: {
-          uk: 'Збір у точці, крос із маршрутом із чекпоінтів, ігрова зона з геозоною та квест — хто пройде більше кілометрів за час.',
-          en: 'A meetup at a spot, a run along checkpoints, a game zone with a geofence, and a quest — who covers the most kilometres in time.',
+          uk: 'Збір у точці, крос із маршрутом із чекпоінтів, ігрова зона з геозоною та квест — хто пройде більше кілометрів за відведений час.',
+          en: 'A meetup at a spot, a run along checkpoints, a game zone with a geofence, and a quest where whoever covers the most kilometres in the time limit wins.',
         },
       },
       {
         title: { uk: 'Власна кластеризація', en: 'Custom clustering' },
         text: {
           uk: 'Коли аватарів багато, вони збираються в кластери з лічильником, а не накладаються один на одного.',
-          en: 'When there are many avatars they merge into counted clusters instead of piling up.',
+          en: 'When there are many avatars, they merge into counted clusters instead of piling up.',
         },
       },
       {
@@ -314,7 +315,7 @@ export const PROJECTS: Project[] = [
     ],
     stats: [
       { value: '5', label: { uk: 'днів на весь продукт', en: 'days for the whole product' } },
-      { value: '3', label: { uk: 'місце у фіналі', en: 'place at the final' } },
+      { value: { uk: '3-тє', en: '3rd' }, label: { uk: 'місце у фіналі', en: 'place at the final' } },
       { value: '180+', label: { uk: 'тестів', en: 'tests' } },
     ],
     cover: { desktop: scalarisMap, phone: scalarisMSheet },
@@ -351,7 +352,7 @@ export const PROJECTS: Project[] = [
     },
     role: {
       uk: 'Ідея · 90% коду · дизайн, логотип і айдентика · керую напарником',
-      en: 'Idea · 90% of the code · design, logo and identity · lead a teammate',
+      en: 'Idea · 90% of the code · design, logo and identity · leading a teammate',
     },
     period: { uk: 'Серпень 2026 — зараз', en: 'Aug 2026 — now' },
     status: { uk: 'У розробці', en: 'In progress' },
@@ -411,7 +412,7 @@ export const PROJECTS: Project[] = [
     onAccent: '#0b0b0b',
     panel: '#1a1612',
     dark: true,
-    tagline: { uk: 'Сайт барбершопу в центрі Кременчука', en: 'A website for a barbershop in Kremenchuk' },
+    tagline: { uk: 'Сайт барбершопу', en: 'A website for a barbershop' },
     summary: {
       uk: 'Односторінковий сайт у темному журнальному стилі: великий серифний заголовок, колаж робіт, прайс, майстри, онлайн-запис і карта.',
       en: 'A one-page site in a dark editorial style: an oversized serif headline, a work collage, prices, barbers, online booking and a map.',
@@ -486,7 +487,7 @@ export const PROJECTS: Project[] = [
         title: { uk: 'Колір як головний експонат', en: 'Colour as the hero' },
         text: {
           uk: 'Вісім зразків лаку з кодами й фінішем. Натискаєш на зразок — і він одразу з’являється в заявці.',
-          en: 'Eight lacquer swatches with codes and finish. Tap one and it lands straight in the booking request.',
+          en: 'Eight lacquer swatches with codes and finishes. Tap one and it lands straight in the booking request.',
         },
       },
       {
