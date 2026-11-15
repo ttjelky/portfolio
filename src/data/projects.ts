@@ -39,6 +39,14 @@ import britvaHero from '../assets/projects/britva/hero.jpg';
 import britvaServices from '../assets/projects/britva/services.jpg';
 import britvaBooking from '../assets/projects/britva/booking.jpg';
 
+import grafitHero from '../assets/projects/grafit/hero.jpg';
+import grafitServices from '../assets/projects/grafit/services.jpg';
+import grafitWorks from '../assets/projects/grafit/works.jpg';
+import grafitPrices from '../assets/projects/grafit/prices.jpg';
+import grafitMHero from '../assets/projects/grafit/m-hero.jpg';
+import grafitMWorks from '../assets/projects/grafit/m-works.jpg';
+import grafitMContact from '../assets/projects/grafit/m-contact.jpg';
+
 import glazePalette from '../assets/projects/glaze/palette.jpg';
 import glazePrices from '../assets/projects/glaze/prices.jpg';
 import glazeBooking from '../assets/projects/glaze/booking.jpg';
@@ -425,6 +433,74 @@ export const PROJECTS: Project[] = [
         { src: worldlogWiki, alt: { uk: 'Вікі, прогрес і граф зв’язків', en: 'Wiki, progress and relationship graph' } },
       ],
       [{ src: worldlogWorlds, alt: { uk: 'Список світів', en: 'List of worlds' } }],
+    ],
+  },
+  {
+    slug: 'grafit',
+    name: 'Grafit',
+    kind: 'site',
+    accent: '#ff3b1f',
+    onAccent: '#ffffff',
+    panel: '#141414',
+    dark: true,
+    tagline: { uk: 'Сайт студії автодетейлінгу', en: 'A website for a car detailing studio' },
+    summary: {
+      uk: 'Сайт у стилі серії постерів: контурні номери, чорно-білі фото авто, зернистість і гігантська типографіка. Принципи студії, послуги з прев’ю, кейс із повзунком «до / після», пакети й запис.',
+      en: 'A site styled like a poster series: outlined numerals, black-and-white car photography, film grain and oversized type. Studio principles, services with previews, a before/after case, packages and booking.',
+    },
+    context: {
+      uk: 'Концепт для преміального детейлінгу, де клієнт купує не мийку, а відчуття нового авто. Сайт має продавати так само, як результат: спокійно, дорого й без зайвого.',
+      en: 'A concept for a premium detailing studio, where clients buy the feeling of a new car rather than a wash. The site has to sell the way the result does: calm, premium and with nothing extra.',
+    },
+    role: { uk: 'Дизайн і розробка', en: 'Design and development' },
+    period: { uk: 'Листопад 2026', en: 'November 2026' },
+    status: { uk: 'Концепт', en: 'Concept' },
+    stack: ['HTML', 'CSS', 'JavaScript'],
+    links: { live: 'https://ttjelky.github.io/car-detailing-landing/', github: 'https://github.com/ttjelky/car-detailing-landing' },
+    highlights: [
+      {
+        title: { uk: 'Постерна айдентика', en: 'A poster identity' },
+        text: {
+          uk: 'Перший екран — триптих «Принципів Графіту» з контурними номерами 01–03. Ті самі номери проходять крізь увесь сайт: послуги, роботи, процес.',
+          en: 'The first screen is a triptych of the studio’s principles with outlined numerals 01–03. The same numerals run through the whole site: services, work, process.',
+        },
+      },
+      {
+        title: { uk: 'До й після під пальцем', en: 'Before and after under your finger' },
+        text: {
+          uk: 'Головний кейс можна порівняти повзунком — він сам ледь ворушиться, коли з’являється, щоб підказати, що його можна тягнути.',
+          en: 'The main case has a comparison slider that nudges itself when it appears, hinting that it can be dragged.',
+        },
+      },
+      {
+        title: { uk: 'Від послуги до заявки', en: 'From service to request' },
+        text: {
+          uk: 'При наведенні на послугу за курсором летить її фото; клік відмічає послугу у формі запису. Пакети працюють так само.',
+          en: 'Hovering a service brings its photo along with the cursor; a click ticks it in the booking form. Packages work the same way.',
+        },
+      },
+      {
+        title: { uk: 'Рух із повагою', en: 'Motion with restraint' },
+        text: {
+          uk: 'Слова виїжджають з-під маски, фото розкриваються, лічильники рахують — і все це вимикається системним налаштуванням або кнопкою «Менше анімації».',
+          en: 'Words rise from a mask, photos unfold and counters tick up — and all of it switches off with the system setting or a “Less motion” button.',
+        },
+      },
+    ],
+    stats: [],
+    cover: { desktop: grafitHero, phone: grafitMHero },
+    gallery: [
+      [{ src: grafitHero, alt: { uk: 'Перший екран: триптих принципів студії', en: 'First screen: a triptych of studio principles' } }],
+      [
+        { src: grafitWorks, alt: { uk: 'Кейс із повзунком «до / після»', en: 'Case study with a before/after slider' } },
+        { src: grafitServices, alt: { uk: 'Послуги з прев’ю фото', en: 'Services with photo previews' } },
+      ],
+      [
+        { src: grafitMHero, alt: { uk: 'Перший екран на телефоні', en: 'First screen on a phone' }, phone: true },
+        { src: grafitMWorks, alt: { uk: 'Кейс на телефоні', en: 'Case study on a phone' }, phone: true },
+        { src: grafitMContact, alt: { uk: 'Запис на телефоні', en: 'Booking on a phone' }, phone: true },
+      ],
+      [{ src: grafitPrices, alt: { uk: 'Пакети послуг', en: 'Service packages' } }],
     ],
   },
   {
