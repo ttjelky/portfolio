@@ -121,7 +121,7 @@ export const PROJECTS: Project[] = [
     period: { uk: 'Вересень — листопад 2026', en: 'Sep — Nov 2026' },
     status: { uk: 'Працює онлайн', en: 'Live' },
     stack: ['Django 6', 'Django REST Framework', 'React 19', 'Vite', 'React Router', 'PostgreSQL', 'Docker', 'nginx', 'LLM APIs'],
-    links: { live: 'https://clarity-three-xi.vercel.app/' },
+    links: { live: 'https://clarity-three-xi.vercel.app/', github: 'https://github.com/team2-Vought/Clarity' },
     highlights: [
       {
         title: { uk: 'Рушій дебатів', en: 'Debate engine' },
