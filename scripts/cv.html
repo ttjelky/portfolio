@@ -1,0 +1,219 @@
+<!doctype html>
+<!-- Шаблон CV (A4). Мова: ?lang=uk або ?lang=en. Генерується в PDF скриптом make-assets.mjs -->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @font-face { font-family: 'Inter Tight'; src: url('../node_modules/@fontsource-variable/inter-tight/files/inter-tight-cyrillic-wght-normal.woff2') format('woff2'); font-weight: 100 900; unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1; }
+      @font-face { font-family: 'Inter Tight'; src: url('../node_modules/@fontsource-variable/inter-tight/files/inter-tight-latin-wght-normal.woff2') format('woff2'); font-weight: 100 900; }
+      @page { size: A4; margin: 0; }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; }
+      body { width: 210mm; padding: 12mm 14mm 10mm; font-family: 'Inter Tight', sans-serif; font-size: 8.8pt; line-height: 1.38; color: #0d0d0c; background: #fff; }
+      a { color: inherit; text-decoration: none; }
+      header { display: grid; grid-template-columns: 1fr auto; gap: 6mm; padding-bottom: 4.5mm; border-bottom: 1.5pt solid #0d0d0c; }
+      h1 { margin: 0; font-weight: 600; font-size: 26pt; letter-spacing: -0.055em; line-height: 1; }
+      .role { margin-top: 2.5mm; font-size: 11pt; font-weight: 500; }
+      .contacts { text-align: right; font-size: 8.8pt; line-height: 1.6; }
+      .contacts b { font-weight: 600; }
+      .accent { color: #0b0b0b; }
+      .summary { margin: 3.5mm 0 0; font-size: 9.6pt; line-height: 1.45; }
+      h2 { margin: 4mm 0 1mm; font-weight: 700; font-size: 8.6pt; letter-spacing: 0.06em; text-transform: uppercase; display: flex; align-items: center; gap: 2.5mm; }
+      h2::before { content: ''; width: 2.2mm; height: 2.2mm; border-radius: 50%; background: #0b0b0b; }
+      .item { display: grid; grid-template-columns: 34mm 1fr; gap: 4mm; padding: 1.6mm 0; border-top: 0.5pt solid #d8d6cf; break-inside: avoid; }
+      .item:first-of-type { border-top: 0; }
+      .when { color: #64625b; font-size: 8.6pt; }
+      .item h3 { margin: 0; font-size: 10.4pt; font-weight: 700; }
+      .item h3 span { font-weight: 400; color: #64625b; }
+      .item p { margin: 1mm 0 0; }
+      .item .meta { margin-top: 1mm; font-size: 8.4pt; color: #64625b; }
+      .award { display: inline-block; margin-top: 1.2mm; padding: 0.4mm 2mm; border-radius: 2mm; background: #c6f135; font-size: 8.4pt; font-weight: 600; }
+      .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0 8mm; }
+      .skills div { display: grid; grid-template-columns: 24mm 1fr; padding: 1mm 0; border-top: 0.5pt solid #d8d6cf; }
+      .skills div:first-child { border-top: 0; }
+      .skills b { font-weight: 600; }
+      footer { margin-top: 4mm; font-size: 8pt; color: #64625b; }
+      [data-lang] { display: none; }
+      body.uk [data-lang='uk'], body.en [data-lang='en'] { display: revert; }
+    </style>
+  </head>
+  <body>
+    <!-- ================= УКРАЇНСЬКА ================= -->
+    <div data-lang="uk">
+      <header>
+        <div>
+          <h1>Олексій<br />Безклинський</h1>
+          <p class="role">Дизайн і розробка сайтів та вебзастосунків · <span class="accent">fullstack: React + Django</span></p>
+        </div>
+        <div class="contacts">
+          Кременчук, Україна<br />
+          <b>bezklinskiyalexey@gmail.com</b><br />
+          Telegram: @ttjelky<br />
+          github.com/ttjelky<br />
+          linkedin.com/in/olexiy-bezklynskiy-694a243b5<br />
+          <b>ttjelky.github.io/portfolio</b>
+        </div>
+      </header>
+      <p class="summary">
+        Веду продукт від ідеї до запуску: придумую концепцію, малюю логотип та інтерфейс, проєктую архітектуру й пишу більшу частину коду. У командних проєктах — тімлід.
+        З командою посів <b>3 місце у фіналі Всеукраїнського командного турніру з програмування 2026</b> (121 команда на старті). Учень 11 класу, розробку вивчаю самостійно.
+      </p>
+
+      <h2>Проєкти</h2>
+      <div class="item">
+        <div class="when">Вер — лис 2026</div>
+        <div>
+          <h3>Clarity <span>— AI-рада для складних рішень</span></h3>
+          <p>Кілька AI-учасників обговорюють питання, модератор зводить аргументи в рішення, AI Devil перевіряє його. Рушій дебатів — стан-машина на Django; 9 провайдерів моделей, пошук у вебі, вкладення, журнал рішень, UA/EN.</p>
+          <p class="meta">Ідея, логотип, увесь код і архітектура, фінальний дизайн · Django, DRF, React 19, PostgreSQL, Docker · 450+ тестів бекенду</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="when">Лип 2026 · 5 днів</div>
+        <div>
+          <h3>Scalaris <span>— соціальна карта для активностей поруч</span></h3>
+          <p>Люди поруч на карті (PostGIS, радіус 5 км), чотири види активностей, власна кластеризація аватарів, оновлення в реальному часі через WebSocket. Зроблено за 5 днів на фіналі турніру.</p>
+          <p class="meta">Тімлід команди з трьох, 50% коду, дизайн, логотип і технічні рішення · Django Channels, PostGIS, Redis, React 19, Leaflet, Docker</p>
+          <span class="award">3 місце у фіналі Всеукраїнського командного турніру з програмування 2026</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="when">Лют — тра 2026</div>
+        <div>
+          <h3>Vector <span>— платформа для турнірів з будь-якого предмета</span></h3>
+          <p>Конструктор турнірів (раунди, задачі, журі, сертифікати), три ролі з розмежуванням доступу в API, сповіщення через WebSocket, автоматичні PDF-сертифікати.</p>
+          <p class="meta">Тімлід команди з трьох, 70% коду, весь дизайн і логотип · Django, DRF, Channels, React · 130+ тестів</p>
+          <span class="award">Топ-4 зі 121 команди — вихід у фінал турніру</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="when">Сер 2026 — зараз</div>
+        <div>
+          <h3>WorldLog <span>— паспорт Minecraft-світу (у розробці)</span></h3>
+          <p>Командний щоденник ігрового світу: локації, хроніка за епохами, вікі з посиланнями, граф зв’язків на D3, дев’ять тем. Відкритий код, MIT.</p>
+          <p class="meta">Ідея, 90% коду, дизайн і айдентика, керую напарником · Django, DRF, React 19, MUI, TanStack Query, D3</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="when">2026</div>
+        <div>
+          <h3>Britva, Glaze <span>— сайти для локального бізнесу (концепти)</span></h3>
+          <p class="meta">Дизайн і верстка з нуля без фреймворків: барбершоп і студія манікюру, онлайн-запис, окрема мобільна версія</p>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div>
+          <h2>Навички</h2>
+          <div class="skills">
+            <div><b>Впевнено</b><span>React, Django, Django REST Framework, тести</span></div>
+            <div><b>Працював</b><span>PostgreSQL, PostGIS, Docker, WebSockets, Redis</span></div>
+            <div><b>Дизайн</b><span>інтерфейси, логотипи, айдентика</span></div>
+            <div><b>Вивчаю</b><span>TypeScript, Celery</span></div>
+          </div>
+        </div>
+        <div>
+          <h2>Нагороди й освіта</h2>
+          <div class="skills">
+            <div><b>2026</b><span>3 місце, Всеукраїнський командний турнір з програмування (БФ «Star for Life Ukraine», МАН)</span></div>
+            <div><b>Олімпіади</b><span>багаторічний призер олімпіад з математики та англійської</span></div>
+            <div><b>Курси</b><span>OpenAI Academy: AI Foundations, Applied AI Foundations, Agents and Workflow</span></div>
+            <div><b>Школа</b><span>11 клас, Кременчук</span></div>
+          </div>
+        </div>
+      </div>
+      <footer>Мови: українська — рідна, англійська. Портфоліо з кейсами: ttjelky.github.io/portfolio</footer>
+    </div>
+
+    <!-- ================= ENGLISH ================= -->
+    <div data-lang="en">
+      <header>
+        <div>
+          <h1>Oleksii<br />Bezklynskyi</h1>
+          <p class="role">Website & web app design and development · <span class="accent">full-stack: React + Django</span></p>
+        </div>
+        <div class="contacts">
+          Kremenchuk, Ukraine<br />
+          <b>bezklinskiyalexey@gmail.com</b><br />
+          Telegram: @ttjelky<br />
+          github.com/ttjelky<br />
+          linkedin.com/in/olexiy-bezklynskiy-694a243b5<br />
+          <b>ttjelky.github.io/portfolio</b>
+        </div>
+      </header>
+      <p class="summary">
+        I take products from idea to launch: I come up with the concept, design the logo and interface, plan the architecture and write most of the code. In team projects I am the lead.
+        With my team I won <b>3rd place at the All-Ukrainian Team Programming Tournament 2026 final</b> (121 teams at the start). Final-year school student, self-taught developer.
+      </p>
+
+      <h2>Projects</h2>
+      <div class="item">
+        <div class="when">Sep — Nov 2026</div>
+        <div>
+          <h3>Clarity <span>— an AI council for hard decisions</span></h3>
+          <p>Several AI participants debate a question, a moderator turns arguments into a decision and an AI Devil stress-tests it. The debate engine is a Django state machine; 9 model providers, web search, attachments, a decision journal, UA/EN.</p>
+          <p class="meta">Idea, logo, all of the code and architecture, final design · Django, DRF, React 19, PostgreSQL, Docker · 450+ backend tests</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="when">Jul 2026 · 5 days</div>
+        <div>
+          <h3>Scalaris <span>— a social map for activities nearby</span></h3>
+          <p>People nearby on a map (PostGIS, 5 km radius), four kinds of activity, custom avatar clustering, real-time updates over WebSockets. Built in 5 days at the tournament final.</p>
+          <p class="meta">Team lead of three, 50% of the code, design, logo and technical decisions · Django Channels, PostGIS, Redis, React 19, Leaflet, Docker</p>
+          <span class="award">3rd place at the All-Ukrainian Team Programming Tournament 2026 final</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="when">Feb — May 2026</div>
+        <div>
+          <h3>Vector <span>— a platform for tournaments in any subject</span></h3>
+          <p>Tournament builder (rounds, tasks, jury, certificates), three roles with access enforced in the API, WebSocket notifications, automatic PDF certificates.</p>
+          <p class="meta">Team lead of three, 70% of the code, all design and the logo · Django, DRF, Channels, React · 130+ tests</p>
+          <span class="award">Top 4 of 121 teams — qualified for the tournament final</span>
+        </div>
+      </div>
+      <div class="item">
+        <div class="when">Aug 2026 — now</div>
+        <div>
+          <h3>WorldLog <span>— a passport for a Minecraft world (in progress)</span></h3>
+          <p>A shared journal for a game world: locations, a timeline in eras, a linked wiki, a D3 relationship graph, nine themes. Open source, MIT.</p>
+          <p class="meta">Idea, 90% of the code, design and identity, lead a teammate · Django, DRF, React 19, MUI, TanStack Query, D3</p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="when">2026</div>
+        <div>
+          <h3>Britva, Glaze <span>— websites for local businesses (concepts)</span></h3>
+          <p class="meta">Designed and built from scratch without frameworks: a barbershop and a nail studio, online booking, a dedicated mobile layout</p>
+        </div>
+      </div>
+
+      <div class="grid2">
+        <div>
+          <h2>Skills</h2>
+          <div class="skills">
+            <div><b>Confident</b><span>React, Django, Django REST Framework, testing</span></div>
+            <div><b>Used</b><span>PostgreSQL, PostGIS, Docker, WebSockets, Redis</span></div>
+            <div><b>Design</b><span>interfaces, logos, identity</span></div>
+            <div><b>Learning</b><span>TypeScript, Celery</span></div>
+          </div>
+        </div>
+        <div>
+          <h2>Awards & education</h2>
+          <div class="skills">
+            <div><b>2026</b><span>3rd place, All-Ukrainian Team Programming Tournament (Star for Life Ukraine, Junior Academy of Sciences)</span></div>
+            <div><b>Olympiads</b><span>prize winner in maths and English, year after year</span></div>
+            <div><b>Courses</b><span>OpenAI Academy: AI Foundations, Applied AI Foundations, Agents and Workflow</span></div>
+            <div><b>School</b><span>final year (11th grade), Kremenchuk</span></div>
+          </div>
+        </div>
+      </div>
+      <footer>Languages: Ukrainian — native, English. Portfolio with case studies: ttjelky.github.io/portfolio</footer>
+    </div>
+
+    <script>
+      document.body.className = new URLSearchParams(location.search).get('lang') || 'uk';
+    </script>
+  </body>
+</html>

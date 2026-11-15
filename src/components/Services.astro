@@ -1,0 +1,465 @@
+---
+import { Image } from 'astro:assets';
+import ProjectVisual from './ProjectVisual.astro';
+import { PROJECTS, SITES } from '../data/projects';
+import { langPath, ui, type Lang } from '../i18n';
+import britvaHero from '../assets/projects/britva/hero.jpg';
+import glazePalette from '../assets/projects/glaze/palette.jpg';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const s = ui.services;
+const pad = (n: number) => String(n).padStart(2, '0');
+const color = (slug: string) => PROJECTS.find((p) => p.slug === slug)!;
+const britva = color('britva');
+
+// Стікери на дошці: колір кожного — з одного з проєктів
+const stickers = [
+  { text: s.stickers.landing[lang], p: color('scalaris'), x: 6, y: 16, r: -9, shape: 'tag' },
+  { text: s.stickers.booking[lang], p: color('clarity'), x: 70, y: 9, r: 7, shape: 'round' },
+  { text: s.stickers.business[lang], p: color('worldlog'), x: 4, y: 62, r: 6, shape: 'tag' },
+  { text: s.stickers.app[lang], p: color('vector'), x: 72, y: 60, r: -6, shape: 'tag' },
+  { text: s.stickers.design[lang], p: color('glaze'), x: 30, y: 74, r: -4, shape: 'pill' },
+  { text: s.stickers.mobile[lang], p: britva, x: 52, y: 4, r: -3, shape: 'pill' },
+];
+---
+
+<section
+  class="sheet theme-dark services"
+  id="services"
+  data-section
+  aria-labelledby="services-title"
+  style={`--accent: ${britva.accent}; --on-accent: ${britva.onAccent}`}
+>
+  <div class="container">
+    <header class="services__head">
+      <span class="kicker" data-reveal>{s.kicker[lang]}</span>
+      <h2 class="services__title display" id="services-title" data-reveal>{s.title[lang]}</h2>
+      <p class="lead" data-reveal style="--delay: 0.1s">{s.lead[lang]}</p>
+    </header>
+  </div>
+
+  <!-- Дошка зі стікерами (декоративна: ті самі послуги перелічені нижче текстом) -->
+  <div class="board" aria-hidden="true" data-board>
+    <div class="board__shots">
+      <div class="board__desktop">
+        <Image src={glazePalette} alt="" widths={[640, 1000, 1400]} sizes="(max-width: 640px) 80vw, 46vw" quality={78} />
+      </div>
+      <div class="board__phone">
+        <Image src={britvaHero} alt="" widths={[200, 320, 480]} sizes="(max-width: 640px) 26vw, 14vw" quality={78} />
+      </div>
+    </div>
+    {
+      stickers.map((st) => (
+        <span
+          class:list={['sticker', `sticker--${st.shape}`]}
+          style={`--x: ${st.x}%; --y: ${st.y}%; --r: ${st.r}deg; --c: ${st.p.accent}; --t: ${st.p.onAccent}`}
+          data-sticker
+        >
+          {st.text}
+        </span>
+      ))
+    }
+    <span class="board__hint label">{s.dragHint[lang]}</span>
+  </div>
+
+  <div class="container">
+    <ol class="services__list">
+      {
+        s.items.map((item, i) => (
+          <li class="services__item" data-reveal style={`--delay: ${i * 0.06}s`}>
+            <span class="label">{pad(i + 1)}</span>
+            <h3 class="services__name">{item.title[lang]}</h3>
+            <p class="services__text">{item.text[lang]}</p>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="services__included" data-reveal>
+      <span class="label">{s.included[lang]}</span>
+      <ul>
+        {s.includedList[lang].map((x) => <li>{x}</li>)}
+      </ul>
+    </div>
+
+    <div class="services__process">
+      <h3 class="services__sub" data-reveal>{s.processTitle[lang]}</h3>
+      <ol class="process">
+        {
+          s.process.map((step, i) => (
+            <li class="process__step" data-reveal style={`--delay: ${i * 0.08}s`}>
+              <span class="process__num">{pad(i + 1)}</span>
+              <h4>{step.title[lang]}</h4>
+              <p>{step.text[lang]}</p>
+            </li>
+          ))
+        }
+      </ol>
+    </div>
+
+    <div class="services__demos">
+      <div class="services__demos-head" data-reveal>
+        <h3 class="services__sub">{s.demosTitle[lang]}</h3>
+        <p class="lead">{s.demosNote[lang]}</p>
+      </div>
+      <ul class="demos">
+        {
+          SITES.map((p) => (
+            <li class="demo" data-reveal style={`--accent: ${p.accent}; --on-accent: ${p.onAccent}`}>
+              <a href={langPath(lang, `work/${p.slug}`)} class="demo__visual" aria-label={`${p.name} — ${s.details[lang]}`}>
+                <ProjectVisual project={p} />
+              </a>
+              <div class="demo__body">
+                <div>
+                  <h4 class="demo__name">{p.name}</h4>
+                  <p class="demo__tagline">{p.tagline[lang]}</p>
+                </div>
+                {p.links.live && (
+                  <a class="link" href={p.links.live} target="_blank" rel="noopener">
+                    {s.visit[lang]} <span class="arrow arrow--ne" aria-hidden="true">→</span>
+                    <span class="visually-hidden">— {p.name}</span>
+                  </a>
+                )}
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="services__cta" data-reveal>
+      <a href="#contact" class="btn btn--accent">{s.cta[lang]} <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .services__head {
+    display: grid;
+    gap: 28px;
+    margin-bottom: clamp(48px, 6vw, 88px);
+  }
+
+  .services__title {
+    font-size: var(--step-4);
+    max-width: 12ch;
+  }
+
+  /* ---- дошка ---- */
+  .board {
+    position: relative;
+    height: clamp(440px, 46vw, 720px);
+    margin-right: var(--gutter);
+    border-radius: 0 999px 999px 0;
+    background-color: var(--white);
+    background-image:
+      linear-gradient(rgba(11, 11, 11, 0.09) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(11, 11, 11, 0.09) 1px, transparent 1px);
+    background-size: clamp(44px, 5vw, 76px) clamp(44px, 5vw, 76px);
+    background-position: -1px -1px;
+    color: var(--black);
+    overflow: hidden;
+    touch-action: pan-y;
+  }
+
+  .board__shots {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 46%;
+    translate: -55% -46%;
+  }
+
+  .board__desktop {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.06),
+      0 40px 80px -30px rgba(0, 0, 0, 0.5);
+  }
+
+  .board__phone {
+    position: absolute;
+    right: -12%;
+    bottom: -14%;
+    width: 30%;
+    border-radius: clamp(12px, 1.6vw, 22px);
+    overflow: hidden;
+    box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.6);
+  }
+
+  .sticker {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    z-index: 2;
+    display: grid;
+    place-items: center;
+    padding: 0.6em 0.9em;
+    background: var(--c);
+    color: var(--t);
+    font-size: clamp(0.95rem, 0.5rem + 1.3vw, 1.9rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 0.95;
+    text-transform: uppercase;
+    text-align: center;
+    border-radius: 0.45em;
+    rotate: var(--r);
+    translate: var(--dx, 0) var(--dy, 0);
+    box-shadow: 0 10px 24px -10px rgba(0, 0, 0, 0.45);
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    transition:
+      scale 0.3s var(--ease-out),
+      box-shadow 0.3s;
+  }
+
+  .sticker:hover {
+    scale: 1.05;
+  }
+
+  .sticker.is-dragging {
+    cursor: grabbing;
+    scale: 1.1;
+    z-index: 3;
+    box-shadow: 0 24px 40px -14px rgba(0, 0, 0, 0.55);
+  }
+
+  .sticker--round {
+    width: 6.2em;
+    aspect-ratio: 1;
+    padding: 0.6em;
+    border-radius: 50%;
+    font-size: clamp(0.8rem, 0.4rem + 1vw, 1.45rem);
+  }
+
+  .sticker--pill {
+    border-radius: 999px;
+    padding: 0.55em 1.1em;
+  }
+
+  .board__hint {
+    position: absolute;
+    left: var(--gutter);
+    bottom: 20px;
+    color: rgba(11, 11, 11, 0.45);
+  }
+
+  /* ---- послуги ---- */
+  .services__list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: clamp(64px, 8vw, 120px);
+    border-top: 1px solid var(--line);
+  }
+
+  .services__item {
+    display: grid;
+    align-content: start;
+    gap: 12px;
+    padding: 24px 24px 32px 0;
+  }
+
+  .services__item + .services__item {
+    padding-left: 24px;
+    border-left: 1px solid var(--line);
+  }
+
+  .services__name {
+    font-size: var(--step-1);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .services__text {
+    color: var(--muted);
+  }
+
+  .services__included {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px 28px;
+    padding: 20px 0;
+    border-block: 1px solid var(--line);
+  }
+
+  .services__included ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+  }
+
+  .services__included li::before {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background: var(--accent);
+    vertical-align: middle;
+  }
+
+  .services__sub {
+    font-size: var(--step-2);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .services__process {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 3fr);
+    gap: 32px;
+    margin-top: clamp(80px, 10vw, 150px);
+  }
+
+  .process {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .process__step {
+    display: grid;
+    align-content: start;
+    gap: 10px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line);
+  }
+
+  .process__num {
+    font-size: var(--step--1);
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .process__step h4 {
+    font-size: var(--step-1);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .process__step p {
+    color: var(--muted);
+  }
+
+  .services__demos {
+    margin-top: clamp(80px, 10vw, 150px);
+  }
+
+  .services__demos-head {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: end;
+    gap: 16px 40px;
+    margin-bottom: 32px;
+  }
+
+  .demos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: clamp(24px, 3vw, 40px);
+  }
+
+  .demo {
+    display: grid;
+    gap: 20px;
+  }
+
+  .demo__body {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: end;
+    gap: 16px;
+  }
+
+  .demo__name {
+    font-size: var(--step-2);
+    font-weight: 600;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .demo__tagline {
+    margin-top: 6px;
+    color: var(--muted);
+  }
+
+  .services__cta {
+    display: flex;
+    justify-content: center;
+    margin-top: clamp(64px, 8vw, 112px);
+  }
+
+  .services__cta .btn {
+    min-height: 64px;
+    padding: 0 36px;
+    font-size: var(--step-1);
+  }
+
+  @media (max-width: 1080px) {
+    .services__list,
+    .process {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .services__item:nth-child(3) {
+      padding-left: 0;
+      border-left: 0;
+    }
+
+    .services__item:nth-child(n + 3) {
+      border-top: 1px solid var(--line);
+    }
+
+    .services__process {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .board {
+      height: 520px;
+      margin-right: 0;
+      border-radius: 0 0 0 0;
+      border-radius: 28px;
+      margin-inline: 8px;
+    }
+
+    .board__shots {
+      width: 72%;
+      translate: -54% -50%;
+    }
+
+    .sticker--round {
+      width: 5.6em;
+    }
+
+    .services__list,
+    .process,
+    .demos {
+      grid-template-columns: 1fr;
+    }
+
+    .services__item,
+    .services__item + .services__item {
+      padding: 22px 0;
+      border-left: 0;
+    }
+
+    .services__item + .services__item {
+      border-top: 1px solid var(--line);
+    }
+  }
+</style>

@@ -1,0 +1,55 @@
+<!doctype html>
+<!-- Шаблон OG-картинки 1200×630. Параметри: ?title=&sub=&tag=&c1=&c2= -->
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <style>
+      @font-face {
+        font-family: 'Inter Tight';
+        src: url('../node_modules/@fontsource-variable/inter-tight/files/inter-tight-cyrillic-wght-normal.woff2') format('woff2');
+        font-weight: 100 900;
+        unicode-range: U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+      }
+      @font-face {
+        font-family: 'Inter Tight';
+        src: url('../node_modules/@fontsource-variable/inter-tight/files/inter-tight-latin-wght-normal.woff2') format('woff2');
+        font-weight: 100 900;
+      }
+      html, body { margin: 0; }
+      body {
+        width: 1200px; height: 630px; box-sizing: border-box; padding: 56px 64px 0;
+        background: #0b0b0b; color: #f3f2ee; font-family: 'Inter Tight', sans-serif;
+        display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden;
+      }
+      .glow { position: absolute; inset: -40% -10% 30% 30%; filter: blur(90px); opacity: .6; }
+      .glow span { position: absolute; border-radius: 50%; width: 55%; aspect-ratio: 1; }
+      .glow span:nth-child(1) { left: 10%; top: 10%; background: var(--c1); }
+      .glow span:nth-child(2) { left: 45%; top: 30%; background: var(--c2); }
+      .top { position: relative; display: flex; justify-content: space-between; align-items: center; font-size: 20px; font-weight: 500; letter-spacing: .07em; text-transform: uppercase; color: rgba(243,242,238,.6); }
+      .mark { width: 54px; height: 54px; border-radius: 50%; background: #f3f2ee; color: #0b0b0b; display: grid; place-items: center; font-weight: 700; font-size: 17px; letter-spacing: -0.02em; }
+      p { position: relative; margin: 0; font-size: 40px; line-height: 1.12; font-weight: 500; letter-spacing: -0.035em; max-width: 880px; color: rgba(243,242,238,.62); }
+      h1 { position: relative; align-self: flex-start; display: inline-block; margin: 0 0 -0.1em; font-weight: 600; letter-spacing: -0.07em; line-height: .8; white-space: nowrap; }
+    </style>
+  </head>
+  <body>
+    <div class="glow"><span></span><span></span></div>
+    <div class="top"><span class="mark">OB</span><span id="tag"></span></div>
+    <p id="sub"></p>
+    <h1 id="title"></h1>
+    <script>
+      const q = new URLSearchParams(location.search);
+      document.body.style.setProperty('--c1', q.get('c1') || '#f29bb0');
+      document.body.style.setProperty('--c2', q.get('c2') || '#2f6bff');
+      const h1 = document.getElementById('title');
+      h1.textContent = q.get('title');
+      document.getElementById('sub').textContent = q.get('sub');
+      document.getElementById('tag').textContent = q.get('tag');
+      // підганяємо заголовок на всю ширину
+      document.fonts.ready.then(() => {
+        h1.style.fontSize = '100px';
+        h1.style.fontSize = Math.floor((1200 - 128) / h1.scrollWidth * 100) + 'px';
+        document.body.dataset.ready = '1';
+      });
+    </script>
+  </body>
+</html>

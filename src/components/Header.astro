@@ -1,0 +1,148 @@
+---
+import { langPath, ui, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  otherHref: string;
+}
+
+const { lang, otherHref } = Astro.props;
+const home = langPath(lang);
+const links = [
+  { id: 'work', label: ui.nav.work[lang] },
+  { id: 'services', label: ui.nav.services[lang] },
+  { id: 'about', label: ui.nav.about[lang], wide: true },
+  { id: 'contact', label: ui.nav.contact[lang] },
+];
+const other = lang === 'uk' ? 'en' : 'uk';
+---
+
+<!-- Плаваюча «пігулка»: зверху на десктопі, знизу на телефоні -->
+<nav class="nav" aria-label={ui.nav.main[lang]} data-nav>
+  <span class="nav__indicator" aria-hidden="true" data-nav-indicator></span>
+  <a href={home} class="nav__mark" aria-label={ui.name[lang]}>OB</a>
+  {
+    links.map((l) => (
+      <a href={`${home}#${l.id}`} class:list={['nav__link', { 'nav__link--wide': l.wide }]} data-nav-link={l.id}>
+        {l.label}
+      </a>
+    ))
+  }
+  <a href={otherHref} class="nav__lang" hreflang={other} lang={other} data-lang-switch={other}>
+    <span aria-hidden="true">{lang === 'uk' ? 'EN' : 'UA'}</span>
+    <span class="visually-hidden">{ui.nav.switchTo[lang]}</span>
+  </a>
+</nav>
+
+<style>
+  .nav {
+    --nav-accent: var(--white);
+    --nav-on-accent: var(--black);
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 2px;
+    padding: 5px;
+    border: 1px solid rgba(243, 242, 238, 0.12);
+    border-radius: 999px;
+    background: rgba(14, 14, 14, 0.78);
+    backdrop-filter: blur(16px) saturate(1.5);
+    -webkit-backdrop-filter: blur(16px) saturate(1.5);
+    color: var(--white);
+    font-size: 14px;
+    font-weight: 500;
+    translate: -50% 0;
+    box-shadow: 0 10px 30px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  .nav a {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    height: 38px;
+    padding: 0 14px;
+    border-radius: 999px;
+    white-space: nowrap;
+    transition: color 0.35s;
+  }
+
+  .nav a:hover {
+    color: rgba(243, 242, 238, 0.7);
+  }
+
+  .nav a.is-active,
+  .nav a.is-active:hover {
+    color: var(--nav-on-accent);
+  }
+
+  .nav__mark {
+    width: 38px;
+    padding: 0 !important;
+    background: var(--white);
+    color: var(--black) !important;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-right: 4px;
+  }
+
+  .nav__lang {
+    margin-left: 4px;
+    border: 1px solid rgba(243, 242, 238, 0.16);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+  }
+
+  .nav__indicator {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    height: 38px;
+    width: 0;
+    border-radius: 999px;
+    background: var(--nav-accent);
+    opacity: 0;
+    transition:
+      transform 0.55s var(--ease-out),
+      width 0.55s var(--ease-out),
+      background 0.5s,
+      opacity 0.3s;
+  }
+
+  .nav.has-active .nav__indicator {
+    opacity: 1;
+  }
+
+  @media (max-width: 640px) {
+    .nav {
+      top: auto;
+      bottom: max(14px, env(safe-area-inset-bottom));
+      font-size: 13px;
+    }
+
+    .nav a {
+      padding: 0 11px;
+    }
+
+    .nav__link--wide {
+      display: none !important;
+    }
+  }
+
+  @media (max-width: 360px) {
+    .nav a {
+      padding: 0 8px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .nav__indicator {
+      transition: none;
+    }
+  }
+</style>

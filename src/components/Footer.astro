@@ -1,0 +1,56 @@
+---
+import { CONTACT, ui, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const year = new Date().getFullYear();
+---
+
+<footer class="sheet theme-dark footer">
+  <div class="container footer__inner label">
+    <p>© {year} {ui.name[lang]}</p>
+    <p>{ui.footer.time[lang]} <time class="footer__time" data-local-time>—</time></p>
+    <p class="footer__links">
+      <a href={`${CONTACT.github}/portfolio`} target="_blank" rel="noopener">{ui.footer.source[lang]}</a>
+      <a href="#main">{ui.footer.top[lang]} ↑</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    margin-top: calc(var(--radius-section) * -1);
+    border-radius: var(--radius-section) var(--radius-section) 0 0;
+    padding-block: 40px calc(40px + var(--nav-space, 0px));
+  }
+
+  .footer__inner {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 12px 32px;
+  }
+
+  .footer__links {
+    display: flex;
+    gap: 24px;
+  }
+
+  .footer a:hover {
+    color: var(--fg);
+  }
+
+  .footer__time {
+    color: var(--fg);
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (max-width: 640px) {
+    .footer {
+      --nav-space: 72px;
+    }
+  }
+</style>

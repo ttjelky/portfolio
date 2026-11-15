@@ -1,0 +1,320 @@
+---
+import { getImage } from 'astro:assets';
+import { PROJECTS } from '../data/projects';
+import { ui, type Lang } from '../i18n';
+import sflCert from '../assets/certificates/tech-camp-3rd.png';
+import manCert from '../assets/certificates/tech-camp-man.png';
+import aiFoundations from '../assets/certificates/ai-foundations.png';
+import appliedAi from '../assets/certificates/applied-ai-foundations.png';
+import agents from '../assets/certificates/agents-workflow.png';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const a = ui.awards;
+// акцент секції — лайм Scalaris: саме з цим проєктом команда взяла 3 місце
+const scalaris = PROJECTS.find((p) => p.slug === 'scalaris')!;
+
+const big = (src: ImageMetadata) => getImage({ src, width: 1400, format: 'webp', quality: 82 });
+const docs = await Promise.all(
+  [
+    { title: a.certSfl[lang], src: sflCert },
+    { title: a.certMan[lang], src: manCert },
+  ].map(async (d) => ({ ...d, img: await big(d.src) })),
+);
+const courses = await Promise.all(
+  [
+    { title: 'AI Foundations', src: aiFoundations },
+    { title: 'Applied AI Foundations', src: appliedAi },
+    { title: 'Agents and Workflow', src: agents },
+  ].map(async (d) => ({ ...d, img: await big(d.src) })),
+);
+const widths = ['100%', '64%', '42%', '30%'];
+---
+
+<section
+  class="sheet theme-light awards"
+  id="awards"
+  data-section
+  aria-labelledby="awards-title"
+  style={`--accent: ${scalaris.accent}; --on-accent: ${scalaris.onAccent}`}
+>
+  <div class="container">
+    <span class="kicker" data-reveal>{a.kicker[lang]}</span>
+
+    <div class="awards__main">
+      <p class="awards__place" data-reveal aria-hidden="true">
+        <span class="awards__num display">3</span>
+        <span class="awards__badge">{a.place[lang]}</span>
+      </p>
+
+      <div class="awards__info" data-reveal style="--delay: 0.1s">
+        <h2 class="awards__title display" id="awards-title">
+          <span class="visually-hidden">3 {a.place[lang]} — </span>{a.title[lang]}
+        </h2>
+        <p class="awards__org">{a.org[lang]}</p>
+
+        <ol class="funnel">
+          {
+            a.path.map((step, i) => (
+              <li class="funnel__step" style={`--w: ${widths[i]}; --delay: ${0.15 + i * 0.12}s`} data-reveal>
+                <span class="funnel__bar">
+                  <span class="funnel__value">{step.value}</span>
+                </span>
+                <span class="funnel__label">{step.label[lang]}</span>
+              </li>
+            ))
+          }
+        </ol>
+
+        <div class="awards__docs">
+          <span class="label">{a.docs[lang]}</span>
+          {
+            docs.map((d) => (
+              <button type="button" class="chip awards__doc" data-lightbox={d.img.src} data-lightbox-alt={d.title}>
+                {d.title} <span aria-hidden="true">↗</span>
+              </button>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+
+    <div class="awards__more" data-reveal>
+      <span class="label">{a.more[lang]}</span>
+      <ul>
+        <li>{a.olympiads[lang]}</li>
+        <li>
+          {a.courses[lang]}:{' '}
+          {
+            courses.map((c, i) => (
+              <>
+                <button type="button" class="awards__link" data-lightbox={c.img.src} data-lightbox-alt={c.title}>
+                  {c.title}
+                </button>
+                {i < courses.length - 1 ? ', ' : ''}
+              </>
+            ))
+          }
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <dialog class="lightbox" data-lightbox-dialog aria-label={a.view[lang]}>
+    <form method="dialog">
+      <button class="lightbox__close" aria-label={ui.nav.close[lang]}>✕</button>
+    </form>
+    <img alt="" data-lightbox-img />
+  </dialog>
+</section>
+
+<style>
+  .awards__main {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: clamp(32px, 7vw, 120px);
+    align-items: start;
+    margin-top: clamp(32px, 4vw, 56px);
+  }
+
+  .awards__place {
+    position: relative;
+    line-height: 0.74;
+  }
+
+  .awards__num {
+    display: block;
+    font-size: clamp(12rem, 34vw, 32rem);
+    letter-spacing: -0.09em;
+    line-height: 0.74;
+    margin-left: -0.04em;
+  }
+
+  /* «стікер» у кольорі Scalaris */
+  .awards__badge {
+    position: absolute;
+    right: -0.4em;
+    top: 0.2em;
+    display: grid;
+    place-items: center;
+    width: 5.2em;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-size: clamp(1rem, 0.6rem + 1.2vw, 1.75rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    rotate: 12deg;
+    box-shadow: 0 14px 30px -14px rgba(0, 0, 0, 0.4);
+  }
+
+  .awards__title {
+    font-size: var(--step-3);
+    max-width: 18ch;
+  }
+
+  .awards__org {
+    margin-top: 18px;
+    max-width: 50ch;
+    color: var(--muted);
+  }
+
+  .funnel {
+    display: grid;
+    gap: 8px;
+    margin-top: 40px;
+  }
+
+  .funnel__step {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 20px;
+  }
+
+  .funnel__bar {
+    display: flex;
+    align-items: center;
+    width: var(--w);
+    min-width: 76px;
+    height: 54px;
+    padding: 0 18px;
+    border-radius: 12px;
+    background: var(--surface);
+  }
+
+  .funnel__step:last-child .funnel__bar {
+    background: var(--accent);
+    color: var(--on-accent);
+  }
+
+  .funnel__value {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+  }
+
+  .funnel__label {
+    font-size: var(--step--1);
+    line-height: 1.35;
+    color: var(--muted);
+  }
+
+  .awards__docs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-top: 32px;
+  }
+
+  .awards__docs .label {
+    margin-right: 8px;
+  }
+
+  .awards__doc {
+    gap: 6px;
+    background: none;
+    transition:
+      background 0.25s,
+      color 0.25s;
+  }
+
+  .awards__doc:hover {
+    background: var(--fg);
+    color: var(--bg);
+  }
+
+  .awards__more {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    gap: 16px 32px;
+    margin-top: clamp(64px, 8vw, 120px);
+    padding-top: 24px;
+    border-top: 1px solid var(--line);
+  }
+
+  .awards__more ul {
+    display: grid;
+    gap: 10px;
+  }
+
+  .awards__link {
+    padding: 0;
+    border: 0;
+    background: none;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--line);
+  }
+
+  .awards__link:hover {
+    text-decoration-color: var(--fg);
+  }
+
+  .lightbox {
+    width: min(92vw, 1100px);
+    max-height: 92vh;
+    padding: 0;
+    border: 0;
+    border-radius: 14px;
+    background: #fff;
+    overflow: visible;
+  }
+
+  .lightbox::backdrop {
+    background: rgba(11, 11, 11, 0.85);
+    backdrop-filter: blur(6px);
+  }
+
+  .lightbox img {
+    width: 100%;
+    max-height: 92vh;
+    object-fit: contain;
+    border-radius: 14px;
+  }
+
+  .lightbox__close {
+    position: absolute;
+    top: -18px;
+    right: -18px;
+    width: 44px;
+    height: 44px;
+    border: 0;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-size: 16px;
+  }
+
+  @media (max-width: 900px) {
+    .awards__main {
+      grid-template-columns: 1fr;
+    }
+
+    .awards__place {
+      justify-self: start;
+    }
+
+    .awards__more {
+      grid-template-columns: 1fr;
+    }
+
+    .lightbox__close {
+      top: 8px;
+      right: 8px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .funnel__step {
+      grid-template-columns: 1fr;
+      gap: 6px;
+    }
+  }
+</style>

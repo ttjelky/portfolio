@@ -1,0 +1,192 @@
+---
+import { Image } from 'astro:assets';
+import ProjectVisual from './ProjectVisual.astro';
+import { PRODUCTS } from '../data/projects';
+import { langPath, ui, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const pad = (n: number) => String(n).padStart(2, '0');
+---
+
+<section class="sheet theme-light work" id="work" data-section aria-labelledby="work-title">
+  <div class="container">
+    <header class="work__intro">
+      <h2 class="work__title display" id="work-title" data-reveal>
+        {ui.work.title[lang]}<span class="count">({pad(PRODUCTS.length)})</span>
+      </h2>
+      <p class="lead" data-reveal style="--delay: 0.1s">{ui.work.lead[lang]}</p>
+    </header>
+
+    <ol class="work__list">
+      {
+        PRODUCTS.map((p, i) => (
+          <li class="work__item" style={`--accent: ${p.accent}; --on-accent: ${p.onAccent}`} data-section-accent>
+            <a href={langPath(lang, `work/${p.slug}`)} class="work__link">
+              <div class="work__head" data-reveal>
+                <span class="work__index label">{pad(i + 1)}</span>
+                <h3 class="work__name">
+                  {p.logo && (
+                    <Image src={p.logo} alt="" class:list={['work__logo', `work__logo--${p.slug}`]} height={96} />
+                  )}
+                  {p.name}
+                </h3>
+                <p class="work__tagline">{p.tagline[lang]}</p>
+              </div>
+              <div data-reveal-clip>
+                <ProjectVisual project={p} />
+              </div>
+              <div class="work__meta" data-reveal>
+                <p class="work__role">{p.role[lang]}</p>
+                <p class="label">{p.period[lang]}</p>
+                {p.award ? <p class="work__award">{p.award[lang]}</p> : <span />}
+                <span class="link work__open">
+                  {ui.work.open[lang]} <span class="arrow" aria-hidden="true">→</span>
+                </span>
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ol>
+  </div>
+</section>
+
+<style>
+  .work__intro {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 24px 48px;
+    padding-bottom: clamp(48px, 7vw, 112px);
+  }
+
+  .work__title {
+    font-size: clamp(4.5rem, 2rem + 14vw, 17rem);
+    line-height: 0.8;
+    letter-spacing: -0.07em;
+  }
+
+  .work__intro .lead {
+    max-width: 30ch;
+    padding-bottom: 0.6em;
+  }
+
+  .work__list {
+    display: grid;
+    gap: clamp(80px, 10vw, 160px);
+  }
+
+  .work__link {
+    display: grid;
+    gap: 20px;
+  }
+
+  .work__head {
+    display: grid;
+    grid-template-columns: 4rem 1fr auto;
+    align-items: baseline;
+    gap: 8px 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+
+  .work__name {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.28em;
+    font-size: var(--step-3);
+    font-weight: 600;
+    letter-spacing: -0.05em;
+    line-height: 1;
+  }
+
+  .work__logo {
+    width: auto;
+    height: 0.9em;
+    object-fit: contain;
+  }
+
+  /* вордмарк WorldLog ширший — трохи менший по висоті */
+  .work__logo--worldlog {
+    height: 0.78em;
+  }
+
+  .work__tagline {
+    max-width: 26ch;
+    text-align: right;
+    font-size: var(--step-1);
+    line-height: 1.3;
+    color: var(--muted);
+  }
+
+  .work__meta {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) auto minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 12px 32px;
+    padding-left: calc(4rem + 24px);
+  }
+
+  .work__role {
+    font-weight: 500;
+  }
+
+  .work__award {
+    justify-self: start;
+    padding: 6px 12px;
+    border-radius: 10px;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-size: var(--step--1);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .work__open {
+    justify-self: end;
+    background-size: 0 1.5px;
+  }
+
+  .work__link:hover .work__open {
+    background-size: 100% 1.5px;
+  }
+
+  @media (max-width: 960px) {
+    .work__intro {
+      grid-template-columns: 1fr;
+    }
+
+    .work__head {
+      grid-template-columns: 2.5rem 1fr;
+    }
+
+    .work__tagline {
+      grid-column: 2;
+      text-align: left;
+    }
+
+    .work__meta {
+      grid-template-columns: 1fr auto;
+      padding-left: 0;
+    }
+
+    .work__role {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .work__meta {
+      grid-template-columns: 1fr;
+      justify-items: start;
+    }
+
+    .work__open {
+      justify-self: start;
+    }
+  }
+</style>

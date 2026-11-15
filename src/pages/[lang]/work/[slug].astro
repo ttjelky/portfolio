@@ -1,0 +1,539 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../../../layouts/Base.astro';
+import ProjectVisual from '../../../components/ProjectVisual.astro';
+import Contact from '../../../components/Contact.astro';
+import { PROJECTS, type Project } from '../../../data/projects';
+import { LANGS, langPath, ui, type Lang } from '../../../i18n';
+
+export function getStaticPaths() {
+  return LANGS.flatMap((lang) => PROJECTS.map((project) => ({ params: { lang, slug: project.slug }, props: { project } })));
+}
+
+interface Props {
+  project: Project;
+}
+
+const { project: p } = Astro.props;
+const lang = Astro.params.lang as Lang;
+const u = ui.project;
+const index = PROJECTS.indexOf(p);
+const next = PROJECTS[(index + 1) % PROJECTS.length]!;
+const title = `${p.name} — ${p.tagline[lang]} · ${ui.name[lang]}`;
+const pad = (n: number) => String(n).padStart(2, '0');
+const accent = `--accent: ${p.accent}; --on-accent: ${p.onAccent}`;
+---
+
+<Base lang={lang} title={title} description={p.summary[lang]} path={`work/${p.slug}`} ogImage={`og/${lang}-${p.slug}.png`}>
+  <article>
+    <!-- ===== темний перший екран ===== -->
+    <header class="sheet theme-dark case-hero" data-section style={`${accent}; --panel: ${p.panel}`}>
+      <div class="case-hero__glow" aria-hidden="true"></div>
+      <div class="container case-hero__top label">
+        <a href={`${langPath(lang)}#${p.kind === 'site' ? 'services' : 'work'}`} class="case-hero__back">← {u.back[lang]}</a>
+        <span>{pad(index + 1)} / {pad(PROJECTS.length)}</span>
+      </div>
+
+      <div class="container case-hero__body">
+        <div class="case-hero__intro">
+          {p.logo && <Image src={p.logo} alt={`${p.name} logo`} class:list={['case-hero__logo', `case-hero__logo--${p.slug}`]} height={128} />}
+          <p class="case-hero__tagline">{p.tagline[lang]}</p>
+        </div>
+        <div class="case-hero__cols">
+          <div>
+            <span class="label">{u.role[lang]}</span>
+            <p>{p.role[lang]}</p>
+          </div>
+          <div>
+            <span class="label">{u.year[lang]}</span>
+            <p>{p.period[lang]}</p>
+          </div>
+          <div>
+            <span class="label">{u.status[lang]}</span>
+            <p>{p.status[lang]}</p>
+          </div>
+          <div class="case-hero__links">
+            {
+              p.links.live && (
+                <a class="link" href={p.links.live} target="_blank" rel="noopener">
+                  {u.live[lang]} <span class="arrow arrow--ne" aria-hidden="true">→</span>
+                </a>
+              )
+            }
+            {
+              p.links.github && (
+                <a class="link" href={p.links.github} target="_blank" rel="noopener">
+                  GitHub <span class="arrow arrow--ne" aria-hidden="true">→</span>
+                </a>
+              )
+            }
+          </div>
+        </div>
+      </div>
+
+      <h1 class="case-hero__name display" data-fit-name>
+        <span class="case-hero__line"><span data-fit-word>{p.name}</span></span>
+      </h1>
+    </header>
+
+    <!-- ===== світлий опис ===== -->
+    <section class="sheet theme-light case-body" data-section style={accent}>
+      <div class="container">
+        <div data-reveal-clip>
+          <ProjectVisual project={p} eager />
+        </div>
+
+        <div class="case-body__intro">
+          <p class="case-body__summary">{p.summary[lang]}</p>
+          {p.award && <p class="case-body__award">{p.award[lang]}</p>}
+        </div>
+
+        <div class="case-body__row">
+          <h2 class="label">{u.context[lang]}</h2>
+          <p class="case-body__context" data-reveal>{p.context[lang]}</p>
+        </div>
+
+        {
+          p.stats.length > 0 && (
+            <div class="case-body__row">
+              <h2 class="label">{u.numbers[lang]}</h2>
+              <ul class="case-body__stats">
+                {p.stats.map((s, i) => (
+                  <li data-reveal style={`--delay: ${i * 0.08}s`}>
+                    <span class="case-body__stat display">{s.value}</span>
+                    <span class="case-body__stat-label">{s.label[lang]}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )
+        }
+
+        <div class="case-body__row">
+          <h2 class="label">{u.inside[lang]}</h2>
+          <ol class="case-body__points">
+            {
+              p.highlights.map((h, i) => (
+                <li data-reveal>
+                  <span class="case-body__num">{pad(i + 1)}</span>
+                  <h3>{h.title[lang]}</h3>
+                  <p>{h.text[lang]}</p>
+                </li>
+              ))
+            }
+          </ol>
+        </div>
+
+        <div class="case-body__row">
+          <h2 class="label">{u.stack[lang]}</h2>
+          <div>
+            <p class="case-body__stack">{p.stack.join(' · ')}</p>
+            {
+              p.team && (
+                <p class="case-body__team">
+                  {u.team[lang]}:{' '}
+                  {p.team.map((m, i) => (
+                    <>
+                      <a href={m.url} target="_blank" rel="noopener">
+                        {m.name}
+                      </a>
+                      {i < p.team!.length - 1 ? ', ' : ''}
+                    </>
+                  ))}
+                </p>
+              )
+            }
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== галерея на тлі проєкту ===== -->
+    <section class:list={['sheet case-gallery', p.dark ? 'theme-dark' : 'theme-light']} style={`${accent}; --panel: ${p.panel}`} aria-label={u.screens[lang]} data-section>
+      <div class="container case-gallery__rows">
+        {
+          p.gallery.map((row) => (
+            <div class:list={['case-gallery__row', { 'case-gallery__row--phones': row.some((s) => s.phone) }]} data-reveal>
+              {row.map((shot) => (
+                <figure
+                  class:list={['case-gallery__shot', { 'case-gallery__shot--phone': shot.phone }]}
+                  style={`flex-grow: ${shot.src.width / shot.src.height}; aspect-ratio: ${shot.src.width} / ${shot.src.height}`}
+                >
+                  <Image
+                    src={shot.src}
+                    alt={shot.alt[lang]}
+                    widths={shot.phone ? [320, 480, 720] : [640, 1000, 1600, 2000]}
+                    sizes={shot.phone ? '(max-width: 640px) 45vw, 22vw' : row.length > 1 ? '(max-width: 640px) 92vw, 46vw' : '92vw'}
+                    quality={80}
+                    loading="lazy"
+                  />
+                </figure>
+              ))}
+            </div>
+          ))
+        }
+      </div>
+    </section>
+
+    <!-- ===== наступний проєкт ===== -->
+    <nav class="sheet theme-dark case-next" aria-label={u.next[lang]} data-section style={`--accent: ${next.accent}; --on-accent: ${next.onAccent}`}>
+      <a href={langPath(lang, `work/${next.slug}`)} class="container case-next__link">
+        <span class="kicker">{u.next[lang]}</span>
+        <span class="case-next__name display">
+          {next.name} <span class="arrow" aria-hidden="true">→</span>
+        </span>
+        <span class="lead">{next.tagline[lang]}</span>
+      </a>
+    </nav>
+  </article>
+
+  <Contact lang={lang} />
+</Base>
+
+<style>
+  /* ---- перший екран ---- */
+  .case-hero {
+    display: flex;
+    flex-direction: column;
+    min-height: 92svh;
+    padding-top: clamp(84px, 9vw, 104px);
+    padding-bottom: calc(var(--radius-section) + clamp(14px, 2vw, 32px));
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .case-hero__glow {
+    position: absolute;
+    left: 30%;
+    top: -30%;
+    z-index: -1;
+    width: 80vw;
+    aspect-ratio: 1.4;
+    border-radius: 50%;
+    background: var(--panel);
+    filter: blur(120px);
+    opacity: 0.5;
+  }
+
+  .case-hero__top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .case-hero__back {
+    color: var(--fg);
+    transition: color 0.25s;
+  }
+
+  .case-hero__back:hover {
+    color: var(--accent);
+  }
+
+  .case-hero__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(40px, 6vw, 72px);
+    padding-block: 64px 40px;
+  }
+
+  .case-hero__intro {
+    display: grid;
+    justify-items: start;
+    gap: 28px;
+  }
+
+  /* логотипи чорні — на темному тлі ставимо їх на світлу «плитку» */
+  .case-hero__logo {
+    width: auto;
+    height: clamp(64px, 7vw, 92px);
+    padding: 14px;
+    border-radius: 22px;
+    background: var(--white);
+    object-fit: contain;
+  }
+
+  .case-hero__logo--worldlog {
+    padding: 16px 18px;
+  }
+
+  .case-hero__tagline {
+    max-width: 20ch;
+    font-size: var(--step-3);
+    font-weight: 500;
+    line-height: 1.04;
+    letter-spacing: -0.04em;
+  }
+
+  .case-hero__cols {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr auto;
+    gap: 24px 40px;
+    color: var(--muted);
+  }
+
+  .case-hero__cols p {
+    margin-top: 8px;
+    color: var(--fg);
+  }
+
+  .case-hero__links {
+    display: flex;
+    gap: 24px;
+    align-items: end;
+  }
+
+  .case-hero__name {
+    width: 100%;
+    max-width: calc(var(--max) + 2 * var(--gutter));
+    margin-inline: auto;
+    padding-inline: calc(var(--gutter) - 0.04em);
+    font-size: var(--name-size, 20vw);
+    line-height: 0.8;
+    letter-spacing: -0.07em;
+  }
+
+  .case-hero__line {
+    display: block;
+    overflow: hidden;
+    padding-top: 0.04em;
+  }
+
+  .case-hero__line span {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .case-hero__line span {
+      animation: rise 1.2s var(--ease-out) 0.1s both;
+    }
+  }
+
+  @keyframes rise {
+    from {
+      transform: translateY(100%);
+    }
+  }
+
+  /* ---- опис ---- */
+  .case-body__intro {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 24px 64px;
+    margin-top: clamp(48px, 7vw, 104px);
+  }
+
+  .case-body__summary {
+    max-width: 30ch;
+    font-size: var(--step-2);
+    font-weight: 500;
+    line-height: 1.2;
+    letter-spacing: -0.03em;
+  }
+
+  .case-body__award {
+    max-width: 22rem;
+    padding: 14px 18px;
+    border-radius: 14px;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .case-body__row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 2.6fr);
+    gap: 20px clamp(32px, 6vw, 96px);
+    margin-top: clamp(64px, 9vw, 128px);
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+  }
+
+  .case-body__context {
+    max-width: 58ch;
+    font-size: var(--step-1);
+    line-height: 1.5;
+  }
+
+  .case-body__stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+
+  .case-body__stats li {
+    display: grid;
+    gap: 8px;
+  }
+
+  .case-body__stat {
+    font-size: var(--step-3);
+    white-space: nowrap;
+  }
+
+  .case-body__stat-label {
+    color: var(--muted);
+  }
+
+  .case-body__points {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 40px 32px;
+  }
+
+  .case-body__points li {
+    display: grid;
+    align-content: start;
+    gap: 10px;
+  }
+
+  .case-body__num {
+    display: inline-grid;
+    place-items: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--on-accent);
+    font-size: 12px;
+    font-weight: 700;
+  }
+
+  .case-body__points h3 {
+    font-size: var(--step-1);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .case-body__points p {
+    color: var(--muted);
+  }
+
+  .case-body__stack {
+    font-size: var(--step-1);
+    font-weight: 500;
+  }
+
+  .case-body__team {
+    margin-top: 12px;
+    color: var(--muted);
+  }
+
+  .case-body__team a {
+    color: var(--fg);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--line);
+  }
+
+  /* ---- галерея ---- */
+  .case-gallery {
+    background: var(--panel);
+  }
+
+  .case-gallery__rows {
+    display: grid;
+    gap: clamp(12px, 1.6vw, 24px);
+  }
+
+  .case-gallery__row {
+    display: flex;
+    gap: clamp(12px, 1.6vw, 24px);
+  }
+
+  .case-gallery__row--phones {
+    justify-content: center;
+    padding-block: clamp(16px, 4vw, 56px);
+  }
+
+  .case-gallery__shot {
+    flex-basis: 0;
+    min-width: 0;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.06),
+      0 30px 60px -30px rgba(0, 0, 0, 0.5);
+  }
+
+  .case-gallery__shot--phone {
+    flex-grow: 0 !important;
+    flex-basis: clamp(120px, 22%, 300px);
+    border-radius: clamp(12px, 2vw, 28px);
+  }
+
+  .case-gallery__shot img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* ---- наступний ---- */
+  .case-next__link {
+    display: grid;
+    gap: 20px;
+  }
+
+  .case-next__name {
+    font-size: clamp(3.5rem, 1rem + 12vw, 14rem);
+    letter-spacing: -0.07em;
+    line-height: 0.85;
+    transition: color 0.4s;
+  }
+
+  .case-next__link:hover .case-next__name {
+    color: var(--accent);
+  }
+
+  .case-next__link:hover .arrow {
+    transform: translateX(12px);
+  }
+
+  @media (max-width: 900px) {
+    .case-hero__cols {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .case-body__intro,
+    .case-body__row {
+      grid-template-columns: 1fr;
+    }
+
+    .case-body__points {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .case-hero {
+      min-height: 86svh;
+      padding-top: 28px;
+      padding-bottom: calc(var(--radius-section) + 76px);
+    }
+
+    .case-hero__cols {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .case-gallery__row:not(.case-gallery__row--phones) {
+      flex-direction: column;
+    }
+
+    .case-gallery__row--phones {
+      gap: 10px;
+    }
+
+    .case-gallery__shot--phone {
+      flex: 1 1 0 !important;
+    }
+
+    .case-body__stats {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

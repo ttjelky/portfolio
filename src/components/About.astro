@@ -1,0 +1,115 @@
+---
+import { PROJECTS } from '../data/projects';
+import { t, ui, url, type L, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const a = ui.about;
+const label = (x: string | L) => (typeof x === 'string' ? x : t(x, lang));
+// акцент секції — бурштин WorldLog: проєкт, де я відповідаю за все, від ідеї до айдентики
+const worldlog = PROJECTS.find((p) => p.slug === 'worldlog')!;
+---
+
+<section
+  class="sheet theme-dark about"
+  id="about"
+  data-section
+  aria-labelledby="about-title"
+  style={`--accent: ${worldlog.accent}; --on-accent: ${worldlog.onAccent}`}
+>
+  <div class="container">
+    <span class="kicker" data-reveal>{a.kicker[lang]}</span>
+    <h2 class="about__title display" id="about-title" data-reveal>{a.title[lang]}</h2>
+
+    <div class="about__grid">
+      <div class="about__text">
+        {a.p[lang].map((p, i) => <p data-reveal style={`--delay: ${i * 0.08}s`}>{p}</p>)}
+        <a class="btn btn--accent about__cv" href={url(`cv/oleksii-bezklynskyi-cv-${lang}.pdf`)} download data-reveal>
+          {a.cv[lang]} <span aria-hidden="true">↓</span>
+        </a>
+      </div>
+
+      <div class="about__skills" data-reveal>
+        <h3 class="label">{a.skillsTitle[lang]}</h3>
+        <dl>
+          {
+            a.skills.map((group) => (
+              <div class="about__row">
+                <dt>{group.level[lang]}</dt>
+                <dd>{group.items.map((x) => label(x)).join(' · ')}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about__title {
+    margin-top: 28px;
+    font-size: var(--step-4);
+    max-width: 13ch;
+  }
+
+  .about__grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    gap: clamp(40px, 7vw, 120px);
+    margin-top: clamp(56px, 7vw, 104px);
+  }
+
+  .about__text {
+    display: grid;
+    align-content: start;
+    justify-items: start;
+    gap: 22px;
+    font-size: var(--step-1);
+    line-height: 1.5;
+    color: var(--muted);
+  }
+
+  .about__text p:first-child {
+    color: var(--fg);
+  }
+
+  .about__cv {
+    margin-top: 16px;
+  }
+
+  .about__skills .label {
+    margin-bottom: 10px;
+  }
+
+  .about__row {
+    display: grid;
+    grid-template-columns: 10rem 1fr;
+    gap: 8px 20px;
+    padding: 18px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .about__row dt {
+    color: var(--muted);
+  }
+
+  .about__row dd {
+    font-weight: 500;
+  }
+
+  @media (max-width: 860px) {
+    .about__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .about__row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

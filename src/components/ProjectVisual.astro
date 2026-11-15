@@ -1,0 +1,112 @@
+---
+import { Image } from 'astro:assets';
+import type { Project } from '../data/projects';
+
+interface Props {
+  project: Project;
+  /** Головна картинка сторінки — вантажити одразу. */
+  eager?: boolean;
+}
+
+const { project, eager = false } = Astro.props;
+const { desktop, phone } = project.cover;
+const loading = eager ? 'eager' : 'lazy';
+---
+
+<div class:list={['pv', { 'pv--dark': project.dark }]} style={`--panel: ${project.panel}`}>
+  <div class="pv__desktop">
+    <Image
+      src={desktop}
+      alt=""
+      widths={[640, 960, 1400, 2000]}
+      sizes="(max-width: 860px) 92vw, 72vw"
+      quality={78}
+      loading={loading}
+      fetchpriority={eager ? 'high' : undefined}
+    />
+  </div>
+  {
+    phone && (
+      <div class="pv__phone">
+        <Image src={phone} alt="" widths={[200, 320, 480]} sizes="(max-width: 860px) 30vw, 18vw" quality={78} loading={loading} />
+      </div>
+    )
+  }
+</div>
+
+<style>
+  .pv {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    border-radius: var(--radius);
+    background: var(--panel);
+    overflow: hidden;
+  }
+
+  .pv__desktop,
+  .pv__phone {
+    position: absolute;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.06),
+      0 30px 70px -20px rgba(0, 0, 0, 0.45);
+    transition: transform 1s var(--ease-out);
+  }
+
+  .pv--dark .pv__desktop,
+  .pv--dark .pv__phone {
+    box-shadow:
+      0 0 0 1px rgba(255, 255, 255, 0.08),
+      0 30px 70px -20px rgba(0, 0, 0, 0.8);
+  }
+
+  .pv__desktop {
+    left: 8%;
+    top: 12%;
+    width: 70%;
+    aspect-ratio: 16 / 10;
+    border-radius: 10px;
+  }
+
+  .pv__phone {
+    right: 8%;
+    top: 22%;
+    width: 17%;
+    aspect-ratio: 390 / 844;
+    border-radius: clamp(10px, 1.6vw, 24px);
+  }
+
+  .pv img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+  }
+
+  :global(a:hover) .pv__desktop {
+    transform: translateY(-2%);
+  }
+
+  :global(a:hover) .pv__phone {
+    transform: translateY(-5%);
+  }
+
+  @media (max-width: 640px) {
+    .pv {
+      aspect-ratio: 4 / 3.6;
+    }
+
+    .pv__desktop {
+      left: 6%;
+      top: 9%;
+      width: 82%;
+    }
+
+    .pv__phone {
+      right: 5%;
+      top: auto;
+      bottom: -12%;
+      width: 31%;
+    }
+  }
+</style>

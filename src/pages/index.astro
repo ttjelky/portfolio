@@ -1,0 +1,46 @@
+---
+// Корінь сайту: відправляє на мову пристрою (або ту, яку людина обрала раніше).
+import { langPath, ui, url } from '../i18n';
+import '../styles/global.css';
+
+const uk = langPath('uk');
+const en = langPath('en');
+---
+
+<!doctype html>
+<html lang="uk">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{ui.name.en} — {ui.name.uk}</title>
+    <meta name="description" content="Oleksii Bezklynskyi — website design & development. Олексій Безклинський — дизайн і розробка сайтів." />
+    <link rel="icon" type="image/svg+xml" href={url('favicon.svg')} />
+    <link rel="alternate" hreflang="uk" href={new URL(uk, Astro.site).href} />
+    <link rel="alternate" hreflang="en" href={new URL(en, Astro.site).href} />
+    <meta property="og:image" content={new URL(url('og/en.png'), Astro.site).href} />
+    <script is:inline define:vars={{ uk, en }}>
+      (function () {
+        var saved = null;
+        try {
+          saved = localStorage.getItem('lang');
+        } catch (e) {}
+        var langs = navigator.languages || [navigator.language || ''];
+        var prefersUk = langs.some(function (l) {
+          return /^(uk|ru|be)\b/i.test(l);
+        });
+        var lang = saved === 'uk' || saved === 'en' ? saved : prefersUk ? 'uk' : 'en';
+        var base = lang === 'uk' ? uk : en;
+        // старі адреси виду #/project/vector
+        var m = location.hash.match(/^#\/project\/([\w-]+)/);
+        var target = m ? base + 'work/' + m[1] + '/' : base + (location.hash && !m ? location.hash : '');
+        location.replace(target);
+      })();
+    </script>
+  </head>
+  <body class="theme-dark" style="background: var(--bg); color: var(--fg)">
+    <main class="container" style="padding-block: 20vh; display: grid; gap: 16px">
+      <a class="btn" href={uk}>Українська</a>
+      <a class="btn btn--ghost" href={en}>English</a>
+    </main>
+  </body>
+</html>

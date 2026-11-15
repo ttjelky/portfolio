@@ -1,0 +1,78 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { CONTACT, langPath, ui, url, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+  title: string;
+  description: string;
+  /** Шлях сторінки без мови, напр. 'work/clarity' — для hreflang і перемикача мови. */
+  path?: string;
+  ogImage?: string;
+}
+
+const { lang, title, description, path = '', ogImage = `og/${lang}.png` } = Astro.props;
+const site = Astro.site!;
+const abs = (p: string) => new URL(p, site).href;
+const canonical = abs(langPath(lang, path));
+const otherLang: Lang = lang === 'uk' ? 'en' : 'uk';
+
+const person = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: ui.name.en,
+  alternateName: ui.name.uk,
+  jobTitle: ui.role.en,
+  url: abs(url('')),
+  email: `mailto:${CONTACT.email}`,
+  address: { '@type': 'PostalAddress', addressLocality: 'Kremenchuk', addressCountry: 'UA' },
+  sameAs: [CONTACT.github, CONTACT.linkedin, CONTACT.telegram, CONTACT.x],
+};
+---
+
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={ui.name[lang]} />
+    <meta name="theme-color" content="#0b0b0b" />
+    <link rel="icon" type="image/svg+xml" href={url('favicon.svg')} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="uk" href={abs(langPath('uk', path))} />
+    <link rel="alternate" hreflang="en" href={abs(langPath('en', path))} />
+    <link rel="alternate" hreflang="x-default" href={abs(url(''))} />
+    <link rel="sitemap" href={url('sitemap-index.xml')} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={ui.name[lang]} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={abs(url(ogImage))} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={lang === 'uk' ? 'uk_UA' : 'en_US'} />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(person)} />
+    <script is:inline>
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">{ui.skip[lang]}</a>
+    <Header lang={lang} otherHref={langPath(otherLang, path)} />
+    <main id="main">
+      <slot />
+    </main>
+    <Footer lang={lang} />
+    <script>
+      import '../scripts/site';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,276 @@
+---
+import { ui, type Lang } from '../i18n';
+
+interface Props {
+  lang: Lang;
+}
+
+const { lang } = Astro.props;
+const [first, last] = ui.nameLines[lang];
+const h = ui.hero;
+---
+
+<section class="sheet theme-dark hero" id="top" data-section style="--accent: var(--white); --on-accent: var(--black)">
+  <!-- Світіння з кольорів проєктів: Clarity, Vector, Scalaris, WorldLog -->
+  <div class="hero__glow" aria-hidden="true" data-glow>
+    <span></span><span></span><span></span>
+  </div>
+
+  <div class="container hero__meta label">
+    <span>{ui.name[lang]}</span>
+    <span>{ui.location[lang]}</span>
+  </div>
+
+  <div class="container hero__body">
+    <p class="hero__lead">
+      <span class="hl">{h.hello[lang]}</span>{' '}{h.lead[lang]}
+    </p>
+
+    <div class="hero__cols">
+      <p>{h.col1[lang]}</p>
+      <p>{h.col2[lang]}</p>
+      <a href="#contact" class="link hero__cta">{h.cta[lang]} <span class="arrow" aria-hidden="true">→</span></a>
+    </div>
+  </div>
+
+  <h1 class="hero__name display" data-fit-name>
+    <span class="visually-hidden">{ui.name[lang]} — {ui.role[lang]}</span>
+    <span class="hero__line" aria-hidden="true"><span class="hero__word" data-fit-word>{first}</span></span>
+    <span class="hero__line" aria-hidden="true"><span class="hero__word" data-fit-word style="--d: 0.09s">{last}</span></span>
+  </h1>
+</section>
+
+<style>
+  .hero {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+    padding-top: clamp(84px, 9vw, 104px);
+    /* наступна секція заходить на цю на висоту заокруглення */
+    padding-bottom: calc(var(--radius-section) + clamp(14px, 2vw, 32px));
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  /* ---- світіння ---- */
+  .hero__glow {
+    position: absolute;
+    inset: -20% -10% 30%;
+    z-index: -1;
+    filter: blur(clamp(60px, 9vw, 130px));
+    opacity: 0.55;
+    translate: var(--gx, 0) var(--gy, 0);
+    transition: translate 1.2s var(--ease-out);
+    pointer-events: none;
+  }
+
+  .hero__glow span {
+    position: absolute;
+    border-radius: 50%;
+  }
+
+  .hero__glow span:nth-child(1) {
+    width: 46%;
+    aspect-ratio: 1;
+    left: 48%;
+    top: 4%;
+    background: #f29bb0;
+    animation: drift-a 18s ease-in-out infinite alternate;
+  }
+
+  .hero__glow span:nth-child(2) {
+    width: 38%;
+    aspect-ratio: 1;
+    left: 66%;
+    top: 22%;
+    background: #2f6bff;
+    animation: drift-b 22s ease-in-out infinite alternate;
+  }
+
+  .hero__glow span:nth-child(3) {
+    width: 30%;
+    aspect-ratio: 1;
+    left: 36%;
+    top: 30%;
+    background: #c6f135;
+    opacity: 0.7;
+    animation: drift-c 26s ease-in-out infinite alternate;
+  }
+
+  @keyframes drift-a {
+    50% {
+      background: #f0a830;
+      transform: translate(-12%, 10%) scale(1.1);
+    }
+    100% {
+      transform: translate(8%, -6%) scale(0.9);
+    }
+  }
+
+  @keyframes drift-b {
+    50% {
+      background: #f29bb0;
+      transform: translate(-20%, -8%) scale(1.15);
+    }
+    100% {
+      background: #2f6bff;
+      transform: translate(-6%, 14%);
+    }
+  }
+
+  @keyframes drift-c {
+    50% {
+      background: #2f6bff;
+      transform: translate(30%, -10%) scale(1.2);
+    }
+    100% {
+      background: #c6f135;
+      transform: translate(-10%, 6%);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__glow span {
+      animation: none;
+    }
+  }
+
+  /* ---- верхній рядок ---- */
+  .hero__meta {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+  }
+
+  .hero__meta > :last-child {
+    text-align: right;
+  }
+
+  /* ---- текст ---- */
+  .hero__body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: clamp(28px, 4.5vh, 56px);
+    padding-block: clamp(32px, 6vh, 80px) clamp(24px, 4vh, 48px);
+  }
+
+  .hero__lead {
+    max-width: 30ch;
+    font-size: clamp(1.75rem, 0.9rem + 2.3vw, 3.25rem);
+    font-weight: 500;
+    line-height: 1.06;
+    letter-spacing: -0.04em;
+    color: var(--muted);
+  }
+
+  .hero__cols {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 22rem)) 1fr;
+    align-items: end;
+    gap: 24px clamp(24px, 4vw, 64px);
+    font-size: var(--step-0);
+    line-height: 1.45;
+    color: var(--muted);
+  }
+
+  .hero__cta {
+    justify-self: end;
+    color: var(--fg);
+  }
+
+  /* ---- величезне ім’я ---- */
+  .hero__name {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: calc(var(--max) + 2 * var(--gutter));
+    margin-inline: auto;
+    padding-inline: calc(var(--gutter) - 0.04em);
+    font-size: var(--name-size, 15vw);
+    font-weight: 600;
+    line-height: 0.8;
+    letter-spacing: -0.07em;
+  }
+
+  .hero__line {
+    display: block;
+    overflow: hidden;
+    padding-top: 0.04em;
+  }
+
+  .hero__word {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .hero__word {
+      animation: rise 1.2s var(--ease-out) both;
+      animation-delay: calc(0.15s + var(--d, 0s));
+    }
+
+    .hero__meta,
+    .hero__body {
+      animation: fade 1.1s var(--ease-out) 0.5s both;
+    }
+  }
+
+  @keyframes rise {
+    from {
+      transform: translateY(100%);
+    }
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+  }
+
+  @media (max-width: 900px) {
+    .hero__cols {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .hero__cta {
+      grid-column: 1 / -1;
+      justify-self: start;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero {
+      min-height: 100svh;
+      padding-top: 28px;
+    }
+
+    .hero__meta {
+      grid-template-columns: 1fr auto;
+    }
+
+    .hero__meta > :first-child {
+      display: none;
+    }
+
+    .hero__lead {
+      font-size: clamp(1.6rem, 7.4vw, 2.2rem);
+    }
+
+    /* знизу на телефоні плаває навбар — лишаємо під ім’ям місце */
+    .hero {
+      padding-bottom: calc(var(--radius-section) + 76px);
+    }
+
+    .hero__cols {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .hero__glow {
+      inset: -10% -40% 40%;
+    }
+  }
+</style>

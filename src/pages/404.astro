@@ -1,0 +1,43 @@
+---
+import Base from '../layouts/Base.astro';
+import { langPath } from '../i18n';
+---
+
+<Base lang="uk" title="404 — сторінку не знайдено" description="Такої сторінки немає.">
+  <section class="sheet theme-dark"><div class="container nf">
+    <p class="nf__code display">404</p>
+    <h1 class="nf__title display">Такої сторінки немає<br /><span lang="en">This page doesn’t exist</span></h1>
+    <div class="nf__links">
+      <a class="btn" href={langPath('uk')}>На головну</a>
+      <a class="btn btn--ghost" href={langPath('en')} lang="en">Home</a>
+    </div>
+  </div></section>
+</Base>
+
+<style>
+  .nf {
+    display: grid;
+    gap: 24px;
+    min-height: 70svh;
+    align-content: center;
+  }
+
+  .nf__code {
+    font-size: clamp(8rem, 30vw, 22rem);
+    line-height: 0.8;
+    letter-spacing: -0.08em;
+  }
+
+  .nf__title {
+    font-size: var(--step-2);
+  }
+
+  .nf__title span {
+    color: var(--muted);
+  }
+
+  .nf__links {
+    display: flex;
+    gap: 12px;
+  }
+</style>
