@@ -17,13 +17,16 @@ import vectorRounds from '../assets/projects/vector/rounds.jpg';
 import vectorMDashboard from '../assets/projects/vector/m-dashboard.jpg';
 import vectorMTournament from '../assets/projects/vector/m-tournament.jpg';
 
-import scalarisMap from '../assets/projects/scalaris/map.jpg';
-import scalarisNearby from '../assets/projects/scalaris/nearby.jpg';
-import scalarisCross from '../assets/projects/scalaris/cross.jpg';
-import scalarisMMap from '../assets/projects/scalaris/m-map.jpg';
-import scalarisMSheet from '../assets/projects/scalaris/m-sheet.jpg';
-import scalarisMQuest from '../assets/projects/scalaris/m-quest.jpg';
-import scalarisMZone from '../assets/projects/scalaris/m-zone.jpg';
+import scalarisMapLight from '../assets/projects/scalaris/map-light.jpg';
+import scalarisPanelDark from '../assets/projects/scalaris/panel-dark.jpg';
+import scalarisProfileLight from '../assets/projects/scalaris/profile-light.jpg';
+import scalarisMPanelDark from '../assets/projects/scalaris/m-panel-dark.jpg';
+import scalarisMPanelLight from '../assets/projects/scalaris/m-panel-light.jpg';
+import scalarisMChatDark from '../assets/projects/scalaris/m-chat-dark.jpg';
+import scalarisMResultsLight from '../assets/projects/scalaris/m-results-light.jpg';
+import scalarisMProfileDark from '../assets/projects/scalaris/m-profile-dark.jpg';
+import scalarisMLeaderboardLight from '../assets/projects/scalaris/m-leaderboard-light.jpg';
+import scalarisMFiltersDark from '../assets/projects/scalaris/m-filters-dark.jpg';
 
 import worldlogLanding from '../assets/projects/worldlog/landing.jpg';
 import worldlogWorlds from '../assets/projects/worldlog/worlds.jpg';
@@ -266,19 +269,19 @@ export const PROJECTS: Project[] = [
     logo: scalarisLogo,
     tagline: { uk: 'Соціальна карта для активностей поруч', en: 'A social map for activities nearby' },
     summary: {
-      uk: 'Відкриваєш карту — бачиш людей поруч, готових до активності просто зараз. Збір, крос із чекпоінтами, ігрова зона чи квест: створюєш за хвилину, а учасники приєднуються в реальному часі.',
-      en: 'Open the map and see people nearby who are up for something right now. A meetup, a cross-country run with checkpoints, a game zone or a quest: create one in a minute and people join in real time.',
+      uk: 'Відкриваєш карту — бачиш людей поруч, готових до активності просто зараз. Збір, крос із чекпоінтами, ігрова зона чи квест: створюєш за хвилину, кличеш друзів або відкриваєш для всіх, а після фінішу отримуєш результати, досвід і досягнення.',
+      en: 'Open the map and see people nearby who are up for something right now. A meetup, a run with checkpoints, a game zone or a quest: create one in a minute, invite friends or open it to everyone, and get results, XP and badges after the finish.',
     },
     context: {
-      uk: 'Фінальне завдання турніру ми отримали в Карпатах, і на весь продукт було 5 днів. Спали по 4–5 годин і писали ночами. На захисті Scalaris приніс команді 3-тє місце.',
-      en: 'We got the final tournament brief in the Carpathian Mountains and had 5 days for the whole product. We slept 4–5 hours a night and coded through the nights. At the defence, Scalaris won our team 3rd place.',
+      uk: 'Фінальне завдання турніру ми отримали в Карпатах, і на весь продукт було 5 днів. Спали по 4–5 годин і писали ночами. На захисті Scalaris приніс команді 3-тє місце. Після турніру я повністю переробив дизайн, закрив аудит із 49 пунктів і додав другу хвилю механік.',
+      en: 'We got the final tournament brief in the Carpathian Mountains and had 5 days for the whole product. We slept 4–5 hours a night and coded through the nights. At the defence, Scalaris won our team 3rd place. After the tournament I fully redesigned it, closed a 49-item audit and added a second wave of mechanics.',
     },
     role: {
       uk: 'Тімлід · 50% коду · дизайн, логотип і всі технічні рішення',
       en: 'Team lead · 50% of the code · design, logo and all technical decisions',
     },
     period: { uk: 'Липень 2026 · 5 днів', en: 'July 2026 · 5 days' },
-    status: { uk: 'Завершено', en: 'Completed' },
+    status: { uk: 'Розвивається після турніру', en: 'Evolving after the tournament' },
     award: TOURNAMENT_FINAL,
     stack: ['Django 6', 'Django REST Framework', 'Django Channels', 'PostGIS', 'Redis', 'React 19', 'Leaflet', 'Docker'],
     team: [TEAM.artem, TEAM.dergo],
@@ -299,36 +302,56 @@ export const PROJECTS: Project[] = [
         },
       },
       {
-        title: { uk: 'Власна кластеризація', en: 'Custom clustering' },
+        title: { uk: 'Відкриті й заплановані', en: 'Open and scheduled' },
         text: {
-          uk: 'Коли аватарів багато, вони збираються в кластери з лічильником, а не накладаються один на одного.',
-          en: 'When there are many avatars, they merge into counted clusters instead of piling up.',
+          uk: 'Активність можна запланувати на потім, відкрити для всіх із лімітом місць чи схваленням і поширити посиланням. Учасники бачать ETA, тиснуть «запізнююсь», а погода підтягується сама.',
+          en: 'Plan an activity for later, open it to everyone with a spot limit or approval, and share it by link. People see ETAs, tap “running late”, and the weather shows up on its own.',
+        },
+      },
+      {
+        title: { uk: 'Чесна гра й результати', en: 'Fair play and results' },
+        text: {
+          uk: 'Сервер відсіює пересування на транспорті за швидкістю. Після фінішу — таблиця місць із часом на чекпоінтах і подяки учасникам.',
+          en: 'The server filters out travel by vehicle using speed checks. After the finish there is a results table with checkpoint splits and kudos for teammates.',
+        },
+      },
+      {
+        title: { uk: 'Рівні й рейтинг тижня', en: 'Levels and a weekly leaderboard' },
+        text: {
+          uk: 'Досвід, рівні, серії тижнів і дев’ять досягнень, а ще рейтинг серед друзів, що щопонеділка починається з нуля.',
+          en: 'XP, levels, weekly streaks and nine badges, plus a friends leaderboard that resets every Monday.',
         },
       },
       {
         title: { uk: 'Реальний час і приватність', en: 'Real time and privacy' },
         text: {
-          uk: 'Запрошення й позиції оновлюються через WebSocket. Можна сховатися з карти, показувати себе лише друзям або заблокувати людину.',
-          en: 'Invites and positions update over WebSockets. You can hide from the map, show yourself only to friends, or block someone.',
+          uk: 'Запрошення, чат і позиції оновлюються через WebSocket. Можна сховатися з карти, показувати себе лише друзям, заблокувати людину або надіслати близьким посилання, де видно, де ти зараз.',
+          en: 'Invites, chat and positions update over WebSockets. You can hide from the map, show yourself only to friends, block someone, or send loved ones a live-location link.',
         },
       },
     ],
     stats: [
       { value: '5', label: { uk: 'днів на весь продукт', en: 'days for the whole product' } },
       { value: { uk: '3-тє', en: '3rd' }, label: { uk: 'місце у фіналі', en: 'place at the final' } },
-      { value: '180+', label: { uk: 'тестів', en: 'tests' } },
+      { value: '450+', label: { uk: 'тестів', en: 'tests' } },
     ],
-    cover: { desktop: scalarisMap, phone: scalarisMSheet },
+    cover: { desktop: scalarisMapLight, phone: scalarisMPanelDark },
+    // кадри чергують світлу й темну теми — застосунок має обидві
     gallery: [
-      [{ src: scalarisMap, alt: { uk: 'Карта з кластерами людей поруч', en: 'Map with clusters of people nearby' } }],
+      [{ src: scalarisMapLight, alt: { uk: 'Карта з людьми й активностями поруч, світла тема', en: 'Map with people and activities nearby, light theme' } }],
       [
-        { src: scalarisNearby, alt: { uk: 'Список людей поруч', en: 'People nearby list' } },
-        { src: scalarisCross, alt: { uk: 'Створення кросу з маршрутом', en: 'Creating a run with a route' } },
+        { src: scalarisPanelDark, alt: { uk: 'Панель активності з учасниками й ETA, темна тема', en: 'Activity panel with participants and ETAs, dark theme' } },
+        { src: scalarisProfileLight, alt: { uk: 'Профіль із рівнем і досягненнями', en: 'Profile with level and badges' } },
       ],
       [
-        { src: scalarisMMap, alt: { uk: 'Карта на телефоні', en: 'Map on a phone' }, phone: true },
-        { src: scalarisMQuest, alt: { uk: 'Створення квесту', en: 'Creating a quest' }, phone: true },
-        { src: scalarisMZone, alt: { uk: 'Ігрова зона з геозоною', en: 'Game zone with a geofence' }, phone: true },
+        { src: scalarisMPanelLight, alt: { uk: 'Активність на телефоні', en: 'Activity on a phone' }, phone: true },
+        { src: scalarisMChatDark, alt: { uk: 'Чат активності з точкою на карті', en: 'Activity chat with a map pin' }, phone: true },
+        { src: scalarisMResultsLight, alt: { uk: 'Результати квесту з подяками', en: 'Quest results with kudos' }, phone: true },
+      ],
+      [
+        { src: scalarisMProfileDark, alt: { uk: 'Досягнення в темній темі', en: 'Badges in the dark theme' }, phone: true },
+        { src: scalarisMLeaderboardLight, alt: { uk: 'Рейтинг тижня серед друзів', en: 'Weekly friends leaderboard' }, phone: true },
+        { src: scalarisMFiltersDark, alt: { uk: 'Фільтри карти', en: 'Map filters' }, phone: true },
       ],
     ],
   },
