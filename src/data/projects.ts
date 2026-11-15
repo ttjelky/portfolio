@@ -87,7 +87,7 @@ export interface Project {
 
 const TEAM = {
   artem: { name: 'Artem Tsvelykh', url: 'https://github.com/TrrippleV' },
-  dergo: { name: 'dergo', url: 'https://github.com/dergo0-0' },
+  dergo: { name: 'Serhii Deineha', url: 'https://github.com/dergo0-0' },
 };
 
 const TOURNAMENT_FINAL: L = {
